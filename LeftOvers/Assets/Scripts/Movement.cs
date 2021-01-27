@@ -8,9 +8,10 @@ public class Movement : MonoBehaviour
 
     public GameObject[] tiles;
     public float tileDetectionRange;
-    Transform moveToTile;
-
+    
+    //movement
     public float speed;
+    public Transform movePoint;
     void Start()
     {
         tiles = GameObject.FindGameObjectsWithTag("Tile");
@@ -27,7 +28,10 @@ public class Movement : MonoBehaviour
             {
                 if (Vector3.Distance(gameObject.transform.position, tile.transform.position) <= tileDetectionRange)
                 {
-                    tile.GetComponent<Renderer>().material.color = Color.green;
+                    if(tile.GetComponent<SingleTile>().traversable == true)
+                    {
+                        tile.GetComponent<Renderer>().material.color = Color.green;
+                    }
                 }
             }
         }
