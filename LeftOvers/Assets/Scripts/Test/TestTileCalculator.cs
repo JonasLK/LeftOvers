@@ -33,6 +33,7 @@ public class TestTileCalculator : MonoBehaviour
         if(firstTile == true)
         {
             movementDistance = 0;
+            firstTile = false;
         }
         foreach (GameObject tile in surroundingTiles)
         {
@@ -49,7 +50,6 @@ public class TestTileCalculator : MonoBehaviour
             if(testTileCalculator.movementDistance == movementDistance + 1)
             testTileCalculator.CalculateHexagonDistance();
         }
-        firstTile = false;
     }
 
     public void ResetHexagonDistance()

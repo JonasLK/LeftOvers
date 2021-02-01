@@ -32,6 +32,7 @@ public class TestPlayerMovement : MonoBehaviour
         {
             testTileCalculator = tileBellow.GetComponent<TestTileCalculator>();
         }
+        testTileCalculator.firstTile = true;
         testTileCalculator.ResetHexagonDistance();
         testTileCalculator.CalculateHexagonDistance();
     }
