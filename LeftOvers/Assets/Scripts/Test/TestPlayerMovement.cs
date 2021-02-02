@@ -7,15 +7,62 @@ public class TestPlayerMovement : MonoBehaviour
     public GameObject tileBellow;
     private TestTileCalculator testTileCalculator;
 
+    bool moving;
+
+    public int movement;
+    public int movementLeft;
+    public Transform moveTo;
+    public float speed;
+
+    public bool actionAvailable;
+
+    GameObject[] tiles;
+
     void Start()
     {
-        
+        movementLeft = movement;
+        tiles = GameObject.FindGameObjectsWithTag("Tile");
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit))
+            {
+                if(hit.transform.gameObject.tag == "Tile")
+                {
+                    if(hit.transform.gameObject.GetComponent<TestTileCalculator>().movementDistance <= movementLeft)
+                    {
+                        moveTo = hit.transform;
+                        moving = true;
+
+                        movementLeft -= hit.transform.gameObject.GetComponent<TestTileCalculator>().movementDistance;
+                    }
+                }
+            }
+        }
+
+
+        //moving
+        if(moving == true)
+        {
+            transform.Translate(moveTo.transform.position * Time.deltaTime * speed);
+            if(tileBellow == moveTo.gameObject)
+            {
+                moving = false;
+            }
+        }
+    }
+
+    //call after every turn
+    public void ResetCharacter()
+    {
+        movementLeft = movement;
+        actionAvailable = true;
     }
 
     public void OnTriggerEnter(Collider o)
@@ -35,5 +82,13 @@ public class TestPlayerMovement : MonoBehaviour
         testTileCalculator.firstTile = true;
         testTileCalculator.ResetHexagonDistance();
         testTileCalculator.CalculateHexagonDistance();
+
+        foreach (GameObject tile in tiles)
+        {
+            if (tile.GetComponent<TestTileCalculator>().movementDistance <= movementLeft)
+            {
+                tile.GetComponent<Renderer>().material.color = Color.green;
+            }
+        }
     }
 }
