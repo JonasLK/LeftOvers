@@ -50,7 +50,9 @@ public class TestPlayerMovement : MonoBehaviour
         //moving
         if(moving == true)
         {
-            transform.Translate(moveTo.transform.position * Time.deltaTime * speed);
+
+            gameObject.transform.position = moveTo.position;
+            //transform.Translate(moveTo.transform.position * Time.deltaTime * speed);
             if(tileBellow == moveTo.gameObject)
             {
                 moving = false;
