@@ -7,7 +7,6 @@ public class UnitFighter : MonoBehaviour
     public float totalHealth;
     private float currentHealth;
     public float attackDamage;
-    public float enemyAttackDamage;
 
     void Start()
     {
@@ -16,21 +15,9 @@ public class UnitFighter : MonoBehaviour
 
     void Update()
     {
-        isDead();
-        TakeDamage();
+
     }
 
-    public bool isDead()
-    {
-        if (currentHealth <= 0f)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
     /**
     public bool CheckIfInRange()
     {
@@ -53,16 +40,16 @@ public class UnitFighter : MonoBehaviour
     }
     **/
 
-    void TakeDamage()
+    void TakeDamage(float enemyAttackDamage)
     {
-        if (isDead())
+        currentHealth -= enemyAttackDamage;
+
+        //damage taken animation
+
+        if (currentHealth <= 0f)
         {
             Death();
-            return;
         }
-
-        currentHealth -= enemyAttackDamage;
-        //damage taken animation
     }
 
     void Death()
