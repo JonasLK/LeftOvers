@@ -11,6 +11,8 @@ public class CameraController : MonoBehaviour
     public float movementSpeed;
     public float movementTime;
     public float rotationAmount;
+    public float zoomMin;
+    public float zoomMax;
     public Vector3 zoomAmount;
 
     public Vector3 newPosition;
@@ -22,8 +24,8 @@ public class CameraController : MonoBehaviour
     public Vector3 rotateStartPosition;
     public Vector3 rotateCurrentPosition;
 
-    public Vector3 upDownLimit;
-    public Vector3 leftRightLimit;
+    public Vector3 topRightLimit;
+    public Vector3 bottomLeftLimit;
     void Start()
     {
         newPosition = transform.position;
@@ -33,9 +35,22 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        Limiter();
+
         HandleMovementInput();
 
         HandleMouseInput();
+    }
+
+    void Limiter()
+    {
+        //limits how far you can zoom in and out.
+        //cameraTransform = Mathf.Clamp(newZoom, zoomMin, zoomMax);
+
+        //limits how far the camera can go.
+        transform.position = new Vector3(
+        Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x),
+        Mathf.Clamp(transform.position.z, bottomLeftLimit.z, topRightLimit.z));
     }
 
     void HandleMouseInput()
@@ -60,7 +75,7 @@ public class CameraController : MonoBehaviour
                 dragStartPosition = ray.GetPoint(entry);
             }
         }
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0)) 
         {
             Plane plane = new Plane(Vector3.up, Vector3.zero);
 
