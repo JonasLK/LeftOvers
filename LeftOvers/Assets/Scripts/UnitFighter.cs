@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UnitFighter : Unit
 {
+    public float fighterTotalHealth;
     public void Start()
     {
         SetStats();   
@@ -11,7 +12,7 @@ public class UnitFighter : Unit
 
     public override void SetStats()
     {
-        totalHealth = 200f;
+        totalHealth = fighterTotalHealth;
         base.SetStats();
     }
 }

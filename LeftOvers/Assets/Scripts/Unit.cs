@@ -34,7 +34,7 @@ public class Unit : MonoBehaviour
         }
     }
     
-    void Attacking()
+    public virtual void Attacking()
     {
         print("im gonna punch you now");
     }
