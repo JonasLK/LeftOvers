@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class MouseSensitivity : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void SetSens(float sliderValue)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        PlayerPrefs.SetFloat("mouseSens", sliderValue);
     }
 }
