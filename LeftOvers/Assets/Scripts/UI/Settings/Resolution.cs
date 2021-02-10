@@ -7,15 +7,10 @@ using TMPro;
 
 public class Resolution : MonoBehaviour
 {
-    /*public AudioMixer mixer;
-    public Resolution[] resolutions;
-    public int resInt;
+    public UnityEngine.Resolution[] resolutions;
     public TMP_Dropdown resDrop;
     private void Start()
     {
-        mixer.SetFloat("MasterVol", Mathf.Log10(PlayerPrefs.GetFloat("masterVol")) * 20);
-        mixer.SetFloat("MusicVol", Mathf.Log10(PlayerPrefs.GetFloat("musicVol")) * 20);
-        mixer.SetFloat("SfxVol", Mathf.Log10(PlayerPrefs.GetFloat("sfxVol")) * 20);
         resolutions = Screen.resolutions;
         resDrop.ClearOptions();
         List<string> options = new List<string>();
@@ -37,7 +32,7 @@ public class Resolution : MonoBehaviour
 
     public void SetResolution(int resIndex)
     {
-        Resolution resolution = resolutions[resIndex];
+        UnityEngine.Resolution resolution = resolutions[resIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-    }*/
+    }
 }
