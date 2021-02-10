@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    public float totalHealth;
+    public float totalHealth = 100f;
     public float currentHealth;
-    public float attackDamage;
-    public float attackRange;
-    public float movementSpeed;
+    public float attackDamage = 50f;
+    public float attackRange = 1f;
+    public float movementRange = 2f;
+
+    public Vector3 unitLocation;
 
     void Start()
     {
-        currentHealth = totalHealth;
+        
     }
 
     void Update()
@@ -20,27 +22,27 @@ public class Unit : MonoBehaviour
         //Physics.OverlapSphere
     }
 
-    /**
-    public bool CheckIfInRange()
+
+    public void CheckIfInRange()
     {
-        if ()
+        unitLocation = transform.position;
+
+        Collider[] hitColliders = Physics.OverlapSphere(unitLocation, attackRange);
+        foreach (var hitCollider in hitColliders)
         {
-            return true;
-        }
-        else
-        {
-            return false;
+            Attacking();
         }
     }
     
     void Attacking()
     {
-        if (CheckIfInRange())
-        {
-            //slap the shit outta them
-        }
+        print("im gonna punch you now");
     }
-    **/
+
+    public virtual void SetStats()
+    {
+        currentHealth = totalHealth;
+    }
 
     void TakeDamage(float enemyAttackDamage)
     {

@@ -48,9 +48,9 @@ public class CameraController : MonoBehaviour
         //cameraTransform = Mathf.Clamp(newZoom, zoomMin, zoomMax);
 
         //limits how far the camera can go.
-        transform.position = new Vector3(
-        Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x),
-        Mathf.Clamp(transform.position.z, bottomLeftLimit.z, topRightLimit.z));
+        //transform.position = new Vector3(
+        //Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x),
+        //Mathf.Clamp(transform.position.z, bottomLeftLimit.z, topRightLimit.z));
     }
 
     void HandleMouseInput()
