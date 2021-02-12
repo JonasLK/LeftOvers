@@ -13,76 +13,73 @@ public class UnitSelect : MonoBehaviour
     public Button paladinButton;
     public Button rogueButton;
 
-    bool canBuyFighter;
-    bool canBuyMage;
-    bool canBuyArcher;
-    bool canBuyPriest;
-    bool canBuyPaladin;
-    bool canBuyRogue;
+    public float money;
+    public float moneyLeft;
 
+    public Text moneyText;
+    public Text totalMoney;
     void Start()
     {
-        canBuyFighter = true;
-        canBuyMage = true;
-        canBuyArcher = true;
-        canBuyPaladin = true;
-        canBuyRogue = true;
-        canBuyPriest = true;
+        moneyLeft = money;
     }
-
 
     void Update()
     {
-
+        moneyText.text = "Units:" + moneyLeft.ToString() + "/";
+        totalMoney.text = money.ToString();
     }
-
-
 
     //Buy Unit
     public void BuyFighter()
     {
-        if(canBuyFighter == true)
+        if (moneyLeft > 0)
         {
+            moneyLeft -= 1;
             Instantiate(fighterButton, unitPanel.transform);
         }
     }
 
     public void BuyMage()
     {
-        if (canBuyMage == true)
+        if (moneyLeft > 0)
         {
+            moneyLeft -= 1;
             Instantiate(mageButton, unitPanel.transform);
         }
     }
 
     public void BuyArcher()
     {
-        if(canBuyArcher == true)
+        if(moneyLeft > 0)
         {
+            moneyLeft -= 1;
             Instantiate(archerButton, unitPanel.transform);
         }
     }
 
     public void BuyPriest()
     {
-        if(canBuyPriest == true)
+        if(moneyLeft > 0)
         {
+            moneyLeft -= 1;
             Instantiate(priestButton, unitPanel.transform);
         }
     }
 
     public void BuyPaladin()
     {
-        if(canBuyPaladin == true)
+        if(moneyLeft > 0)
         {
+            moneyLeft -= 1;
             Instantiate(paladinButton, unitPanel.transform);
         }
     }
 
     public void BuyRogue()
     {
-        if(canBuyRogue == true)
+        if(moneyLeft > 0)
         {
+            moneyLeft -= 1;
             Instantiate(rogueButton, unitPanel.transform);
         }
     }
