@@ -10,7 +10,7 @@ public class UnitButton : MonoBehaviour
     {
         unitSelector = GameObject.FindGameObjectWithTag("UnitSelector");
     }
-    public void OnMouseDown()
+    public void SellUnit()
     {
         unitSelector.GetComponent<UnitSelect>().moneyLeft += 1;
         Destroy(gameObject);

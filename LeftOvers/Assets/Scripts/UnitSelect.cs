@@ -18,6 +18,7 @@ public class UnitSelect : MonoBehaviour
 
     public Text moneyText;
     public Text totalMoney;
+
     void Start()
     {
         moneyLeft = money;
