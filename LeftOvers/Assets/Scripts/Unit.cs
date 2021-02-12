@@ -10,6 +10,8 @@ public class Unit : MonoBehaviour
     public float attackRange = 1f;
     public float movementRange = 2f;
 
+    public List<Unit> targets = new List<Unit>();
+
     public Vector3 unitLocation;
 
     void Start()
@@ -26,11 +28,15 @@ public class Unit : MonoBehaviour
     public void CheckIfInRange()
     {
         unitLocation = transform.position;
+        targets.Clear();
 
         Collider[] hitColliders = Physics.OverlapSphere(unitLocation, attackRange);
-        foreach (var hitCollider in hitColliders)
+        foreach (Collider c in hitColliders)
         {
-            Attacking();
+            if (c.transform.gameObject.tag == "Unit")
+            {
+                targets.Add(c.transform.gameObject.GetComponent<Unit>());
+            }
         }
     }
     

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UnitFighter : Unit
 {
+    public Transform fighterModel;
     public float fighterTotalHealth;
     public void Start()
     {
