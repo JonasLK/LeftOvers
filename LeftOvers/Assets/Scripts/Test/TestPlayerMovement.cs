@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class TestPlayerMovement : MonoBehaviour
 {
+    public int teamNumber;
     public GameObject tileBellow;
     private TestTileCalculator testTileCalculator;
+    private TurnTracker turnTracker;
 
     bool moving;
 
@@ -16,46 +18,50 @@ public class TestPlayerMovement : MonoBehaviour
 
     public bool actionAvailable;
 
-    GameObject[] tiles;
+    public GameObject[] tiles;
 
     void Start()
     {
         movementLeft = movement;
+        turnTracker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnTracker>();
         tiles = GameObject.FindGameObjectsWithTag("Tile");
     }
 
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(teamNumber == turnTracker.playerTurn)
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit))
+            if (Input.GetMouseButtonDown(0))
             {
-                if(hit.transform.gameObject.tag == "Tile")
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out hit))
                 {
-                    if(hit.transform.gameObject.GetComponent<TestTileCalculator>().movementDistance <= movementLeft)
+                    if(hit.transform.gameObject.tag == "Tile")
                     {
-                        moveTo = hit.transform;
-                        moving = true;
+                        if(hit.transform.gameObject.GetComponent<TestTileCalculator>().movementDistance <= movementLeft)
+                        {
+                            moveTo = hit.transform;
+                            moving = true;
 
-                        movementLeft -= hit.transform.gameObject.GetComponent<TestTileCalculator>().movementDistance;
+                            movementLeft -= hit.transform.gameObject.GetComponent<TestTileCalculator>().movementDistance;
+                        }
                     }
                 }
             }
-        }
 
 
-        //moving
-        if(moving == true)
-        {
-
-            gameObject.transform.position = moveTo.position;
-            //transform.Translate(moveTo.transform.position * Time.deltaTime * speed);
-            if(tileBellow == moveTo.gameObject)
+            //moving
+            if(moving == true)
             {
-                moving = false;
+
+                gameObject.transform.position = moveTo.position;
+                //transform.Translate(moveTo.transform.position * Time.deltaTime * speed);
+                if(tileBellow == moveTo.gameObject)
+                {
+                    moving = false;
+                }
             }
         }
     }
@@ -77,19 +83,22 @@ public class TestPlayerMovement : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if(testTileCalculator != tileBellow.GetComponent<TestTileCalculator>())
+        if (teamNumber == turnTracker.playerTurn)
         {
-            testTileCalculator = tileBellow.GetComponent<TestTileCalculator>();
-        }
-        testTileCalculator.firstTile = true;
-        testTileCalculator.ResetHexagonDistance();
-        testTileCalculator.CalculateHexagonDistance();
-
-        foreach (GameObject tile in tiles)
-        {
-            if (tile.GetComponent<TestTileCalculator>().movementDistance <= movementLeft)
+            if (testTileCalculator != tileBellow.GetComponent<TestTileCalculator>())
             {
-                tile.GetComponent<Renderer>().material.color = Color.green;
+                testTileCalculator = tileBellow.GetComponent<TestTileCalculator>();
+            }
+            testTileCalculator.firstTile = true;
+            testTileCalculator.ResetHexagonDistance();
+            testTileCalculator.CalculateHexagonDistance();
+
+            foreach (GameObject tile in tiles)
+            {
+                if (tile.GetComponent<TestTileCalculator>().movementDistance <= movementLeft)
+                {
+                    tile.GetComponent<Renderer>().material.color = Color.green;
+                }
             }
         }
     }
