@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    public float totalHealth = 100f;
-    public float currentHealth;
-    public float attackDamage = 50f;
+    public int totalHealth = 100;
+    public int currentHealth;
+    public int attackDamage = 50;
     public float attackRange = 1f;
     public float movementRange = 2f;
 
@@ -50,7 +50,7 @@ public class Unit : MonoBehaviour
         currentHealth = totalHealth;
     }
 
-    void TakeDamage(float enemyAttackDamage)
+    public virtual void TakeDamage(int enemyAttackDamage)
     {
         currentHealth -= enemyAttackDamage;
 
@@ -62,10 +62,9 @@ public class Unit : MonoBehaviour
         }
     }
 
-    void Death()
+    public virtual void Death()
     {
         print("oh no i died");
-        //death animation
         Destroy(gameObject, 3f);
     }
 }
