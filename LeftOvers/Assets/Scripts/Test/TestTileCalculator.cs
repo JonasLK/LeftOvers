@@ -5,7 +5,7 @@ using UnityEngine;
 public class TestTileCalculator : MonoBehaviour
 {
     public bool firstTile;
-    public bool traversable;
+    public bool untraversable;
     public int resetValue;
     public int movementDistance;
     public List<GameObject> surroundingTiles;
@@ -38,17 +38,23 @@ public class TestTileCalculator : MonoBehaviour
         foreach (GameObject tile in surroundingTiles)
         {
             testTileCalculator = tile.GetComponent<TestTileCalculator>();
-            if(testTileCalculator.movementDistance > movementDistance + 1)
+            if(testTileCalculator.untraversable == false)
             {
-                testTileCalculator.movementDistance = movementDistance + 1;
+                if(testTileCalculator.movementDistance > movementDistance + 1)
+                {
+                    testTileCalculator.movementDistance = movementDistance + 1;
+                }
             }
         }
 
         foreach (GameObject tile in surroundingTiles)
         {
             testTileCalculator = tile.GetComponent<TestTileCalculator>();
-            if(testTileCalculator.movementDistance == movementDistance + 1)
-            testTileCalculator.CalculateHexagonDistance();
+            if (testTileCalculator.untraversable == false)
+            {
+                if (testTileCalculator.movementDistance == movementDistance + 1)
+                    testTileCalculator.CalculateHexagonDistance();
+            }
         }
     }
 

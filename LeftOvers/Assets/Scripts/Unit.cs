@@ -16,9 +16,11 @@ public class Unit : MonoBehaviour
 
     public Vector3 unitLocation;
 
+    private TestPlayerMovement ownTestPlayerMovement;
+
     void Start()
     {
-        
+        ownTestPlayerMovement = GetComponent<TestPlayerMovement>();
     }
 
     void Update()
@@ -45,7 +47,10 @@ public class Unit : MonoBehaviour
         {
             if (c.transform.gameObject.tag == "Unit")
             {
-                targets.Add(c.transform.gameObject.GetComponent<Unit>());
+                if(c.transform.gameObject.GetComponent<TestPlayerMovement>().teamNumber != ownTestPlayerMovement.teamNumber)
+                {
+                    targets.Add(c.transform.gameObject.GetComponent<Unit>());
+                }
             }
         }
     }
