@@ -10,6 +10,8 @@ public class Unit : MonoBehaviour
     public float attackRange = 1f;
     public float movementRange = 2f;
 
+    public int unitTeamColor;
+
     public List<Unit> targets = new List<Unit>();
 
     public Vector3 unitLocation;
@@ -21,9 +23,17 @@ public class Unit : MonoBehaviour
 
     void Update()
     {
-        //Physics.OverlapSphere
+
     }
 
+    public void ClickOnUnit()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        }
+    }
 
     public void CheckIfInRange()
     {
