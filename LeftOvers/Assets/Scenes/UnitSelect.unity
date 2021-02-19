@@ -233,7 +233,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f18d09586b8c2488df8ab7f4846b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fighters: []
+  fighters: 0
+  archers: 0
+  mages: 0
+  priests: 0
+  paladins: 0
+  rogues: 0
+  fighterss: 0
 --- !u!1 &63801348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,7 +1190,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -734, y: -312.5}
+  m_AnchoredPosition: {x: -734, y: -142}
   m_SizeDelta: {x: 75, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &617312488
@@ -1232,6 +1238,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 617312491}
         m_MethodName: SellUnit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1866513688}
+        m_MethodName: SellRogue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1417,6 +1434,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 778660997}
         m_MethodName: SellUnit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1866513688}
+        m_MethodName: SellFighter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1778,6 +1806,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1866513688}
+        m_MethodName: SellArcher
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &870954480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1943,7 +1982,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -814.8, y: -312.5}
+  m_AnchoredPosition: {x: -814.8, y: -301}
   m_SizeDelta: {x: 75, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1125829408
@@ -1991,6 +2030,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1125829411}
         m_MethodName: SellUnit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1866513688}
+        m_MethodName: SellMage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2232,7 +2282,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180069055}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1469573427}
@@ -2240,7 +2290,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1180069057
@@ -2321,7 +2371,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -734, y: -312.5}
+  m_AnchoredPosition: {x: -632, y: -312.5}
   m_SizeDelta: {x: 75, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1192520779
@@ -2369,6 +2419,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1192520782}
         m_MethodName: SellUnit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1866513688}
+        m_MethodName: SellPaladin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2971,7 +3032,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -734, y: -312.5}
+  m_AnchoredPosition: {x: -734, y: 17}
   m_SizeDelta: {x: 75, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1469573428
@@ -3019,6 +3080,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1469573431}
         m_MethodName: SellUnit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1866513688}
+        m_MethodName: SellPriest
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3547,6 +3619,7 @@ GameObject:
   - component: {fileID: 1866513685}
   - component: {fileID: 1866513687}
   - component: {fileID: 1866513688}
+  - component: {fileID: 1866513689}
   m_Layer: 5
   m_Name: UnitsSelect
   m_TagString: UnitSelector
@@ -3663,6 +3736,31 @@ MonoBehaviour:
   moneyLeft: 0
   moneyText: {fileID: 416081837}
   totalMoney: {fileID: 837170034}
+  fighterCount: 0
+  mageCount: 0
+  archerCount: 0
+  prietsCount: 0
+  paladinCount: 0
+  rogueCount: 0
+--- !u!114 &1866513689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866513683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17f18d09586b8c2488df8ab7f4846b76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fighters: 0
+  archers: 0
+  mages: 0
+  priests: 0
+  paladins: 0
+  rogues: 0
+  fighterss: 0
 --- !u!1 &1874662087
 GameObject:
   m_ObjectHideFlags: 0
