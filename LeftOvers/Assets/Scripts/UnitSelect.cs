@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UnitSelect : MonoBehaviour
 {
+    public GameObject selectScreen;
+
     public GameObject unitPanel;
     public Button fighterButton;
     public Button mageButton;
@@ -25,6 +27,10 @@ public class UnitSelect : MonoBehaviour
     public float prietsCount;
     public float paladinCount;
     public float rogueCount;
+
+    public bool player1;
+    public bool player2;
+    public bool player3;
 
     void Start()
     {
@@ -106,12 +112,33 @@ public class UnitSelect : MonoBehaviour
 
     public void ConfirmUnits()
     {
-        gameObject.GetComponent<UnitCount>().fighters = fighterCount;
-        gameObject.GetComponent<UnitCount>().mages = mageCount;
-        gameObject.GetComponent<UnitCount>().archers = archerCount;
-        gameObject.GetComponent<UnitCount>().priests = prietsCount;
-        gameObject.GetComponent<UnitCount>().paladins = paladinCount;
-        gameObject.GetComponent<UnitCount>().rogues = rogueCount;
+        if(player1 == true)
+        {
+            selectScreen.GetComponent<UnitCount>().fighters = fighterCount;
+            selectScreen.GetComponent<UnitCount>().mages = mageCount;
+            selectScreen.GetComponent<UnitCount>().archers = archerCount;
+            selectScreen.GetComponent<UnitCount>().priests = prietsCount;
+            selectScreen.GetComponent<UnitCount>().paladins = paladinCount;
+            selectScreen.GetComponent<UnitCount>().rogues = rogueCount;
+        }
+        if(player2 == true)
+        {
+            selectScreen.GetComponent<UnitCount>().fighters2 = fighterCount;
+            selectScreen.GetComponent<UnitCount>().mages2 = mageCount;
+            selectScreen.GetComponent<UnitCount>().archers2 = archerCount;
+            selectScreen.GetComponent<UnitCount>().priests2 = prietsCount;
+            selectScreen.GetComponent<UnitCount>().paladins2 = paladinCount;
+            selectScreen.GetComponent<UnitCount>().rogues2 = rogueCount;
+        }
+        if(player3 == true)
+        {
+            selectScreen.GetComponent<UnitCount>().fighters3 = fighterCount;
+            selectScreen.GetComponent<UnitCount>().mages3 = mageCount;
+            selectScreen.GetComponent<UnitCount>().archers3 = archerCount;
+            selectScreen.GetComponent<UnitCount>().priests3 = prietsCount;
+            selectScreen.GetComponent<UnitCount>().paladins3 = paladinCount;
+            selectScreen.GetComponent<UnitCount>().rogues3 = rogueCount;
+        }
     }
 
     public void SellFighter()
