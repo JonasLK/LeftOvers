@@ -46,7 +46,7 @@ public class UnitCount : MonoBehaviour
     public static float paladinCount3;
     public static float rogueCount3;
 
-    public void Start()
+    public void ResetUnits()
     {
 
     }
