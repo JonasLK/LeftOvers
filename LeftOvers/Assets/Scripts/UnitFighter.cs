@@ -13,6 +13,17 @@ public class UnitFighter : Unit
         healthBar.SetMaxHealth(fighterTotalHealth);
     }
 
+    //This can be used to test if the healthbar works.
+    /*
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(20);
+        }
+    }
+    */
+
     public override void TakeDamage(int enemyAttackDamage)
     {
         base.TakeDamage(enemyAttackDamage);

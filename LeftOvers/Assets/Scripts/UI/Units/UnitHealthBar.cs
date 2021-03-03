@@ -17,16 +17,6 @@ public class UnitHealthBar : MonoBehaviour
         gradient.Evaluate(1f);
     }
 
-    internal void SetMaxHealth(float fighterTotalHealth)
-    {
-        throw new NotImplementedException();
-    }
-
-    internal void SetHealth(float currentHealth)
-    {
-        throw new NotImplementedException();
-    }
-
     public void SetHealth(int health)
     {
         slider.value = health;

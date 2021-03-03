@@ -45,8 +45,6 @@ public class Unit : MonoBehaviour
 
         firstAttackButton.onClick.AddListener(FirstAttackSelect);
         secondAttackButton.onClick.AddListener(SecondAttackSelect);
-
-        healthBar.SetMaxHealth(fighterTotalHealth);
     }
 
     void Update()
