@@ -36,12 +36,15 @@ public class Unit : MonoBehaviour
 
     private TestPlayerMovement ownTestPlayerMovement;
 
+    private TurnTracker turnTracker;
+
     void Start()
     {
         SetStats();
 
         unitSelected = false;
         ownTestPlayerMovement = GetComponent<TestPlayerMovement>();
+        turnTracker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnTracker>();
 
         //firstAttackButton.onClick.AddListener(FirstAttackSelect);
         //secondAttackButton.onClick.AddListener(SecondAttackSelect);
@@ -59,6 +62,7 @@ public class Unit : MonoBehaviour
 
     public void ClickOnUnit()
     {
+        if(turnTracker.playerTurn == ownTestPlayerMovement.teamNumber)
         OpenPanel();
         print("1");
     }
