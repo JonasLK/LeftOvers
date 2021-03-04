@@ -8,15 +8,6 @@ public class TurnTracker : MonoBehaviour
     public int playerAmount;
     public List<List<GameObject>> playerTeamPlayerUnit;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     public void AddToListList()
     {
