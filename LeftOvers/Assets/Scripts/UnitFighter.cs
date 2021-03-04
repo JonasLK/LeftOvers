@@ -10,6 +10,7 @@ public class UnitFighter : Unit
     public void Start()
     {
         SetStats();
+        UnitStart();
         healthBar.SetMaxHealth(fighterTotalHealth);
     }
 

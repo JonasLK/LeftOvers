@@ -34,16 +34,14 @@ public class Unit : MonoBehaviour
 
     public Vector3 unitLocation;
 
-    private TestPlayerMovement ownTestPlayerMovement;
+    [HideInInspector]public TestPlayerMovement ownTestPlayerMovement;
 
-    private TurnTracker turnTracker;
+    [HideInInspector]public TurnTracker turnTracker;
 
-    void Start()
+    public void UnitStart()
     {
-        SetStats();
-
         unitSelected = false;
-        ownTestPlayerMovement = GetComponent<TestPlayerMovement>();
+        ownTestPlayerMovement = gameObject.GetComponent<TestPlayerMovement>();
         turnTracker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnTracker>();
 
         //firstAttackButton.onClick.AddListener(FirstAttackSelect);
@@ -79,9 +77,7 @@ public class Unit : MonoBehaviour
         {
             print("OpenPanel - 2");
 
-            bool isActive = panel.activeSelf;
-
-            panel.SetActive(!isActive);
+            panel.SetActive(!panel.activeSelf);
         }
     }
 
