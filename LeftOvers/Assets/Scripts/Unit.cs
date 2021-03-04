@@ -56,24 +56,32 @@ public class Unit : MonoBehaviour
     {
         if (attacking == true && Input.GetMouseButtonDown(1))
         {
+            print("CancelAttack");
+
             CancelAttack();
         }
     }
 
     public void ClickOnUnit()
     {
-        if(turnTracker.playerTurn == ownTestPlayerMovement.teamNumber)
+        print("ClickOnUnit - 1");
+
+        if (turnTracker.playerTurn == ownTestPlayerMovement.teamNumber)
         {
+            print("ClickOnUnit - 2");
+
             OpenPanel();
         }
-        print("1");
     }
 
     public void OpenPanel()
     {
+        print("OpenPanel - 1");
+
         if (panel != null)
         {
-            print("2");
+            print("OpenPanel - 2");
+
             bool isActive = panel.activeSelf;
 
             panel.SetActive(!isActive);
@@ -82,7 +90,8 @@ public class Unit : MonoBehaviour
 
     public void FirstAttackSelect()
     {
-        print("3,1");
+        print("FirstAttackSelect");
+
         attackDamage = firstAttackDamage;
         attacking = true;
         OpenPanel();
@@ -91,7 +100,8 @@ public class Unit : MonoBehaviour
 
     public void SecondAttackSelect()
     {
-        print("3,2");
+        print("SecondAttackSelect");
+
         attackDamage = secondAttackDamage;
         attacking = true;
         OpenPanel();
@@ -100,20 +110,24 @@ public class Unit : MonoBehaviour
 
     public void CheckIfInRange(float attackRange)
     {
-        print("4");
+        print("CheckIfInRange - 1");
+
         unitLocation = transform.position;
         targets.Clear();
 
         Collider[] hitColliders = Physics.OverlapSphere(unitLocation, attackRange);
         foreach (Collider c in hitColliders)
         {
-            print("5");
+            print("CheckIfInRange - 2");
+
             if (c.transform.gameObject.tag == "Unit")
             {
-                print("6");
+                print("CheckIfInRange - 3");
+
                 if (c.transform.gameObject.GetComponent<TestPlayerMovement>().teamNumber != ownTestPlayerMovement.teamNumber)
                 {
-                    print("7");
+                    print("CheckIfInRange - 4");
+
                     targets.Add(c.transform.gameObject);
                 }
             }
@@ -122,10 +136,16 @@ public class Unit : MonoBehaviour
 
     public virtual void Attacking(GameObject enemyTarget)
     {
-        foreach(GameObject target in targets)
+        print("Attacking - 1");
+
+        foreach (GameObject target in targets)
         {
-            if(enemyTarget = target)
+            print("Attacking - 2");
+
+            if (enemyTarget = target)
             {
+                print("Attacking - 3");
+
                 enemyTarget.GetComponent<Unit>().TakeDamage(attackDamage);
 
                 attacking = false;
@@ -145,6 +165,8 @@ public class Unit : MonoBehaviour
 
     public virtual void TakeDamage(int enemyAttackDamage)
     {
+        print("TakeDamage");
+
         currentHealth -= enemyAttackDamage;
 
         if (currentHealth <= 0f)
@@ -155,7 +177,8 @@ public class Unit : MonoBehaviour
 
     public virtual void Death()
     {
-        print("oh no i died");
+        print("Death");
+
         Destroy(gameObject, 3f);
     }
 }
