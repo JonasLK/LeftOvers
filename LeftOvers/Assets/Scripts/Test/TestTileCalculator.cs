@@ -19,11 +19,6 @@ public class TestTileCalculator : MonoBehaviour
         movementDistance = resetValue;
     }
 
-    private void OnMouseDown()
-    {
-        CalculateHexagonDistance();
-    }
-
     public void SendTile(GameObject sentTile, GameObject triggerToTurnOff)
     {
         surroundingTiles.Add(sentTile);

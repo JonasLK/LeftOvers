@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5985805362098665292}
   - component: {fileID: 7259241670024886505}
   - component: {fileID: 4853462713664998435}
+  - component: {fileID: -3672005441852752895}
+  - component: {fileID: -6333201206115703141}
   m_Layer: 0
   m_Name: Land Tiles 1
   m_TagString: Untagged
@@ -79,3 +81,35 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &-3672005441852752895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6366413047609994742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa6d7f2099452594d9d23496e1f0124f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstTile: 0
+  untraversable: 0
+  occupied: 0
+  resetValue: 1000
+  movementDistance: 0
+  teamStartTile: 1
+  surroundingTiles: []
+--- !u!65 &-6333201206115703141
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6366413047609994742}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Center: {x: 0, y: 0.2, z: 0}
