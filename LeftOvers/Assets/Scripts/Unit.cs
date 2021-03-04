@@ -43,8 +43,8 @@ public class Unit : MonoBehaviour
         unitSelected = false;
         ownTestPlayerMovement = GetComponent<TestPlayerMovement>();
 
-        firstAttackButton.onClick.AddListener(FirstAttackSelect);
-        secondAttackButton.onClick.AddListener(SecondAttackSelect);
+        //firstAttackButton.onClick.AddListener(FirstAttackSelect);
+        //secondAttackButton.onClick.AddListener(SecondAttackSelect);
 
         attacking = false;
     }
@@ -60,12 +60,14 @@ public class Unit : MonoBehaviour
     public void ClickOnUnit()
     {
         OpenPanel();
+        print("1");
     }
 
     public void OpenPanel()
     {
         if (panel != null)
         {
+            print("2");
             bool isActive = panel.activeSelf;
 
             panel.SetActive(!isActive);
@@ -74,30 +76,38 @@ public class Unit : MonoBehaviour
 
     public void FirstAttackSelect()
     {
+        print("3,1");
         attackDamage = firstAttackDamage;
         attacking = true;
+        OpenPanel();
         CheckIfInRange(firstAttackRange);
     }
 
     public void SecondAttackSelect()
     {
+        print("3,2");
         attackDamage = secondAttackDamage;
         attacking = true;
+        OpenPanel();
         CheckIfInRange(secondAttackRange);
     }
 
     public void CheckIfInRange(float attackRange)
     {
+        print("4");
         unitLocation = transform.position;
         targets.Clear();
 
         Collider[] hitColliders = Physics.OverlapSphere(unitLocation, attackRange);
         foreach (Collider c in hitColliders)
         {
+            print("5");
             if (c.transform.gameObject.tag == "Unit")
             {
-                if(c.transform.gameObject.GetComponent<TestPlayerMovement>().teamNumber != ownTestPlayerMovement.teamNumber)
+                print("6");
+                if (c.transform.gameObject.GetComponent<TestPlayerMovement>().teamNumber != ownTestPlayerMovement.teamNumber)
                 {
+                    print("7");
                     targets.Add(c.transform.gameObject);
                 }
             }
