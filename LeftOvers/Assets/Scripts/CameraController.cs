@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public Camera cam;
     public Transform cameraTransform;
 
     public float normalSpeed;
@@ -45,7 +46,7 @@ public class CameraController : MonoBehaviour
     void Limiter()
     {
         //limits how far you can zoom in and out.
-        //cameraTransform = Mathf.Clamp(newZoom, zoomMin, zoomMax);
+        //cam.fieldOfView = Mathf.Clamp(cam.fieldOfView, zoomMin, zoomMax);
 
         //limits how far the camera can go.
         //transform.position = new Vector3(
