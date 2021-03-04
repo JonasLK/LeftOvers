@@ -15,7 +15,6 @@ public class UnitFighter : Unit
     }
 
     //This can be used to test if the healthbar works.
-    /*
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -23,7 +22,7 @@ public class UnitFighter : Unit
             TakeDamage(20);
         }
     }
-    */
+    
 
     public override void TakeDamage(int enemyAttackDamage)
     {
