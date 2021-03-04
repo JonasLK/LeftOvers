@@ -48,9 +48,33 @@ public class UnitCount : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(fighterCount);
+
     }
 
+
+    public void SaveCount()
+    {
+        fighterCount = fighters;
+        archerCount = archers;
+        mageCount = mages;
+        priestCount = priests;
+        paladinCount = paladins;
+        rogueCount = rogues;
+
+        fighterCount2 = fighters2;
+        archerCount2 = archers2;
+        mageCount2 = mages2;
+        priestCount2 = priests2;
+        paladinCount2 = paladins2;
+        rogueCount2 = rogues2;
+
+        fighterCount3 = fighters3;
+        archerCount3 = archers3;
+        mageCount3 = mages3;
+        priestCount3 = priests3;
+        paladinCount3 = paladins3;
+        rogueCount3 = rogues3;
+    }
     public void SetupReady()
     {
         fighters = fighterCount;

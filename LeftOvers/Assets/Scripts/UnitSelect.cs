@@ -139,6 +139,7 @@ public class UnitSelect : MonoBehaviour
             selectScreen.GetComponent<UnitCount>().paladins3 = paladinCount;
             selectScreen.GetComponent<UnitCount>().rogues3 = rogueCount;
         }
+        selectScreen.GetComponent<UnitCount>().SaveCount();
     }
 
     public void SellFighter()

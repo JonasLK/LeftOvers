@@ -22,6 +22,8 @@ public class UnitSetup : MonoBehaviour
     public GameObject paladinButton;
     public GameObject rogueButton;
 
+
+    public GameObject unitBox;
     public GameObject gameMaster;
     void Start()
     {
@@ -37,27 +39,27 @@ public class UnitSetup : MonoBehaviour
 
             for (int i = 0; i < fighters; i++)
             {
-                Instantiate(fighterButton, gameObject.transform);
+                Instantiate(fighterButton, unitBox.transform);
             }
             for (int i = 0; i < archers; i++)
             {
-                Instantiate(archerButton, gameObject.transform);
+                Instantiate(archerButton, unitBox.transform);
             }
             for (int i = 0; i < mages; i++)
             {
-                Instantiate(mageButton, gameObject.transform);
+                Instantiate(mageButton, unitBox.transform);
             }
             for (int i = 0; i < priests; i++)
             {
-                Instantiate(priestButton, gameObject.transform);
+                Instantiate(priestButton, unitBox.transform);
             }
             for (int i = 0; i < paladins; i++)
             {
-                Instantiate(paladinButton, gameObject.transform);
+                Instantiate(paladinButton, unitBox.transform);
             }
             for (int i = 0; i < rogues; i++)
             {
-                Instantiate(rogueButton, gameObject.transform);
+                Instantiate(rogueButton, unitBox.transform);
             }
         }
         if (player2 == true)
@@ -71,27 +73,27 @@ public class UnitSetup : MonoBehaviour
 
             for (int i = 0; i < fighters; i++)
             {
-                Instantiate(fighterButton, gameObject.transform);
+                Instantiate(fighterButton, unitBox.transform);
             }
             for (int i = 0; i < archers; i++)
             {
-                Instantiate(archerButton, gameObject.transform);
+                Instantiate(archerButton, unitBox.transform);
             }
             for (int i = 0; i < mages; i++)
             {
-                Instantiate(mageButton, gameObject.transform);
+                Instantiate(mageButton, unitBox.transform);
             }
             for (int i = 0; i < priests; i++)
             {
-                Instantiate(priestButton, gameObject.transform);
+                Instantiate(priestButton, unitBox.transform);
             }
             for (int i = 0; i < paladins; i++)
             {
-                Instantiate(paladinButton, gameObject.transform);
+                Instantiate(paladinButton, unitBox.transform);
             }
             for (int i = 0; i < rogues; i++)
             {
-                Instantiate(rogueButton, gameObject.transform);
+                Instantiate(rogueButton, unitBox.transform);
             }
         }
         if (player3 == true)
@@ -105,27 +107,27 @@ public class UnitSetup : MonoBehaviour
 
             for (int i = 0; i < fighters; i++)
             {
-                Instantiate(fighterButton, gameObject.transform);
+                Instantiate(fighterButton, unitBox.transform);
             }
             for (int i = 0; i < archers; i++)
             {
-                Instantiate(archerButton, gameObject.transform);
+                Instantiate(archerButton, unitBox.transform);
             }
             for (int i = 0; i < mages; i++)
             {
-                Instantiate(mageButton, gameObject.transform);
+                Instantiate(mageButton, unitBox.transform);
             }
             for (int i = 0; i < priests; i++)
             {
-                Instantiate(priestButton, gameObject.transform);
+                Instantiate(priestButton, unitBox.transform);
             }
             for (int i = 0; i < paladins; i++)
             {
-                Instantiate(paladinButton, gameObject.transform);
+                Instantiate(paladinButton, unitBox.transform);
             }
             for (int i = 0; i < rogues; i++)
             {
-                Instantiate(rogueButton, gameObject.transform);
+                Instantiate(rogueButton, unitBox.transform);
             }
         }
     }
