@@ -45,6 +45,8 @@ public class Unit : MonoBehaviour
 
         firstAttackButton.onClick.AddListener(FirstAttackSelect);
         secondAttackButton.onClick.AddListener(SecondAttackSelect);
+
+        attacking = false;
     }
 
     void Update()
