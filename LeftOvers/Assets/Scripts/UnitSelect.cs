@@ -138,6 +138,10 @@ public class UnitSelect : MonoBehaviour
             selectScreen.GetComponent<UnitCount>().priests3 = prietsCount;
             selectScreen.GetComponent<UnitCount>().paladins3 = paladinCount;
             selectScreen.GetComponent<UnitCount>().rogues3 = rogueCount;
+            if(moneyLeft != 5)
+            {
+                selectScreen.GetComponent<UnitCount>().EnablePlayer3();
+            }
         }
         selectScreen.GetComponent<UnitCount>().SaveCount();
     }

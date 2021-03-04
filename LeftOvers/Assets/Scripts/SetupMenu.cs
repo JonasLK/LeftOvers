@@ -18,6 +18,8 @@ public class SetupMenu : MonoBehaviour
     public GameObject playerTwo;
     public GameObject playerThree;
 
+    public GameObject gameMaster;
+    public GameObject playerThreeButton;
     void Start()
     {
 
@@ -32,23 +34,9 @@ public class SetupMenu : MonoBehaviour
     }
     void Update()
     {
-        if (buttonsLeft <= 6)
+        if (gameMaster.GetComponent<UnitCount>().player3Enabled == true)
         {
-            turnButton.SetActive(true);
-            playerOne.SetActive(false);
-            playerTwo.SetActive(false);
-            playerThree.SetActive(false);
-
-            //gameplay?
-        }
-
-        if(setupActive == true)
-        {
-            //kan alleen units plaatsen
-        }
-        else
-        {
-            //gameplay
+            playerThreeButton.SetActive(true);
         }
     }
 

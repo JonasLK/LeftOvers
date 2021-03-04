@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class UnitCount : MonoBehaviour
 {
+    public static bool player3;
+    public bool player3Enabled;
+
     public float fighters;
     public float archers;
     public float mages;
@@ -97,10 +100,17 @@ public class UnitCount : MonoBehaviour
         priests3 = priestCount3;
         paladins3 = paladinCount3;
         rogues3 = rogueCount3;
+
+        player3Enabled = player3;
     }
 
     public void ResetUnits() 
     { 
 
+    }
+
+    public void EnablePlayer3()
+    {
+        player3 = true;
     }
 }
