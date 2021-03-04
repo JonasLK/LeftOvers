@@ -13953,6 +13953,7 @@ GameObject:
   - component: {fileID: 1316737901}
   - component: {fileID: 1316737900}
   - component: {fileID: 1316737899}
+  - component: {fileID: 1316737902}
   m_Layer: 0
   m_Name: Player3
   m_TagString: Untagged
@@ -14034,6 +14035,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1316737902}
+        m_MethodName: SetPlayerTurnVoid
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1316737900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14071,6 +14083,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1316737897}
   m_CullTransparentMesh: 0
+--- !u!114 &1316737902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316737897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edb541714fdd46144ac1f788a9ff48cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnTracker: {fileID: 0}
 --- !u!1 &1342331782
 GameObject:
   m_ObjectHideFlags: 0
@@ -15247,6 +15272,7 @@ GameObject:
   - component: {fileID: 1521123075}
   - component: {fileID: 1521123074}
   - component: {fileID: 1521123073}
+  - component: {fileID: 1521123076}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -15328,6 +15354,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1521123076}
+        m_MethodName: SetPlayerTurnVoid
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1521123074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15365,6 +15402,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521123071}
   m_CullTransparentMesh: 0
+--- !u!114 &1521123076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521123071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edb541714fdd46144ac1f788a9ff48cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnTracker: {fileID: 0}
 --- !u!1001 &1549027509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19766,6 +19816,7 @@ GameObject:
   - component: {fileID: 2056137403}
   - component: {fileID: 2056137402}
   - component: {fileID: 2056137401}
+  - component: {fileID: 2056137404}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -19847,6 +19898,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2056137404}
+        m_MethodName: SetPlayerTurnVoid
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2056137402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19884,6 +19946,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056137399}
   m_CullTransparentMesh: 0
+--- !u!114 &2056137404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056137399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edb541714fdd46144ac1f788a9ff48cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnTracker: {fileID: 0}
 --- !u!1 &2063921798
 GameObject:
   m_ObjectHideFlags: 0
