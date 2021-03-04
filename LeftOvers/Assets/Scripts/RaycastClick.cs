@@ -8,6 +8,7 @@ public class RaycastClick : MonoBehaviour
 
     private TurnTracker turnTracker;
     private TestSpawnUnit testSpawnUnit;
+    private TestTileCalculator testTileCalculator;
 
     public void Start()
     {
@@ -44,7 +45,8 @@ public class RaycastClick : MonoBehaviour
 
                 if (hit.transform.gameObject.tag == "tile")
                 {
-                    if(hit.transform.gameObject.GetComponent<TestTileCalculator>().teamStartTile == turnTracker.playerTurn && testSpawnUnit.placingUnit == true)
+                    testTileCalculator = hit.transform.gameObject.GetComponent<TestTileCalculator>();
+                    if (testTileCalculator.teamStartTile == turnTracker.playerTurn && testSpawnUnit.placingUnit == true && testTileCalculator.untraversable == false && testTileCalculator.occupied == false)
                     {
                         testSpawnUnit.SpawnUnit(hit.transform.gameObject.transform);
                     }

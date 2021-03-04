@@ -31,6 +31,7 @@ public class TestSpawnUnit : MonoBehaviour
 
     public void PlacingUnits(GameObject unitToSpawn)
     {
+        //show placeable tiles
         toSpawnUnit = unitToSpawn;
         placingUnit = true;
     }
