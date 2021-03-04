@@ -6,12 +6,14 @@ public class UnitFighter : Unit
 {
     public int fighterTotalHealth;
 
-    public UnitHealthBar healthBar;
+    public UnitHealthBar worldHealthBar;
+    public UnitHealthBar localHealthBar;
     public void Start()
     {
         SetStats();
         UnitStart();
-        healthBar.SetMaxHealth(fighterTotalHealth);
+        worldHealthBar.SetMaxHealth(fighterTotalHealth);
+        localHealthBar.SetMaxHealth(fighterTotalHealth);
     }
 
     //This can be used to test if the healthbar works.
@@ -27,7 +29,8 @@ public class UnitFighter : Unit
     public override void TakeDamage(int enemyAttackDamage)
     {
         base.TakeDamage(enemyAttackDamage);
-        healthBar.SetHealth(currentHealth);
+        worldHealthBar.SetHealth(currentHealth);
+        localHealthBar.SetHealth(currentHealth);
     }
 
     public override void SetStats()
