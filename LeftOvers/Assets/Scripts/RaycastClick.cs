@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class RaycastClick : MonoBehaviour
 {
-    public GameObject lastClickedUnit;
+    public GameObject lastClickedFriendlyUnit;
+    public GameObject lastClickedEnemyUnit;
+
+    private TurnTracker turnTracker;
+
+    public void Start()
+    {
+        turnTracker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnTracker>();
+    }
 
     void Update()
     {
@@ -22,6 +30,7 @@ public class RaycastClick : MonoBehaviour
             {
                 if (hit.transform.gameObject.tag == "Unit")
                 {
+                    /*if()
                     if(lastClickedUnit == null)
                     {
                         lastClickedUnit = hit.transform.gameObject;
@@ -34,7 +43,7 @@ public class RaycastClick : MonoBehaviour
                     else
                     {
                         lastClickedUnit.GetComponent<Unit>().Attacking(hit.transform.gameObject);
-                    }
+                    }*/
                 }
             }
         }
