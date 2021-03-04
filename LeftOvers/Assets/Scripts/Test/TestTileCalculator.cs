@@ -6,8 +6,10 @@ public class TestTileCalculator : MonoBehaviour
 {
     public bool firstTile;
     public bool untraversable;
+    public bool occupied;
     public int resetValue;
     public int movementDistance;
+    public int teamStartTile;
     public List<GameObject> surroundingTiles;
 
     private TestTileCalculator testTileCalculator;
