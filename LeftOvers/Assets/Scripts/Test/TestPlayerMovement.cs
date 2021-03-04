@@ -40,7 +40,7 @@ public class TestPlayerMovement : MonoBehaviour
                 {
                     if(hit.transform.gameObject.tag == "Tile")
                     {
-                        if(hit.transform.gameObject.GetComponent<TestTileCalculator>().movementDistance <= movementLeft)
+                        if(hit.transform.gameObject.GetComponent<TestTileCalculator>().movementDistance <= movementLeft && hit.transform.gameObject.GetComponent<TestTileCalculator>().untraversable == false && hit.transform.gameObject.GetComponent<TestTileCalculator>().occupied == false)
                         {
                             moveTo = hit.transform;
                             moving = true;
@@ -55,12 +55,13 @@ public class TestPlayerMovement : MonoBehaviour
             //moving
             if(moving == true)
             {
-
+                tileBellow.GetComponent<TestTileCalculator>().occupied = false;
                 gameObject.transform.position = moveTo.position;
                 //transform.Translate(moveTo.transform.position * Time.deltaTime * speed);
                 if(tileBellow == moveTo.gameObject)
                 {
                     moving = false;
+                    tileBellow.transform.gameObject.GetComponent<TestTileCalculator>().occupied = true;
                 }
             }
         }
