@@ -5,7 +5,6 @@ using UnityEngine;
 public class RaycastClick : MonoBehaviour
 {
     public GameObject lastClickedFriendlyUnit;
-    public GameObject lastClickedEnemyUnit;
 
     private TurnTracker turnTracker;
 
@@ -30,20 +29,15 @@ public class RaycastClick : MonoBehaviour
             {
                 if (hit.transform.gameObject.tag == "Unit")
                 {
-                    /*if()
-                    if(lastClickedUnit == null)
+                    if(hit.transform.gameObject.GetComponent<TestPlayerMovement>().teamNumber == turnTracker.playerTurn)
                     {
-                        lastClickedUnit = hit.transform.gameObject;
+                        lastClickedFriendlyUnit = hit.transform.gameObject;
+                        lastClickedFriendlyUnit.GetComponent<Unit>().ClickOnUnit();
                     }
-                    if (lastClickedUnit.GetComponent<Unit>().attacking == false)
+                    else if(lastClickedFriendlyUnit.GetComponent<Unit>().attacking == true)
                     {
-                        lastClickedUnit = hit.transform.gameObject;
-                        lastClickedUnit.GetComponent<Unit>().ClickOnUnit();
+                        lastClickedFriendlyUnit.GetComponent<Unit>().Attacking(hit.transform.gameObject);
                     }
-                    else
-                    {
-                        lastClickedUnit.GetComponent<Unit>().Attacking(hit.transform.gameObject);
-                    }*/
                 }
             }
         }
