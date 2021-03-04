@@ -30,6 +30,7 @@ public class RaycastClick : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
+                print("anoes");
                 if (hit.transform.gameObject.tag == "Unit")
                 {
                     if(hit.transform.gameObject.GetComponent<TestPlayerMovement>().teamNumber == turnTracker.playerTurn)
@@ -43,11 +44,13 @@ public class RaycastClick : MonoBehaviour
                     }
                 }
 
-                if (hit.transform.gameObject.tag == "tile")
+                if (hit.transform.gameObject.tag == "Tile")
                 {
+                    print("tile1");
                     testTileCalculator = hit.transform.gameObject.GetComponent<TestTileCalculator>();
                     if (testTileCalculator.teamStartTile == turnTracker.playerTurn && testSpawnUnit.placingUnit == true && testTileCalculator.untraversable == false && testTileCalculator.occupied == false)
                     {
+                        print("tile");
                         testSpawnUnit.SpawnUnit(hit.transform.gameObject.transform);
                     }
                 }

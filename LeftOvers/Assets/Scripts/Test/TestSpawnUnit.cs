@@ -7,6 +7,7 @@ public class TestSpawnUnit : MonoBehaviour
     public bool placingUnit;
     public GameObject toSpawnUnit;
     public GameObject justSpawnedUnit;
+    public GameObject button;
 
     public TurnTracker turnTracker;
     public RaycastClick raycastClick;
@@ -24,15 +25,27 @@ public class TestSpawnUnit : MonoBehaviour
 
     public void SpawnUnit(Transform tileLocation)
     {
+        print("spawn");
         Instantiate(toSpawnUnit, tileLocation.position, Quaternion.identity);
         placingUnit = false;
-        //remove button
+        DestroyButton();
     }
 
     public void PlacingUnits(GameObject unitToSpawn)
     {
+        print("place");
         //show placeable tiles
         toSpawnUnit = unitToSpawn;
         placingUnit = true;
+    }
+
+    public void DestroyButton()
+    {
+        Destroy(button);
+    }
+
+    public void SelectButtonToDestroy(GameObject buttonToDestroy)
+    {
+        button = buttonToDestroy;
     }
 }

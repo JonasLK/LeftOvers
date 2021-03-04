@@ -23,6 +23,7 @@ public class SetupMenu : MonoBehaviour
 
         buttonsLeft = 5;
         setupComplete = false;
+
         unitButtons = GameObject.FindGameObjectsWithTag("UnitButtons");
         foreach (GameObject player1Button in unitButtons)
         {

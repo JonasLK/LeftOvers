@@ -233,6 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9eda9582b48c6e4b91a8211feecf084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
   cameraTransform: {fileID: 1497948561}
   normalSpeed: 0.5
   fastSpeed: 3
@@ -2552,6 +2553,18 @@ MonoBehaviour:
   priestButton: {fileID: 674055389}
   paladinButton: {fileID: 2008749052}
   rogueButton: {fileID: 917860723}
+  fighterPrefab: {fileID: 0}
+  archerPrefab: {fileID: 0}
+  magePrefab: {fileID: 0}
+  priestPrefab: {fileID: 0}
+  paladinPrefab: {fileID: 0}
+  roguePrefab: {fileID: 0}
+  placeFighter: 0
+  placeArcher: 0
+  placeMage: 0
+  placePriest: 0
+  placePaladin: 0
+  placeRogue: 0
   unitBox: {fileID: 1134902347}
   gameMaster: {fileID: 1856622014}
 --- !u!1 &254801416
@@ -2635,7 +2648,30 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 254801419}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 470767324}
+        m_MethodName: PlacingUnits
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6780698196405904502, guid: 13a31ea076a28e548842988c9509c58a,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 470767324}
+        m_MethodName: SelectButtonToDestroy
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 254801416}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &254801419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4970,6 +5006,8 @@ GameObject:
   - component: {fileID: 470767323}
   - component: {fileID: 470767322}
   - component: {fileID: 470767321}
+  - component: {fileID: 470767324}
+  - component: {fileID: 470767325}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -5023,6 +5061,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &470767324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470767320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6424a0cec85c4a34d8f8440db0d21c7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placingUnit: 0
+  toSpawnUnit: {fileID: 0}
+  justSpawnedUnit: {fileID: 0}
+  button: {fileID: 0}
+  turnTracker: {fileID: 0}
+  raycastClick: {fileID: 0}
+--- !u!114 &470767325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470767320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a486ae605a689479f527badd4b4127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastClickedFriendlyUnit: {fileID: 0}
 --- !u!1001 &477262517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6421,7 +6490,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 674055392}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: SpawnUnit
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &674055392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9301,7 +9381,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 917860726}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: SpawnUnit
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &917860726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10109,7 +10200,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1027187609}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: SpawnUnit
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1027187609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11969,7 +12071,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1164225764}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: SpawnUnit
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1164225764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12071,6 +12184,18 @@ MonoBehaviour:
   priestButton: {fileID: 674055389}
   paladinButton: {fileID: 2008749052}
   rogueButton: {fileID: 917860723}
+  fighterPrefab: {fileID: 0}
+  archerPrefab: {fileID: 0}
+  magePrefab: {fileID: 0}
+  priestPrefab: {fileID: 0}
+  paladinPrefab: {fileID: 0}
+  roguePrefab: {fileID: 0}
+  placeFighter: 0
+  placeArcher: 0
+  placeMage: 0
+  placePriest: 0
+  placePaladin: 0
+  placeRogue: 0
   unitBox: {fileID: 468695981}
   gameMaster: {fileID: 1856622014}
 --- !u!1 &1175608869
@@ -19254,7 +19379,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2008749055}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: SpawnUnit
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2008749055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20321,6 +20457,18 @@ MonoBehaviour:
   priestButton: {fileID: 674055389}
   paladinButton: {fileID: 2008749052}
   rogueButton: {fileID: 917860723}
+  fighterPrefab: {fileID: 0}
+  archerPrefab: {fileID: 0}
+  magePrefab: {fileID: 0}
+  priestPrefab: {fileID: 0}
+  paladinPrefab: {fileID: 0}
+  roguePrefab: {fileID: 0}
+  placeFighter: 0
+  placeArcher: 0
+  placeMage: 0
+  placePriest: 0
+  placePaladin: 0
+  placeRogue: 0
   unitBox: {fileID: 381866886}
   gameMaster: {fileID: 1856622014}
 --- !u!1001 &2131276736
