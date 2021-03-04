@@ -66,12 +66,9 @@ public class Unit : MonoBehaviour
     {
         print("ClickOnUnit - 1");
 
-        if (turnTracker.playerTurn == ownTestPlayerMovement.teamNumber)
-        {
-            print("ClickOnUnit - 2");
+        print("ClickOnUnit - 2");
 
-            OpenPanel();
-        }
+        OpenPanel();
     }
 
     public void OpenPanel()
