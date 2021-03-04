@@ -22,6 +22,19 @@ public class UnitSetup : MonoBehaviour
     public GameObject paladinButton;
     public GameObject rogueButton;
 
+    public GameObject fighterPrefab;
+    public GameObject archerPrefab;
+    public GameObject magePrefab;
+    public GameObject priestPrefab;
+    public GameObject paladinPrefab;
+    public GameObject roguePrefab;
+
+    public bool placeFighter;
+    public bool placeArcher;
+    public bool placeMage;
+    public bool placePriest;
+    public bool placePaladin;
+    public bool placeRogue;
 
     public GameObject unitBox;
     public GameObject gameMaster;
@@ -95,6 +108,8 @@ public class UnitSetup : MonoBehaviour
             {
                 Instantiate(rogueButton, unitBox.transform);
             }
+
+            gameObject.SetActive(false);
         }
         if (player3 == true)
         {
@@ -129,12 +144,48 @@ public class UnitSetup : MonoBehaviour
             {
                 Instantiate(rogueButton, unitBox.transform);
             }
+
+            gameObject.SetActive(false);
         }
     }
-
 
     void Update()
     {
         
+    }
+
+    public void PlaceFighter()
+    {
+        placeFighter = true;
+
+        if (placeFighter == true)
+        {
+            
+        }
+
+        if(player1 == true)
+        {
+
+        }
+    }
+    public void PlaceArcher()
+    {
+
+    }
+    public void PlaceMage()
+    {
+
+    }
+    public void PlacePriest()
+    {
+
+    }
+    public void PlacePaladin()
+    {
+
+    }
+    public void PlaceRogue()
+    {
+
     }
 }
