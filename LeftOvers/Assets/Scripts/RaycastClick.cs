@@ -7,10 +7,12 @@ public class RaycastClick : MonoBehaviour
     public GameObject lastClickedFriendlyUnit;
 
     private TurnTracker turnTracker;
+    private TestSpawnUnit testSpawnUnit;
 
     public void Start()
     {
-        turnTracker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnTracker>();
+        turnTracker = GetComponent<TurnTracker>();
+        testSpawnUnit = GetComponent<TestSpawnUnit>();
     }
 
     void Update()
@@ -37,6 +39,14 @@ public class RaycastClick : MonoBehaviour
                     else if(lastClickedFriendlyUnit.GetComponent<Unit>().attacking == true)
                     {
                         lastClickedFriendlyUnit.GetComponent<Unit>().Attacking(hit.transform.gameObject);
+                    }
+                }
+
+                if (hit.transform.gameObject.tag == "tile")
+                {
+                    if(hit.transform.gameObject.GetComponent<TestTileCalculator>().teamStartTile == turnTracker.playerTurn && testSpawnUnit.placingUnit == true)
+                    {
+                        testSpawnUnit.SpawnUnit(hit.transform.gameObject.transform);
                     }
                 }
             }
