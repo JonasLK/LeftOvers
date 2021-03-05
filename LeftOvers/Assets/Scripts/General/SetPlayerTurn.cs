@@ -20,5 +20,6 @@ public class SetPlayerTurn : MonoBehaviour
     public void SetPlayerTurnVoid(int teamTurnToSet)
     {
         turnTracker.playerTurn = teamTurnToSet;
+        turnTracker.UpdateTurnDisplay();
     }
 }

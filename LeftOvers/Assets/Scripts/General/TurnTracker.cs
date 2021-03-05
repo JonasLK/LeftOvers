@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TurnTracker : MonoBehaviour
 {
+    public TextMeshProUGUI turnDisplay;
     public int playerTurn;
     public int playerAmount;
     public List<GameObject> team1Unit;
@@ -11,6 +13,10 @@ public class TurnTracker : MonoBehaviour
     public List<GameObject> team3Unit;
     public List<GameObject> team4Unit;
 
+    public void Start()
+    {
+        UpdateTurnDisplay();
+    }
 
     public void AddToListList(GameObject gameObjectToAdd)
     {
@@ -57,6 +63,7 @@ public class TurnTracker : MonoBehaviour
         {
             playerTurn = 1;
         }
+        UpdateTurnDisplay();
     }
 
     public void ResetTeam(List<GameObject> playerTeam)
@@ -65,5 +72,10 @@ public class TurnTracker : MonoBehaviour
         {
             playerUnit.GetComponent<TestPlayerMovement>().ResetCharacter();
         }
+    }
+
+    public void UpdateTurnDisplay()
+    {
+        turnDisplay.text = "Turn: player " + playerTurn.ToString();
     }
 }
