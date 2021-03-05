@@ -21,6 +21,14 @@ public class TurnTracker : MonoBehaviour
         UpdateTurnDisplay();
     }
 
+    private void Update()
+    {
+        if (Input.GetButtonUp("Jump"))
+        {
+            winScreen.SetActive(true);
+        }
+    }
+
     public void CheckForWin()
     {
         if(team2Unit.Count == 0 && team3Unit.Count == 0 && team4Unit.Count == 0)
