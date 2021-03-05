@@ -13,6 +13,8 @@ public class TurnTracker : MonoBehaviour
     public List<GameObject> team3Unit;
     public List<GameObject> team4Unit;
 
+    public GameObject winScreen;
+
     public void Start()
     {
         UpdateTurnDisplay();
@@ -22,19 +24,19 @@ public class TurnTracker : MonoBehaviour
     {
         if(team2Unit.Count == 0 && team3Unit.Count == 0 && team4Unit.Count == 0)
         {
-
+            winScreen.SetActive(true);
         }
         if (team1Unit.Count == 0 && team3Unit.Count == 0 && team4Unit.Count == 0)
         {
-
+            winScreen.SetActive(true);
         }
         if (team1Unit.Count == 0 && team2Unit.Count == 0 && team4Unit.Count == 0)
         {
-
+            winScreen.SetActive(true);
         }
         if (team1Unit.Count == 0 && team2Unit.Count == 0 && team3Unit.Count == 0)
         {
-
+            winScreen.SetActive(true);
         }
     }
     public void AddToList(GameObject gameObjectToAdd)
