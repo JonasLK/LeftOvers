@@ -173,5 +173,6 @@ public class Unit : MonoBehaviour
         print("Death");
 
         Destroy(gameObject, 3f);
+        turnTracker.CheckForWin();
     }
 }

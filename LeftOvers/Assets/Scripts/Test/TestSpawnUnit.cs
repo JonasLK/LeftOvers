@@ -26,7 +26,7 @@ public class TestSpawnUnit : MonoBehaviour
     public void SpawnUnit(Transform tileLocation)
     {
         print("spawn");
-        turnTracker.AddToListList(Instantiate(toSpawnUnit, tileLocation.position, Quaternion.identity));
+        turnTracker.AddToList(Instantiate(toSpawnUnit, tileLocation.position, Quaternion.identity));
         placingUnit = false;
         DestroyButton();
     }

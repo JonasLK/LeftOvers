@@ -18,7 +18,26 @@ public class TurnTracker : MonoBehaviour
         UpdateTurnDisplay();
     }
 
-    public void AddToListList(GameObject gameObjectToAdd)
+    public void CheckForWin()
+    {
+        if(team2Unit.Count == 0 && team3Unit.Count == 0 && team4Unit.Count == 0)
+        {
+
+        }
+        if (team1Unit.Count == 0 && team3Unit.Count == 0 && team4Unit.Count == 0)
+        {
+
+        }
+        if (team1Unit.Count == 0 && team2Unit.Count == 0 && team4Unit.Count == 0)
+        {
+
+        }
+        if (team1Unit.Count == 0 && team2Unit.Count == 0 && team3Unit.Count == 0)
+        {
+
+        }
+    }
+    public void AddToList(GameObject gameObjectToAdd)
     {
         if(gameObjectToAdd.GetComponent<TestPlayerMovement>().teamNumber == 1)
         {
