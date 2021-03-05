@@ -9,6 +9,7 @@ public class TestPlayerMovement : MonoBehaviour
     private TestTileCalculator testTileCalculator;
     private TurnTracker turnTracker;
 
+    public bool moveAble;
     bool moving;
 
     public int movement;
@@ -25,32 +26,36 @@ public class TestPlayerMovement : MonoBehaviour
         movementLeft = movement;
         turnTracker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnTracker>();
         tiles = GameObject.FindGameObjectsWithTag("Tile");
+
+        moveAble = false;
     }
 
 
     void Update()
     {
-        if(teamNumber == turnTracker.playerTurn)
+        if(moveAble == true)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (teamNumber == turnTracker.playerTurn)
             {
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit))
+                if (Input.GetMouseButtonDown(0))
                 {
-                    if(hit.transform.gameObject.tag == "Tile")
+                    RaycastHit hit;
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    if (Physics.Raycast(ray, out hit))
                     {
-                        if(hit.transform.gameObject.GetComponent<TestTileCalculator>().movementDistance <= movementLeft && hit.transform.gameObject.GetComponent<TestTileCalculator>().untraversable == false && hit.transform.gameObject.GetComponent<TestTileCalculator>().occupied == false)
+                        if (hit.transform.gameObject.tag == "Tile")
                         {
-                            moveTo = hit.transform;
-                            moving = true;
+                            if (hit.transform.gameObject.GetComponent<TestTileCalculator>().movementDistance <= movementLeft && hit.transform.gameObject.GetComponent<TestTileCalculator>().untraversable == false && hit.transform.gameObject.GetComponent<TestTileCalculator>().occupied == false)
+                            {
+                                moveTo = hit.transform;
+                                moving = true;
 
-                            movementLeft -= hit.transform.gameObject.GetComponent<TestTileCalculator>().movementDistance;
+                                movementLeft -= hit.transform.gameObject.GetComponent<TestTileCalculator>().movementDistance;
+                            }
                         }
                     }
                 }
             }
-
 
             //moving
             if(moving == true)
