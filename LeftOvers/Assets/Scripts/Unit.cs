@@ -73,7 +73,7 @@ public class Unit : MonoBehaviour
     {
         print("OpenPanel - 1");
 
-        if (panel != null)
+        if (panel != null && turnTracker.gameStarted == true)
         {
             print("OpenPanel - 2");
 

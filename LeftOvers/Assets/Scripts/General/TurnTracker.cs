@@ -13,6 +13,7 @@ public class TurnTracker : MonoBehaviour
     public List<GameObject> team3Unit;
     public List<GameObject> team4Unit;
 
+    public bool gameStarted;
     public GameObject winScreen;
 
     public void Start()
