@@ -14,6 +14,7 @@ public class SetupMenu : MonoBehaviour
     public GameObject setupInterface;
 
     public GameObject[] unitButtons;
+    public GameObject[] units;
 
     public GameObject playerOne;
     public GameObject playerOneBox;
@@ -45,6 +46,12 @@ public class SetupMenu : MonoBehaviour
 
         if (playerOneBox.transform.childCount == 0 && playerTwoBox.transform.childCount == 0 && playerThreeBox.transform.childCount == 0)
         {
+            units = GameObject.FindGameObjectsWithTag("Unit");
+            foreach(GameObject unit in units)
+            {
+                unit.GetComponent<TestPlayerMovement>().moveAble = true;
+            }
+
             turnButton.SetActive(true);
             setupInterface.SetActive(false);
         }
