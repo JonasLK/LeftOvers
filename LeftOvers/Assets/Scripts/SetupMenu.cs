@@ -53,7 +53,7 @@ public class SetupMenu : MonoBehaviour
             {
                 unit.GetComponent<TestPlayerMovement>().moveAble = true;
             }
-            setupInterface.SetActive(false);
+            StartGame();
         }
     }
 
@@ -61,6 +61,7 @@ public class SetupMenu : MonoBehaviour
     {
         gameManager.GetComponent<TurnTracker>().gameStarted = true;
         turnButton.SetActive(true);
+        setupInterface.SetActive(false);
         startGameButton.SetActive(false);
     }
 
