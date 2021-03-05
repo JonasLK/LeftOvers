@@ -10,6 +10,7 @@ public class SetupMenu : MonoBehaviour
     public bool setupActive;
     public bool setupComplete;
 
+    public GameObject startGameButton;
     public GameObject turnButton;
     public GameObject setupInterface;
 
@@ -23,6 +24,7 @@ public class SetupMenu : MonoBehaviour
     public GameObject playerThree;
     public GameObject playerThreeBox;
 
+    public GameObject gameManager;
     public GameObject gameMaster;
     public GameObject playerThreeButton;
     void Start()
@@ -51,10 +53,15 @@ public class SetupMenu : MonoBehaviour
             {
                 unit.GetComponent<TestPlayerMovement>().moveAble = true;
             }
-
-            turnButton.SetActive(true);
             setupInterface.SetActive(false);
         }
+    }
+
+    public void StartGame()
+    {
+        gameManager.GetComponent<TurnTracker>().gameStarted = true;
+        turnButton.SetActive(true);
+        startGameButton.SetActive(false);
     }
 
     public void Player1()
