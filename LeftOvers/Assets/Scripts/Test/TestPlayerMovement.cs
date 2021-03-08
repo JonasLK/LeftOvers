@@ -33,53 +33,26 @@ public class TestPlayerMovement : MonoBehaviour
     }
 
 
-    void Update()
+    public void MoveToTile()
     {
         if(moveAble == true)
         {
-            if (teamNumber == turnTracker.playerTurn)
+            if (raycastClick.lastClickedTile.GetComponent<TestTileCalculator>().movementDistance <= movementLeft && raycastClick.lastClickedTile.GetComponent<TestTileCalculator>().untraversable == false && raycastClick.lastClickedTile.GetComponent<TestTileCalculator>().occupied == false)
             {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    RaycastHit hit;
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    if (Physics.Raycast(ray, out hit))
-                    {
-                        if (hit.transform.gameObject.tag == "Tile")
-                        {
-                            if (hit.transform.gameObject.GetComponent<TestTileCalculator>().movementDistance <= movementLeft && hit.transform.gameObject.GetComponent<TestTileCalculator>().untraversable == false && hit.transform.gameObject.GetComponent<TestTileCalculator>().occupied == false)
-                            {
-                                moveTo = hit.transform;
-                                moving = true;
+                moveTo = raycastClick.lastClickedTile.transform;
+                moving = true;
 
-                                movementLeft -= hit.transform.gameObject.GetComponent<TestTileCalculator>().movementDistance;
+                movementLeft -= raycastClick.lastClickedTile.GetComponent<TestTileCalculator>().movementDistance;
 
-                                tileBellow.GetComponent<TestTileCalculator>().occupied = false;
-                                raycastClick.lastClickedFriendlyUnit.transform.position = moveTo.position;
-                                //transform.Translate(moveTo.transform.position * Time.deltaTime * speed);
-                                if (tileBellow == moveTo.gameObject)
-                                {
-                                    moving = false;
-                                    tileBellow.transform.gameObject.GetComponent<TestTileCalculator>().occupied = true;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            //moving
-            /*if(moving == true)
-            {
                 tileBellow.GetComponent<TestTileCalculator>().occupied = false;
                 raycastClick.lastClickedFriendlyUnit.transform.position = moveTo.position;
                 //transform.Translate(moveTo.transform.position * Time.deltaTime * speed);
-                if(tileBellow == moveTo.gameObject)
+                if (tileBellow == moveTo.gameObject)
                 {
                     moving = false;
                     tileBellow.transform.gameObject.GetComponent<TestTileCalculator>().occupied = true;
                 }
-            }*/
+            }
         }
     }
 

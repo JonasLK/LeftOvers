@@ -5,6 +5,7 @@ using UnityEngine;
 public class RaycastClick : MonoBehaviour
 {
     public GameObject lastClickedFriendlyUnit;
+    public GameObject lastClickedTile;
 
     private TurnTracker turnTracker;
     private TestSpawnUnit testSpawnUnit;
@@ -54,15 +55,28 @@ public class RaycastClick : MonoBehaviour
 
                 if (hit.transform.gameObject.tag == "Tile")
                 {
-                    print("tile1");
-                    testTileCalculator = hit.transform.gameObject.GetComponent<TestTileCalculator>();
-                    if (testTileCalculator.teamStartTile == turnTracker.playerTurn && testSpawnUnit.placingUnit == true && testTileCalculator.untraversable == false && testTileCalculator.occupied == false)
+                    if(turnTracker.gameStarted == false)
                     {
-                        print("tile");
-                        testSpawnUnit.SpawnUnit(hit.transform.gameObject.transform);
+                        print("tile1");
+                        testTileCalculator = hit.transform.gameObject.GetComponent<TestTileCalculator>();
+                        if (testTileCalculator.teamStartTile == turnTracker.playerTurn && testSpawnUnit.placingUnit == true && testTileCalculator.untraversable == false && testTileCalculator.occupied == false)
+                        {
+                            print("tile");
+                            testSpawnUnit.SpawnUnit(hit.transform.gameObject.transform);
+                        }
+                    }
+                    else 
+                    {
+                        lastClickedFriendlyUnit.GetComponent<TestPlayerMovement>().MoveToTile();
                     }
                 }
             }
         }
+    }
+
+    public void ResetRaycastClicked()
+    {
+        lastClickedFriendlyUnit = null;
+        lastClickedTile = null;
     }
 }

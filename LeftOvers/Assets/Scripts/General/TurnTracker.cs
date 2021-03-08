@@ -16,8 +16,11 @@ public class TurnTracker : MonoBehaviour
     public bool gameStarted;
     public GameObject winScreen;
 
+    private RaycastClick raycastClick;
+
     public void Start()
     {
+        raycastClick = GameObject.FindGameObjectWithTag("GameManager").GetComponent<RaycastClick>();
         UpdateTurnDisplay();
     }
 
@@ -94,6 +97,7 @@ public class TurnTracker : MonoBehaviour
             playerTurn = 1;
         }
         UpdateTurnDisplay();
+        raycastClick.ResetRaycastClicked();
     }
 
     public void ResetTeam(List<GameObject> playerTeam)
