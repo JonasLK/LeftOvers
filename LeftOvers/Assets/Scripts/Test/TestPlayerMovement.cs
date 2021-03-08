@@ -8,6 +8,7 @@ public class TestPlayerMovement : MonoBehaviour
     public GameObject tileBellow;
     private TestTileCalculator testTileCalculator;
     private TurnTracker turnTracker;
+    private RaycastClick raycastClick;
 
     public bool moveAble;
     bool moving;
@@ -25,6 +26,7 @@ public class TestPlayerMovement : MonoBehaviour
     {
         movementLeft = movement;
         turnTracker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnTracker>();
+        raycastClick = GameObject.FindGameObjectWithTag("GameManager").GetComponent<RaycastClick>();
         tiles = GameObject.FindGameObjectsWithTag("Tile");
 
         moveAble = false;
@@ -51,6 +53,15 @@ public class TestPlayerMovement : MonoBehaviour
                                 moving = true;
 
                                 movementLeft -= hit.transform.gameObject.GetComponent<TestTileCalculator>().movementDistance;
+
+                                tileBellow.GetComponent<TestTileCalculator>().occupied = false;
+                                raycastClick.lastClickedFriendlyUnit.transform.position = moveTo.position;
+                                //transform.Translate(moveTo.transform.position * Time.deltaTime * speed);
+                                if (tileBellow == moveTo.gameObject)
+                                {
+                                    moving = false;
+                                    tileBellow.transform.gameObject.GetComponent<TestTileCalculator>().occupied = true;
+                                }
                             }
                         }
                     }
@@ -58,17 +69,17 @@ public class TestPlayerMovement : MonoBehaviour
             }
 
             //moving
-            if(moving == true)
+            /*if(moving == true)
             {
                 tileBellow.GetComponent<TestTileCalculator>().occupied = false;
-                gameObject.transform.position = moveTo.position;
+                raycastClick.lastClickedFriendlyUnit.transform.position = moveTo.position;
                 //transform.Translate(moveTo.transform.position * Time.deltaTime * speed);
                 if(tileBellow == moveTo.gameObject)
                 {
                     moving = false;
                     tileBellow.transform.gameObject.GetComponent<TestTileCalculator>().occupied = true;
                 }
-            }
+            }*/
         }
     }
 
@@ -87,7 +98,7 @@ public class TestPlayerMovement : MonoBehaviour
         }
     }
 
-    public void OnMouseDown()
+    public void OnClickUnit()
     {
         if (teamNumber == turnTracker.playerTurn)
         {

@@ -33,10 +33,18 @@ public class RaycastClick : MonoBehaviour
                 print("anoes");
                 if (hit.transform.gameObject.tag == "Unit")
                 {
-                    if(hit.transform.gameObject.GetComponent<TestPlayerMovement>().teamNumber == turnTracker.playerTurn)
+                    print("anoes1");
+                    if (hit.transform.gameObject.GetComponent<TestPlayerMovement>().teamNumber == turnTracker.playerTurn)
                     {
+                        print("anoes2");
+                        if (lastClickedFriendlyUnit != null && hit.transform.gameObject != lastClickedFriendlyUnit)
+                        {
+                            lastClickedFriendlyUnit.GetComponent<Unit>().OpenPanel();
+                        }
                         lastClickedFriendlyUnit = hit.transform.gameObject;
                         lastClickedFriendlyUnit.GetComponent<Unit>().ClickOnUnit();
+                        lastClickedFriendlyUnit.GetComponent<TestPlayerMovement>().OnClickUnit();
+                        print(lastClickedFriendlyUnit);
                     }
                     else if(lastClickedFriendlyUnit.GetComponent<Unit>().attacking == true)
                     {
