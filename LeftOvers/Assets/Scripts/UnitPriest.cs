@@ -7,9 +7,9 @@ public class UnitPriest : Unit
     public int priestTotalHealth;
 
     public int priestFirstHealAmount = 50;
-    public float priestFirstHealRange = 1f;
-    public int priestSecondHealAmount = 25;
-    public float priestSecondHealRange = 2f;
+    public float priestFirstHealRange = 2f;
+    public int priestSecondHealAmount = 20;
+    public float priestSecondHealRange = 6f;
 
     public UnitHealthBar worldHealthBar;
     public UnitHealthBar localHealthBar;

@@ -12,9 +12,9 @@ public class Unit : MonoBehaviour
     public float attackRange;
 
     public int firstAttackDamage = 50;
-    public float firstAttackRange = 1f;
+    public float firstAttackRange = 2f;
     public int secondAttackDamage = 25;
-    public float secondAttackRange = 2f;
+    public float secondAttackRange = 4f;
 
     [HideInInspector] public bool attacking;
 
