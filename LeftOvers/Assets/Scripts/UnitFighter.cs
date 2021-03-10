@@ -15,14 +15,7 @@ public class UnitFighter : Unit
         worldHealthBar.SetMaxHealth(fighterTotalHealth);
         localHealthBar.SetMaxHealth(fighterTotalHealth);
     }
-
-    //This can be used to test if the healthbar works.
-    public void Update()
-    {
-
-    }
     
-
     public override void TakeDamage(int enemyAttackDamage)
     {
         base.TakeDamage(enemyAttackDamage);
