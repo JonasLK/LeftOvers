@@ -9,6 +9,7 @@ public class Unit : MonoBehaviour
     public int currentHealth;
 
     public int attackDamage;
+    public float attackRange;
 
     public int firstAttackDamage = 50;
     public float firstAttackRange = 1f;
@@ -86,9 +87,10 @@ public class Unit : MonoBehaviour
         print("FirstAttackSelect");
 
         attackDamage = firstAttackDamage;
+        attackRange = firstAttackRange;
         attacking = true;
         OpenPanel();
-        CheckIfInRange(firstAttackRange);
+        CheckIfInRange(attackRange);
     }
 
     public void SecondAttackSelect()
@@ -96,12 +98,13 @@ public class Unit : MonoBehaviour
         print("SecondAttackSelect");
 
         attackDamage = secondAttackDamage;
+        attackRange = secondAttackRange;
         attacking = true;
         OpenPanel();
-        CheckIfInRange(secondAttackRange);
+        CheckIfInRange(attackRange);
     }
 
-    public void CheckIfInRange(float attackRange)
+    public virtual void CheckIfInRange(float attackRange)
     {
         print("CheckIfInRange - 1");
 
@@ -154,6 +157,16 @@ public class Unit : MonoBehaviour
     public virtual void SetStats()
     {
         currentHealth = totalHealth;
+    }
+
+    public void GetHealed(int healAmount)
+    {
+        currentHealth += healAmount;
+
+        if (currentHealth > totalHealth)
+        {
+            currentHealth = totalHealth;
+        }
     }
 
     public virtual void TakeDamage(int enemyAttackDamage)
