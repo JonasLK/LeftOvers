@@ -55,10 +55,11 @@ public class RaycastClick : MonoBehaviour
 
                 if (hit.transform.gameObject.tag == "Tile")
                 {
+                    lastClickedTile = hit.transform.gameObject;
                     if(turnTracker.gameStarted == false)
                     {
                         print("tile1");
-                        testTileCalculator = hit.transform.gameObject.GetComponent<TestTileCalculator>();
+                        testTileCalculator = lastClickedTile.GetComponent<TestTileCalculator>();
                         if (testTileCalculator.teamStartTile == turnTracker.playerTurn && testSpawnUnit.placingUnit == true && testTileCalculator.untraversable == false && testTileCalculator.occupied == false)
                         {
                             print("tile");
