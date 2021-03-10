@@ -61,15 +61,15 @@ public class UnitPriest : Unit
 
     public override void Attacking(GameObject allyTarget)
     {
-        print("Attacking - 1");
+        print("Priest Healing - 1");
 
         foreach (GameObject target in targets)
         {
-            print("Attacking - 2");
+            print("Priest Healing - 2");
 
             if (allyTarget = target)
             {
-                print("Attacking - 3");
+                print("Priest Healing - 3");
 
                 allyTarget.GetComponent<Unit>().GetHealed(attackDamage);
 
