@@ -1707,7 +1707,6 @@ GameObject:
   - component: {fileID: 7049373333995551909}
   - component: {fileID: 7049373333995551910}
   - component: {fileID: 7049373333995551911}
-  - component: {fileID: 7049373333995551904}
   - component: {fileID: 7049373333995551905}
   - component: {fileID: 7049373333995551914}
   m_Layer: 0
@@ -1809,10 +1808,11 @@ MonoBehaviour:
   totalHealth: 100
   currentHealth: 0
   attackDamage: 0
+  attackRange: 0
   firstAttackDamage: 50
-  firstAttackRange: 1
+  firstAttackRange: 2
   secondAttackDamage: 25
-  secondAttackRange: 2
+  secondAttackRange: 4
   attacking: 0
   movementRange: 2
   unitTeamColor: 0
@@ -1827,19 +1827,6 @@ MonoBehaviour:
   fighterTotalHealth: 200
   worldHealthBar: {fileID: 7049373333729107833}
   localHealthBar: {fileID: 2115907443597399516}
---- !u!114 &7049373333995551904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7049373333995551906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4000270ac892c5488eda0015171ddf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerNumber: 2
 --- !u!54 &7049373333995551905
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1871,8 +1858,8 @@ MonoBehaviour:
   teamNumber: 2
   tileBellow: {fileID: 0}
   moveAble: 0
-  movement: 1
-  movementLeft: 1
+  movement: 3
+  movementLeft: 3
   moveTo: {fileID: 0}
   speed: 0
   actionAvailable: 0
