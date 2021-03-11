@@ -29,6 +29,8 @@ public class Unit : MonoBehaviour
 
     public GameObject panel;
 
+    public GameObject attackRangeDisplay;
+
     private GameObject clickedUnit;
 
     public List<GameObject> targets = new List<GameObject>();
@@ -82,7 +84,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public void FirstAttackSelect()
+    public virtual void FirstAttackSelect()
     {
         print("FirstAttackSelect");
 
@@ -93,7 +95,7 @@ public class Unit : MonoBehaviour
         CheckIfInRange(attackRange);
     }
 
-    public void SecondAttackSelect()
+    public virtual void SecondAttackSelect()
     {
         print("SecondAttackSelect");
 
@@ -127,6 +129,18 @@ public class Unit : MonoBehaviour
                     targets.Add(c.transform.gameObject);
                 }
             }
+        }
+    }
+
+    public void RangeDisplay()
+    {
+        print("AttackRangeDisplay - 1");
+
+        if (attackRangeDisplay != null && turnTracker.gameStarted == true)
+        {
+            print("AttackRangeDisplay - 2");
+
+            panel.SetActive(!panel.activeSelf);
         }
     }
 
