@@ -37,7 +37,9 @@ public class Unit : MonoBehaviour
 
     public Vector3 unitLocation;
 
-    [HideInInspector]public TestPlayerMovement ownTestPlayerMovement;
+    [HideInInspector] public TestPlayerMovement ownTestPlayerMovement;
+
+    [HideInInspector] public TestTileCalculator testTileCalculator;
 
     [HideInInspector]public TurnTracker turnTracker;
 
@@ -66,8 +68,6 @@ public class Unit : MonoBehaviour
     public void ClickOnUnit()
     {
         print("ClickOnUnit - 1");
-
-        print("ClickOnUnit - 2");
 
         OpenPanel();
     }
@@ -127,6 +127,8 @@ public class Unit : MonoBehaviour
                     print("CheckIfInRange - 4");
 
                     targets.Add(c.transform.gameObject);
+
+                    GetComponent<TestTileCalculator>().ShowMovementRange();
                 }
             }
         }

@@ -87,7 +87,7 @@ public class TestPlayerMovement : MonoBehaviour
             {
                 if (tile.GetComponent<TestTileCalculator>().movementDistance <= movementLeft)
                 {
-                    tile.GetComponent<Renderer>().material.color = Color.green;
+                    tile.GetComponent<TestTileCalculator>().ShowMovementRange();
                 }
             }
         }

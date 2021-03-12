@@ -12,7 +12,9 @@ public class TestTileCalculator : MonoBehaviour
     public int teamStartTile;
     public List<GameObject> surroundingTiles;
 
-    private TestTileCalculator testTileCalculator;
+    public GameObject rangeDisplay;
+
+    public TestTileCalculator testTileCalculator;
 
     public void Start()
     {
@@ -25,9 +27,9 @@ public class TestTileCalculator : MonoBehaviour
         triggerToTurnOff.SetActive(false);
     }
 
-    public void CalculateHexagonDistance()
+    public virtual void CalculateHexagonDistance()
     {
-        if(firstTile == true)
+        if (firstTile == true)
         {
             movementDistance = 0;
             firstTile = false;
@@ -35,9 +37,9 @@ public class TestTileCalculator : MonoBehaviour
         foreach (GameObject tile in surroundingTiles)
         {
             testTileCalculator = tile.GetComponent<TestTileCalculator>();
-            if(testTileCalculator.untraversable == false)
+            if (testTileCalculator.untraversable == false)
             {
-                if(testTileCalculator.movementDistance > movementDistance + 1)
+                if (testTileCalculator.movementDistance > movementDistance + 1)
                 {
                     testTileCalculator.movementDistance = movementDistance + 1;
                 }
@@ -66,5 +68,10 @@ public class TestTileCalculator : MonoBehaviour
                 testTileCalculator.ResetHexagonDistance();
             }
         }
+    }
+
+    public void ShowMovementRange()
+    {
+        rangeDisplay.SetActive(!rangeDisplay.activeSelf);
     }
 }
