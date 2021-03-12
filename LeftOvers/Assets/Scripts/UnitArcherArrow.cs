@@ -6,6 +6,13 @@ public class UnitArcherArrow : UnitArcher
 {
     public float arrowSpeed;
 
+    public bool arrowGoDown;
+
+    new void Start()
+    {
+        arrowGoDown = false;
+    }
+
     void Update()
     {
         ArrowMovement();
@@ -24,6 +31,11 @@ public class UnitArcherArrow : UnitArcher
         {
             ArrowMove();
 
+            if (arrowGoDown == false)
+            {
+                ArrowMoveUp();
+            }
+
             StartCoroutine(ExecuteAfterTime(3));
         }
     }
@@ -32,12 +44,19 @@ public class UnitArcherArrow : UnitArcher
     {
         yield return new WaitForSeconds(time);
 
+        arrowGoDown = true;
+
         LookAt();
     }
 
     public void ArrowMove()
     {
         transform.position += transform.forward * Time.deltaTime * arrowSpeed;
+    }
+
+    public void ArrowMoveUp()
+    {
+        transform.position += transform.up * Time.deltaTime * arrowSpeed;
     }
 
     public void LookAt()
