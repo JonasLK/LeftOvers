@@ -72,6 +72,8 @@ public class UnitArcher : Unit
 
                 //enemyTarget.GetComponent<Unit>().TakeDamage(attackDamage);
 
+                GetComponent<TestTileCalculator>().ShowMovementRange();
+
                 attacking = false;
             }
         }

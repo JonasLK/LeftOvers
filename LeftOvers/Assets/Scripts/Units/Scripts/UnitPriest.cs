@@ -73,6 +73,8 @@ public class UnitPriest : Unit
 
                 allyTarget.GetComponent<Unit>().GetHealed(attackDamage);
 
+                GetComponent<TestTileCalculator>().ShowMovementRange();
+
                 attacking = false;
             }
         }

@@ -160,6 +160,8 @@ public class Unit : MonoBehaviour
 
                 enemyTarget.GetComponent<Unit>().TakeDamage(attackDamage);
 
+                GetComponent<TestTileCalculator>().ShowMovementRange();
+
                 attacking = false;
             }
         }
@@ -167,6 +169,8 @@ public class Unit : MonoBehaviour
 
     public void CancelAttack()
     {
+        GetComponent<TestTileCalculator>().ShowMovementRange();
+
         attacking = false;
     }
 
