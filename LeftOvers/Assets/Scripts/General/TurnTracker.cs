@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class TurnTracker : MonoBehaviour
@@ -20,16 +21,16 @@ public class TurnTracker : MonoBehaviour
 
     public void Start()
     {
-        raycastClick = GameObject.FindGameObjectWithTag("GameManager").GetComponent<RaycastClick>();
-        UpdateTurnDisplay();
-    }
+        raycastClick = GetComponent<RaycastClick>();
 
-    private void Update()
-    {
-        if (Input.GetButtonUp("Jump"))
+        turnDisplay = GameObject.FindGameObjectWithTag("PlayerTurnDisplay").GetComponent<TextMeshProUGUI>();
+
+        if(turnDisplay != null)
         {
-            winScreen.SetActive(true);
+            UpdateTurnDisplay();
         }
+
+        DontDestroyOnLoad(gameObject);
     }
 
     public void CheckForWin()
@@ -51,6 +52,7 @@ public class TurnTracker : MonoBehaviour
             winScreen.SetActive(true);
         }
     }
+
     public void AddToList(GameObject gameObjectToAdd)
     {
         if(gameObjectToAdd.GetComponent<TestPlayerMovement>().teamNumber == 1)
@@ -73,7 +75,6 @@ public class TurnTracker : MonoBehaviour
 
     public void EndTurn()
     {
-
         if (playerTurn == 1)
         {
             ResetTeam(team1Unit);
@@ -96,6 +97,7 @@ public class TurnTracker : MonoBehaviour
         {
             playerTurn = 1;
         }
+
         UpdateTurnDisplay();
         raycastClick.ResetRaycastClicked();
     }
@@ -111,5 +113,10 @@ public class TurnTracker : MonoBehaviour
     public void UpdateTurnDisplay()
     {
         turnDisplay.text = "Turn: player " + playerTurn.ToString();
+    }
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
     }
 }

@@ -204,8 +204,22 @@ public class Unit : MonoBehaviour
     public virtual void Death()
     {
         print("Death");
+        if(ownTestPlayerMovement.teamNumber == 1)
+        {
+            turnTracker.team1Unit.Remove(gameObject);
+        }else if (ownTestPlayerMovement.teamNumber == 2)
+        {
+            turnTracker.team2Unit.Remove(gameObject);
+        }
+        else if(ownTestPlayerMovement.teamNumber == 3)
+        {
+            turnTracker.team3Unit.Remove(gameObject);
+        }else if (ownTestPlayerMovement.teamNumber == 4)
+        {
+            turnTracker.team4Unit.Remove(gameObject);
+        }
 
-        Destroy(gameObject/*, 3f*/);
         turnTracker.CheckForWin();
+        Destroy(gameObject/*, 3f*/);
     }
 }
