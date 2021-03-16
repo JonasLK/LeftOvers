@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -9,31 +10,31 @@ public class PauseMenu : MonoBehaviour
     public GameObject settingsMenu;
     public bool pauseMenuOpen;
     public bool settingsMenuOpen;
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    public Scene mainMenuScene;
+
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if(SceneManager.GetActiveScene() != mainMenuScene)
         {
-            if (pauseMenuOpen == false)
+            if (Input.GetButtonDown("Cancel"))
             {
-                OpenPauseMenu();
-                pauseMenuOpen = true;
-            }
-            else if (settingsMenuOpen == true)
-            {
-                settingsMenu.SetActive(false);
-                pauseMenuButtons.SetActive(true);
-                ClosingSettings();
-            }
-            else
-            {
-                ClosePauseMenu();
-                pauseMenuOpen = false;
+                if (pauseMenuOpen == false)
+                {
+                    OpenPauseMenu();
+                    pauseMenuOpen = true;
+                }
+                else if (settingsMenuOpen == true)
+                {
+                    settingsMenu.SetActive(false);
+                    pauseMenuButtons.SetActive(true);
+                    ClosingSettings();
+                }
+                else
+                {
+                    ClosePauseMenu();
+                    pauseMenuOpen = false;
+                }
             }
         }
     }

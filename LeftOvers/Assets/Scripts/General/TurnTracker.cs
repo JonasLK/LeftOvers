@@ -25,7 +25,9 @@ public class TurnTracker : MonoBehaviour
 
         turnDisplay = GameObject.FindGameObjectWithTag("PlayerTurnDisplay").GetComponent<TextMeshProUGUI>();
 
-        if(turnDisplay != null)
+        winScreen = GameObject.FindGameObjectWithTag("WinMenu");
+
+        if (turnDisplay != null)
         {
             UpdateTurnDisplay();
         }
@@ -118,5 +120,10 @@ public class TurnTracker : MonoBehaviour
     public void Destroy()
     {
         Destroy(gameObject);
+    }
+
+    public void DecidePlayerAmount(int playerCount)
+    {
+        playerAmount = playerCount;
     }
 }
