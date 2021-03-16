@@ -47,21 +47,43 @@ public class UnitMageBlast : UnitMage
 
     private void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag != "Unit")
+        if (normalBlast == true)
         {
-            print("Bolt Missed Target");
+            if (col.gameObject.tag != "Unit")
+            {
+                Destroy(gameObject);
+            }
 
-            Explode();
+            if (col.gameObject.tag == "Unit")
+            {
+                currentEnemy.GetComponent<Unit>().TakeDamage(attackDamage);
 
-            Destroy(gameObject);
+                Destroy(gameObject);
+            }
+
+            normalBlast = false;
         }
-        else if (col.gameObject.tag == "Unit")
+
+        if (explosiveBlast == true)
         {
-            print("Bolt Hit Target");
+            if (col.gameObject.tag != "Unit")
+            {
+                print("Bolt Missed Target");
 
-            Explode();
+                Explode();
 
-            Destroy(gameObject);
+                Destroy(gameObject);
+            }
+            else if (col.gameObject.tag == "Unit")
+            {
+                print("Bolt Hit Target");
+
+                Explode();
+
+                Destroy(gameObject);
+            }
+
+            explosiveBlast = false;
         }
     }
 
