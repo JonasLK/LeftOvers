@@ -6,8 +6,10 @@ public class UnitArcher : Unit
 {
     public int archerTotalHealth;
 
-    public int archerFirstAttackDamage;
-    public int archerSecondAttackDamage;
+    public int archerFirstAttackDamage = 40;
+    public float archerFirstAttackRange = 8;
+    public int archerSecondAttackDamage = 30;
+    public float archerSecondAttackRange = 6;
 
     public bool arrowUp;
     public bool arrowForward;
@@ -30,7 +32,9 @@ public class UnitArcher : Unit
         localHealthBar.SetMaxHealth(archerTotalHealth);
 
         firstAttackDamage = archerFirstAttackDamage;
+        firstAttackRange = archerFirstAttackRange;
         secondAttackDamage = archerSecondAttackDamage;
+        secondAttackRange = archerSecondAttackRange;
     }
 
     public override void FirstAttackSelect()
