@@ -16,6 +16,10 @@ public class Unit : MonoBehaviour
     public int secondAttackDamage = 25;
     public float secondAttackRange = 4f;
 
+    public float bleedLevel;
+
+    public int bleedDamage;
+
     [HideInInspector] public bool attacking;
 
     public float movementRange = 2f;
@@ -53,6 +57,8 @@ public class Unit : MonoBehaviour
         //secondAttackButton.onClick.AddListener(SecondAttackSelect);
 
         attacking = false;
+
+        bleedLevel = 0;
     }
 
     void Update()
@@ -167,7 +173,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public void CancelAttack()
+    public virtual void CancelAttack()
     {
         GetComponent<TestTileCalculator>().ShowMovementRange();
 
@@ -186,6 +192,25 @@ public class Unit : MonoBehaviour
         if (currentHealth > totalHealth)
         {
             currentHealth = totalHealth;
+        }
+    }
+
+    public void IsBleeding(float bleedLvl)
+    {
+        if (bleedLevel != 0)
+        {
+            bleedLevel += bleedLvl;
+        }
+        else
+        {
+            bleedLevel = bleedLvl;
+        }
+
+        if (bleedLevel > 0)
+        {
+            currentHealth -= bleedDamage;
+
+            bleedLevel -= 1;
         }
     }
 
