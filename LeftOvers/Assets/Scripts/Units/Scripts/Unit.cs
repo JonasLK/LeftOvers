@@ -18,6 +18,8 @@ public class Unit : MonoBehaviour
 
     public float bleedLevel;
 
+    public bool isBleeding;
+
     public int bleedDamage;
 
     [HideInInspector] public bool attacking;
@@ -59,6 +61,8 @@ public class Unit : MonoBehaviour
         attacking = false;
 
         bleedLevel = 0;
+
+        isBleeding = false;
     }
 
     void Update()
@@ -195,22 +199,30 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public void IsBleeding(float bleedLvl)
+    public void ApplyBleeding(float bleedLvl)
     {
-        if (bleedLevel != 0)
+        if (bleedLevel > 0)
         {
             bleedLevel += bleedLvl;
         }
-        else
+
+        if (bleedLevel == 0)
         {
             bleedLevel = bleedLvl;
         }
 
-        if (bleedLevel > 0)
-        {
-            currentHealth -= bleedDamage;
+        isBleeding = true;
+    }
 
-            bleedLevel -= 1;
+    public void BleedDamageDeal()
+    {
+        TakeDamage(bleedDamage);
+
+        bleedLevel -= 1;
+
+        if(bleedLevel == 0)
+        {
+            isBleeding = false;
         }
     }
 

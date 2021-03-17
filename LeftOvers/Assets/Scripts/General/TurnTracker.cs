@@ -109,6 +109,12 @@ public class TurnTracker : MonoBehaviour
         foreach (GameObject playerUnit in playerTeam)
         {
             playerUnit.GetComponent<TestPlayerMovement>().ResetCharacter();
+
+            if (playerUnit.GetComponent<Unit>().isBleeding == true)
+            {
+                playerUnit.GetComponent<Unit>().BleedDamageDeal();
+            }
+            
         }
     }
 

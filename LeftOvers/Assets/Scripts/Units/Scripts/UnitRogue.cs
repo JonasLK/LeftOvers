@@ -63,7 +63,7 @@ public class UnitRogue : Unit
 
                 if (bleedAttack == true)
                 {
-                    enemyTarget.GetComponent<Unit>().IsBleeding(giveBleedLevel);
+                    enemyTarget.GetComponent<Unit>().ApplyBleeding(giveBleedLevel);
 
                     bleedAttack = false;
                 }
