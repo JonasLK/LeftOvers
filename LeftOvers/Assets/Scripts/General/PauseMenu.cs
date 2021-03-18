@@ -11,11 +11,9 @@ public class PauseMenu : MonoBehaviour
     public bool pauseMenuOpen;
     public bool settingsMenuOpen;
 
-    public Scene mainMenuScene;
-
     void Update()
     {
-        if(SceneManager.GetActiveScene() != mainMenuScene)
+        if(SceneManager.GetActiveScene().buildIndex != 0)
         {
             if (Input.GetButtonDown("Cancel"))
             {

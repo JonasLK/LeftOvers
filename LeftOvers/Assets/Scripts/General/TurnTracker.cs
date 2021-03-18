@@ -23,9 +23,12 @@ public class TurnTracker : MonoBehaviour
     {
         raycastClick = GetComponent<RaycastClick>();
 
-        turnDisplay = GameObject.FindGameObjectWithTag("PlayerTurnDisplay").GetComponent<TextMeshProUGUI>();
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            turnDisplay = GameObject.FindGameObjectWithTag("PlayerTurnDisplay").GetComponent<TextMeshProUGUI>();
+            winScreen = GameObject.FindGameObjectWithTag("WinMenu");
+        }
 
-        winScreen = GameObject.FindGameObjectWithTag("WinMenu");
 
         if (turnDisplay != null)
         {
