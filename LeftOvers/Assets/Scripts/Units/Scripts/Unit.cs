@@ -254,7 +254,7 @@ public class Unit : MonoBehaviour
     {
         damagePanel.SetActive(!panel.activeSelf);
 
-        damageText.text = "" + lastDamageAmount;
+        damageText.text = lastDamageAmount.ToString();
 
         DoAfterTime(damageTextStaysUpForSeconds);
     }
