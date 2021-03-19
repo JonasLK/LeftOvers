@@ -33,6 +33,14 @@ public class Unit : MonoBehaviour
     public Button firstAttackButton;
     public Button secondAttackButton;
 
+    public float damageTextStaysUpForSeconds;
+
+    public int lastDamageAmount;
+
+    public Text damageText;
+
+    public GameObject damagePanel;
+
     public GameObject panel;
 
     public GameObject attackRangeDisplay;
@@ -230,12 +238,32 @@ public class Unit : MonoBehaviour
     {
         print("TakeDamage");
 
+        lastDamageAmount = enemyAttackDamage;
+
+        DamagePanel();
+
         currentHealth -= enemyAttackDamage;
 
         if (currentHealth <= 0f)
         {
             Death();
         }
+    }
+
+    public void DamagePanel()
+    {
+        damagePanel.SetActive(!panel.activeSelf);
+
+        damageText.text = "" + lastDamageAmount;
+
+        DoAfterTime(damageTextStaysUpForSeconds);
+    }
+
+    IEnumerator DoAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        damagePanel.SetActive(!panel.activeSelf);
     }
 
     public virtual void Death()
