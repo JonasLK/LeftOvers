@@ -17,6 +17,8 @@ public class TurnTracker : MonoBehaviour
     public bool gameStarted;
     public GameObject winScreen;
 
+    [HideInInspector] public int mapToLoad;
+
     private RaycastClick raycastClick;
 
     public void Start()
@@ -134,5 +136,7 @@ public class TurnTracker : MonoBehaviour
     public void DecidePlayerAmount(int playerCount)
     {
         playerAmount = playerCount;
+
+        mapToLoad = playerCount;
     }
 }
