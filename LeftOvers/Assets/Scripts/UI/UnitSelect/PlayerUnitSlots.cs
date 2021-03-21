@@ -6,6 +6,7 @@ using TMPro;
 
 public class PlayerUnitSlots : MonoBehaviour
 {
+    public int currentPlayerSelect;
     public int playerMaxUnits;
     public int[] playerCurrentUnits;
     public GameObject[] unitsPlayer1;
@@ -28,20 +29,25 @@ public class PlayerUnitSlots : MonoBehaviour
         
     }
 
-    public void BuyUnit(int player)
+    public void BuyUnit()
     {
-        playerCurrentUnits[player - 1] -= 1;
-        UpdateUnitSlotText(player);
+        playerCurrentUnits[currentPlayerSelect - 1] -= 1;
+        UpdateUnitSlotText();
     }
 
-    public void SellUnit(int player)
+    public void SellUnit()
     {
-        playerCurrentUnits[player - 1] += 1;
-        UpdateUnitSlotText(player);
+        playerCurrentUnits[currentPlayerSelect - 1] += 1;
+        UpdateUnitSlotText();
     }
 
-    public void UpdateUnitSlotText(int player)
+    public void UpdateUnitSlotText()
     {
-        unitSlotsText.text = "Unit Slots Lefts: " + playerCurrentUnits[player - 1].ToString() + "/" + playerMaxUnits.ToString();
+        unitSlotsText.text = "Unit Slots Lefts: " + playerCurrentUnits[currentPlayerSelect - 1].ToString() + "/" + playerMaxUnits.ToString();
+    }
+
+    public void SetCurrentPlayer(int playerNumber)
+    {
+        currentPlayerSelect = playerNumber;
     }
 }
