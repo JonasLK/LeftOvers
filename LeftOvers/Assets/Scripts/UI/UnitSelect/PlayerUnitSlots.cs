@@ -6,21 +6,22 @@ using TMPro;
 
 public class PlayerUnitSlots : MonoBehaviour
 {
+    public GameObject buttonToInstanciate;
     public int currentPlayerSelect;
     public int playerMaxUnits;
     public int[] playerCurrentUnits;
-    public GameObject[] unitsPlayer1;
-    public GameObject[] unitsPlayer2;
-    public GameObject[] unitsPlayer3;
-    public GameObject[] unitsPlayer4;
+    public List<GameObject> unitsPlayer1;
+    public List<GameObject> unitsPlayer2;
+    public List<GameObject> unitsPlayer3;
+    public List<GameObject> unitsPlayer4;
 
     public TextMeshProUGUI unitSlotsText;
 
     void Start()
     {
-        if(SceneManager.GetActiveScene().buildIndex == 0)
+        if(unitSlotsText != null)
         {
-            unitSlotsText = GameObject.FindGameObjectWithTag(" ").GetComponent<TextMeshProUGUI>();
+            UpdateUnitSlotText();
         }
     }
 
@@ -29,8 +30,24 @@ public class PlayerUnitSlots : MonoBehaviour
         
     }
 
-    public void BuyUnit()
+    public void BuyUnit(GameObject boughtUnit)
     {
+        if(currentPlayerSelect == 1)
+        {
+            unitsPlayer1.Add(boughtUnit);
+        }else if (currentPlayerSelect == 2)
+        {
+            unitsPlayer2.Add(boughtUnit);
+        }else if (currentPlayerSelect == 3)
+        {
+            unitsPlayer3.Add(boughtUnit);
+        }else if (currentPlayerSelect == 4)
+        {
+            unitsPlayer4.Add(boughtUnit);
+        }
+
+        Instantiate(buttonToInstanciate, new Vector3(0f, 0f, 0f), Quaternion.identity, GameObject.FindGameObjectWithTag("UnitSell").transform);
+
         playerCurrentUnits[currentPlayerSelect - 1] -= 1;
         UpdateUnitSlotText();
     }

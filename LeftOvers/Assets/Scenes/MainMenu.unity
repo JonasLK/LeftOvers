@@ -710,7 +710,7 @@ GameObject:
   - component: {fileID: 95906157}
   - component: {fileID: 95906156}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: PlayerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1118,10 +1118,10 @@ RectTransform:
   m_Father: {fileID: 1417164836}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.048645835, y: 0.09200001}
-  m_AnchorMax: {x: 0.37600002, y: 0.7777037}
-  m_AnchoredPosition: {x: 0, y: -45}
-  m_SizeDelta: {x: -366.63666, y: -431.99332}
+  m_AnchorMin: {x: 0.048645835, y: 0.048}
+  m_AnchorMax: {x: 0.37600002, y: 0.734}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -366.63666, y: -432.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &149176312
 GameObject:
@@ -5074,6 +5074,7 @@ GameObject:
   - component: {fileID: 522768917}
   - component: {fileID: 522768916}
   - component: {fileID: 522768915}
+  - component: {fileID: 522768920}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -5167,6 +5168,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &522768920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522768914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c52a3946395685440a4761d7808c06b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonToInstanciate: {fileID: 0}
+  currentPlayerSelect: 1
+  playerMaxUnits: 5
+  playerCurrentUnits: 05000000050000000500000005000000
+  unitsPlayer1: []
+  unitsPlayer2: []
+  unitsPlayer3: []
+  unitsPlayer4: []
+  unitSlotsText: {fileID: 1468056334}
 --- !u!1 &527362374
 GameObject:
   m_ObjectHideFlags: 0
@@ -6327,7 +6349,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &767420482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6380,6 +6402,17 @@ MonoBehaviour:
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 1
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 522768920}
+        m_MethodName: SetCurrentPlayer
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &767420483
@@ -6981,10 +7014,10 @@ RectTransform:
   m_Father: {fileID: 1417164836}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.02, y: 408}
-  m_SizeDelta: {x: 1733.8088, y: 215}
+  m_AnchorMin: {x: 0.04760417, y: 0.7777037}
+  m_AnchorMax: {x: 0.95152086, y: 0.9768889}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &870867689
 MonoBehaviour:
@@ -7372,6 +7405,17 @@ MonoBehaviour:
           m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 2
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 522768920}
+        m_MethodName: SetCurrentPlayer
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &887950156
@@ -8517,7 +8561,7 @@ GameObject:
   - component: {fileID: 1135171460}
   m_Layer: 5
   m_Name: UnitSell
-  m_TagString: Untagged
+  m_TagString: UnitSell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11650,7 +11694,7 @@ GameObject:
   - component: {fileID: 1468056335}
   - component: {fileID: 1468056334}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: UnitsLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12820,6 +12864,17 @@ MonoBehaviour:
           m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 3
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 522768920}
+        m_MethodName: SetCurrentPlayer
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1586666925
@@ -14997,10 +15052,10 @@ RectTransform:
   m_Father: {fileID: 1417164836}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.43800002, y: 0.091000006}
-  m_AnchorMax: {x: 0.81200004, y: 0.4}
-  m_AnchoredPosition: {x: 0, y: -45}
-  m_SizeDelta: {x: -418.87997, y: -194.67001}
+  m_AnchorMin: {x: 0.43800002, y: 0.047000002}
+  m_AnchorMax: {x: 0.81200004, y: 0.358}
+  m_AnchoredPosition: {x: 0, y: 0.028015137}
+  m_SizeDelta: {x: -418.87997, y: -195.90666}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1946342621
 MonoBehaviour:
@@ -15618,6 +15673,17 @@ MonoBehaviour:
           m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 4
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 522768920}
+        m_MethodName: SetCurrentPlayer
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2083571376
