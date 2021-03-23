@@ -10,12 +10,6 @@ public class PlayerButtons : MonoBehaviour
     public TextMeshProUGUI playerSelectText;
 
     private int counter;
-    private TurnTracker turnTracker;
-
-    void Start()
-    {
-        turnTracker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnTracker>();
-    }
 
     void Update()
     {
@@ -32,7 +26,7 @@ public class PlayerButtons : MonoBehaviour
                  playerSelectText.text = "Player " + playerNumberString.ToString() + " units:";
                 playerButton.SetActive(false);
             }
-            else if(counter <= turnTracker.playerAmount)
+            else if(counter <= GameManager.turnTracker.playerAmount)
             {
                 playerButton.SetActive(true);
             }

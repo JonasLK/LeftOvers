@@ -66,13 +66,10 @@ public class Unit : MonoBehaviour
 
     [HideInInspector] public TestTileCalculator testTileCalculator;
 
-    [HideInInspector]public TurnTracker turnTracker;
-
     public void UnitStart()
     {
         unitSelected = false;
-        ownTestPlayerMovement = gameObject.GetComponent<TestPlayerMovement>();
-        turnTracker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnTracker>();
+        ownTestPlayerMovement = GetComponent<TestPlayerMovement>();
 
         //firstAttackButton.onClick.AddListener(FirstAttackSelect);
         //secondAttackButton.onClick.AddListener(SecondAttackSelect);
@@ -105,7 +102,7 @@ public class Unit : MonoBehaviour
     {
         print("OpenPanel - 1");
 
-        if (panel != null && turnTracker.gameStarted == true)
+        if (panel != null && GameManager.turnTracker.gameStarted == true)
         {
             print("OpenPanel - 2");
 
@@ -197,7 +194,7 @@ public class Unit : MonoBehaviour
     {
         print("AttackRangeDisplay - 1");
 
-        if (attackRangeDisplay != null && turnTracker.gameStarted == true)
+        if (attackRangeDisplay != null && GameManager.turnTracker.gameStarted == true)
         {
             print("AttackRangeDisplay - 2");
 
@@ -320,20 +317,20 @@ public class Unit : MonoBehaviour
         print("Death");
         if(ownTestPlayerMovement.teamNumber == 1)
         {
-            turnTracker.team1Unit.Remove(gameObject);
+            GameManager.turnTracker.team1Unit.Remove(gameObject);
         }else if (ownTestPlayerMovement.teamNumber == 2)
         {
-            turnTracker.team2Unit.Remove(gameObject);
+            GameManager.turnTracker.team2Unit.Remove(gameObject);
         }
         else if(ownTestPlayerMovement.teamNumber == 3)
         {
-            turnTracker.team3Unit.Remove(gameObject);
+            GameManager.turnTracker.team3Unit.Remove(gameObject);
         }else if (ownTestPlayerMovement.teamNumber == 4)
         {
-            turnTracker.team4Unit.Remove(gameObject);
+            GameManager.turnTracker.team4Unit.Remove(gameObject);
         }
 
-        turnTracker.CheckForWin();
+        GameManager.turnTracker.CheckForWin();
         Destroy(gameObject/*, 3f*/);
     }
 }

@@ -7,15 +7,7 @@ public class RaycastClick : MonoBehaviour
     public GameObject lastClickedFriendlyUnit;
     public GameObject lastClickedTile;
 
-    private TurnTracker turnTracker;
-    private TestSpawnUnit testSpawnUnit;
     private TestTileCalculator testTileCalculator;
-
-    public void Start()
-    {
-        turnTracker = GetComponent<TurnTracker>();
-        testSpawnUnit = GetComponent<TestSpawnUnit>();
-    }
 
     void Update()
     {
@@ -35,7 +27,7 @@ public class RaycastClick : MonoBehaviour
                 if (hit.transform.gameObject.tag == "Unit")
                 {
                     print("anoes1");
-                    if (hit.transform.gameObject.GetComponent<TestPlayerMovement>().teamNumber == turnTracker.playerTurn)
+                    if (hit.transform.gameObject.GetComponent<TestPlayerMovement>().teamNumber == GameManager.turnTracker.playerTurn)
                     {
                         print("anoes2");
                         if (lastClickedFriendlyUnit != null && hit.transform.gameObject != lastClickedFriendlyUnit)
@@ -56,14 +48,14 @@ public class RaycastClick : MonoBehaviour
                 if (hit.transform.gameObject.tag == "Tile")
                 {
                     lastClickedTile = hit.transform.gameObject;
-                    if(turnTracker.gameStarted == false)
+                    if(GameManager.turnTracker.gameStarted == false)
                     {
                         print("tile1");
                         testTileCalculator = lastClickedTile.GetComponent<TestTileCalculator>();
-                        if (testTileCalculator.teamStartTile == turnTracker.playerTurn && testSpawnUnit.placingUnit == true && testTileCalculator.untraversable == false && testTileCalculator.occupied == false)
+                        if (testTileCalculator.teamStartTile == GameManager.turnTracker.playerTurn && GameManager.testSpawnUnit.placingUnit == true && testTileCalculator.untraversable == false && testTileCalculator.occupied == false)
                         {
                             print("tile");
-                            testSpawnUnit.SpawnUnit(hit.transform.gameObject.transform);
+                            GameManager.testSpawnUnit.SpawnUnit(hit.transform.gameObject.transform);
                         }
                     }
                     else 

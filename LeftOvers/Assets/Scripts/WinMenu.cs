@@ -5,29 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class WinMenu : MonoBehaviour
 {
-    public TurnTracker turnTracker;
-
-    void Start()
-    {
-        turnTracker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnTracker>();
-    }
-
-
-    void Update()
-    {
-        
-    }
-
     public void MainMenu()
     {
         gameObject.GetComponentInParent<UnitCount>().ResetUnits();
-        turnTracker.Destroy();
+        GameManager.turnTracker.Destroy();
         SceneManager.LoadScene(0);
     }
     public void PlayAgain()
     {
 
     }
+
     public void Quit()
     {
         Application.Quit();

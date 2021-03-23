@@ -9,12 +9,10 @@ public class TestSpawnUnit : MonoBehaviour
     public GameObject justSpawnedUnit;
     public GameObject button;
 
-    public TurnTracker turnTracker;
     public RaycastClick raycastClick;
 
     void Start()
     {
-        turnTracker = GetComponent<TurnTracker>();
         raycastClick = GetComponent<RaycastClick>();
     }
 
@@ -26,7 +24,7 @@ public class TestSpawnUnit : MonoBehaviour
     public void SpawnUnit(Transform tileLocation)
     {
         print("spawn");
-        turnTracker.AddToList(Instantiate(toSpawnUnit, tileLocation.position, Quaternion.identity));
+        GameManager.turnTracker.AddToList(Instantiate(toSpawnUnit, tileLocation.position, Quaternion.identity));
         placingUnit = false;
         DestroyButton();
     }

@@ -7,8 +7,6 @@ public class TestPlayerMovement : MonoBehaviour
     public int teamNumber;
     public GameObject tileBellow;
     private TestTileCalculator testTileCalculator;
-    private TurnTracker turnTracker;
-    private RaycastClick raycastClick;
 
     public bool moveAble;
     bool moving;
@@ -25,8 +23,6 @@ public class TestPlayerMovement : MonoBehaviour
     void Start()
     {
         movementLeft = movement;
-        turnTracker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnTracker>();
-        raycastClick = GameObject.FindGameObjectWithTag("GameManager").GetComponent<RaycastClick>();
         tiles = GameObject.FindGameObjectsWithTag("Tile");
 
         moveAble = false;
@@ -37,15 +33,15 @@ public class TestPlayerMovement : MonoBehaviour
     {
         if(moveAble == true)
         {
-            if (raycastClick.lastClickedTile.GetComponent<TestTileCalculator>().movementDistance <= movementLeft && raycastClick.lastClickedTile.GetComponent<TestTileCalculator>().untraversable == false && raycastClick.lastClickedTile.GetComponent<TestTileCalculator>().occupied == false)
+            if (GameManager.raycastClick.lastClickedTile.GetComponent<TestTileCalculator>().movementDistance <= movementLeft && GameManager.raycastClick.lastClickedTile.GetComponent<TestTileCalculator>().untraversable == false && GameManager.raycastClick.lastClickedTile.GetComponent<TestTileCalculator>().occupied == false)
             {
-                moveTo = raycastClick.lastClickedTile.transform;
+                moveTo = GameManager.raycastClick.lastClickedTile.transform;
                 moving = true;
 
-                movementLeft -= raycastClick.lastClickedTile.GetComponent<TestTileCalculator>().movementDistance;
+                movementLeft -= GameManager.raycastClick.lastClickedTile.GetComponent<TestTileCalculator>().movementDistance;
 
                 tileBellow.GetComponent<TestTileCalculator>().occupied = false;
-                raycastClick.lastClickedFriendlyUnit.transform.position = moveTo.position;
+                GameManager.raycastClick.lastClickedFriendlyUnit.transform.position = moveTo.position;
                 //transform.Translate(moveTo.transform.position * Time.deltaTime * speed);
                 if (tileBellow == moveTo.gameObject)
                 {
@@ -73,7 +69,7 @@ public class TestPlayerMovement : MonoBehaviour
 
     public void OnClickUnit()
     {
-        if (teamNumber == turnTracker.playerTurn)
+        if (teamNumber == GameManager.turnTracker.playerTurn)
         {
             if (testTileCalculator != tileBellow.GetComponent<TestTileCalculator>())
             {

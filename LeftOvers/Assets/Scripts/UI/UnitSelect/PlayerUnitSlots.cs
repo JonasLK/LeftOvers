@@ -17,6 +17,8 @@ public class PlayerUnitSlots : MonoBehaviour
 
     public TextMeshProUGUI unitSlotsText;
 
+    private GameObject justSpawnedButton;
+
     void Start()
     {
         if(unitSlotsText != null)
@@ -46,7 +48,7 @@ public class PlayerUnitSlots : MonoBehaviour
             unitsPlayer4.Add(boughtUnit);
         }
 
-        Instantiate(buttonToInstanciate, new Vector3(0f, 0f, 0f), Quaternion.identity, GameObject.FindGameObjectWithTag("UnitSell").transform);
+        justSpawnedButton = Instantiate(buttonToInstanciate, new Vector3(0f, 0f, 0f), Quaternion.identity, GameObject.FindGameObjectWithTag("UnitSell").transform);
 
         playerCurrentUnits[currentPlayerSelect - 1] -= 1;
         UpdateUnitSlotText();

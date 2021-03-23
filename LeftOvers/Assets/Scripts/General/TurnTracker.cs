@@ -19,12 +19,8 @@ public class TurnTracker : MonoBehaviour
 
     [HideInInspector] public int mapToLoad;
 
-    private RaycastClick raycastClick;
-
     public void Start()
     {
-        raycastClick = GetComponent<RaycastClick>();
-
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
             turnDisplay = GameObject.FindGameObjectWithTag("PlayerTurnDisplay").GetComponent<TextMeshProUGUI>();
@@ -106,7 +102,7 @@ public class TurnTracker : MonoBehaviour
         }
 
         UpdateTurnDisplay();
-        raycastClick.ResetRaycastClicked();
+        GameManager.raycastClick.ResetRaycastClicked();
     }
 
     public void ResetTeam(List<GameObject> playerTeam)
