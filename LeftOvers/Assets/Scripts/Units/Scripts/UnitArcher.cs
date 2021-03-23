@@ -24,6 +24,8 @@ public class UnitArcher : Unit
 
     public UnitHealthBar worldHealthBar;
     public UnitHealthBar localHealthBar;
+
+    public UnitEnergyBar energyBar;
     public void Start()
     {
         arrowForward = false;
@@ -33,6 +35,7 @@ public class UnitArcher : Unit
         UnitStart();
         worldHealthBar.SetMaxHealth(archerTotalHealth);
         localHealthBar.SetMaxHealth(archerTotalHealth);
+        energyBar.SetMaxEnergy(archerTotalEnergy);
 
         firstAttackDamage = archerFirstAttackDamage;
         firstAttackRange = archerFirstAttackRange;
@@ -47,6 +50,8 @@ public class UnitArcher : Unit
         base.FirstAttackSelect();
 
         arrowForward = true;
+
+        energyBar.SetEnergy(currentEnergy);
     }
 
     public override void SecondAttackSelect()
@@ -54,6 +59,8 @@ public class UnitArcher : Unit
         base.SecondAttackSelect();
 
         arrowUp = true;
+
+        energyBar.SetEnergy(currentEnergy);
     }
 
     public override void TakeDamage(int enemyAttackDamage)
@@ -94,6 +101,13 @@ public class UnitArcher : Unit
         totalEnergy = archerTotalEnergy;
         base.SetStats();
     }
+
+    public override void CancelAttack()
+    {
+        base.CancelAttack();
+        energyBar.SetEnergy(currentEnergy);
+    }
+
 
     public override void Death()
     {

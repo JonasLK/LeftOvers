@@ -119,7 +119,8 @@ public class TurnTracker : MonoBehaviour
             {
                 playerUnit.GetComponent<Unit>().BleedDamageDeal();
             }
-            
+
+            playerUnit.GetComponent<Unit>().EnergyPerTurn();
         }
     }
 

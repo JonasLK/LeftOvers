@@ -16,6 +16,8 @@ public class UnitPriest : Unit
 
     public UnitHealthBar worldHealthBar;
     public UnitHealthBar localHealthBar;
+
+    public UnitEnergyBar energyBar;
     public void Start()
     {
         SetStats();
@@ -36,6 +38,20 @@ public class UnitPriest : Unit
         base.TakeDamage(enemyAttackDamage);
         worldHealthBar.SetHealth(currentHealth);
         localHealthBar.SetHealth(currentHealth);
+    }
+
+    public override void FirstAttackSelect()
+    {
+        base.FirstAttackSelect();
+
+        energyBar.SetEnergy(currentEnergy);
+    }
+
+    public override void SecondAttackSelect()
+    {
+        base.SecondAttackSelect();
+
+        energyBar.SetEnergy(currentEnergy);
     }
 
     public override void CheckIfInRange(float attackRange)
@@ -91,6 +107,13 @@ public class UnitPriest : Unit
         totalEnergy = priestTotalEnergy;
         base.SetStats();
     }
+
+    public override void CancelAttack()
+    {
+        base.CancelAttack();
+        energyBar.SetEnergy(currentEnergy);
+    }
+
 
     public override void Death()
     {

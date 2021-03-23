@@ -13,6 +13,10 @@ public class Unit : MonoBehaviour
 
     public int energyRequired;
 
+    public int lastEnergyTaken;
+
+    public int energyPerTurn;
+
     public int attackDamage;
     public float attackRange;
 
@@ -146,6 +150,18 @@ public class Unit : MonoBehaviour
         if (currentEnergy >= energyRequired)
         {
             currentEnergy -= energyRequired;
+
+            lastEnergyTaken = energyRequired;
+        }
+    }
+
+    public void EnergyPerTurn()
+    {
+        currentEnergy += energyPerTurn;
+
+        if (currentEnergy > totalEnergy)
+        {
+            currentEnergy = totalEnergy;
         }
     }
 
@@ -213,6 +229,13 @@ public class Unit : MonoBehaviour
     public virtual void CancelAttack()
     {
         GetComponent<TestTileCalculator>().ShowMovementRange();
+
+        lastEnergyTaken += currentEnergy;
+
+        if(currentEnergy > totalEnergy)
+        {
+            currentEnergy = totalEnergy;
+        }
 
         attacking = false;
     }

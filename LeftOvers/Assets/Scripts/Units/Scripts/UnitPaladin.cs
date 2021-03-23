@@ -18,6 +18,8 @@ public class UnitPaladin : Unit
 
     public UnitHealthBar worldHealthBar;
     public UnitHealthBar localHealthBar;
+
+    public UnitEnergyBar energyBar;
     public void Start()
     {
         SetStats();
@@ -40,6 +42,13 @@ public class UnitPaladin : Unit
         localHealthBar.SetHealth(currentHealth);
     }
 
+    public override void FirstAttackSelect()
+    {
+        base.FirstAttackSelect();
+
+        energyBar.SetEnergy(currentEnergy);
+    }
+
     public override void SecondAttackSelect()
     {
         print("SecondAttackSelect");
@@ -47,6 +56,8 @@ public class UnitPaladin : Unit
         EnergyManagement();
 
         HolyLightAbility();
+
+        energyBar.SetEnergy(currentEnergy);
     }
 
     public override void Attacking(GameObject enemyTarget)
@@ -76,6 +87,8 @@ public class UnitPaladin : Unit
 
                 paladinHolyDamageBuff = false;
                 attacking = false;
+
+                energyBar.SetEnergy(currentEnergy);
             }
         }
     }
@@ -98,6 +111,13 @@ public class UnitPaladin : Unit
         totalEnergy = paladinTotalEnergy;
         base.SetStats();
     }
+
+    public override void CancelAttack()
+    {
+        base.CancelAttack();
+        energyBar.SetEnergy(currentEnergy);
+    }
+
 
     public override void Death()
     {

@@ -19,6 +19,8 @@ public class UnitRogue : Unit
 
     public UnitHealthBar worldHealthBar;
     public UnitHealthBar localHealthBar;
+
+    public UnitEnergyBar energyBar;
     public void Start()
     {
         SetStats();
@@ -43,11 +45,20 @@ public class UnitRogue : Unit
         localHealthBar.SetHealth(currentHealth);
     }
 
+    public override void FirstAttackSelect()
+    {
+        base.FirstAttackSelect();
+
+        energyBar.SetEnergy(currentEnergy);
+    }
+
     public override void SecondAttackSelect()
     {
         bleedAttack = true;
 
         base.SecondAttackSelect();
+
+        energyBar.SetEnergy(currentEnergy);
     }
 
     public override void Attacking(GameObject enemyTarget)
@@ -83,6 +94,8 @@ public class UnitRogue : Unit
         bleedAttack = false;
 
         base.CancelAttack();
+
+        energyBar.SetEnergy(currentEnergy);
     }
 
     public override void SetStats()

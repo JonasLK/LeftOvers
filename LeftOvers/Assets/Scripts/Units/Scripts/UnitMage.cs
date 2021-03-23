@@ -24,6 +24,8 @@ public class UnitMage : Unit
 
     public UnitHealthBar worldHealthBar;
     public UnitHealthBar localHealthBar;
+
+    public UnitEnergyBar energyBar;
     public void Start()
     {
         SetStats();
@@ -47,6 +49,8 @@ public class UnitMage : Unit
         normalBlast = true;
 
         base.FirstAttackSelect();
+
+        energyBar.SetEnergy(currentEnergy);
     }
 
     public override void SecondAttackSelect()
@@ -54,6 +58,8 @@ public class UnitMage : Unit
         explosiveBlast = true;
 
         base.SecondAttackSelect();
+
+        energyBar.SetEnergy(currentEnergy);
     }
 
     public override void TakeDamage(int enemyAttackDamage)
@@ -92,6 +98,13 @@ public class UnitMage : Unit
         totalEnergy = mageTotalEnergy;
         base.SetStats();
     }
+
+    public override void CancelAttack()
+    {
+        base.CancelAttack();
+        energyBar.SetEnergy(currentEnergy);
+    }
+
 
     public override void Death()
     {
