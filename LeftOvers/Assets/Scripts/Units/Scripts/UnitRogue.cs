@@ -5,11 +5,14 @@ using UnityEngine;
 public class UnitRogue : Unit
 {
     public int rogueTotalHealth;
+    public int rogueTotalEnergy;
 
     public int rogueFirstAttackDamage;
     public float rogueFirstAttackRange;
+    public int rogueFirstAttackEnergyRequired;
     public int rogueSecondAttackDamage;
     public float rogueSecondAttackRange;
+    public int rogueSecondAttackEnergyRequired;
 
     public bool bleedAttack;
     public float giveBleedLevel;
@@ -25,8 +28,10 @@ public class UnitRogue : Unit
 
         firstAttackDamage = rogueFirstAttackDamage;
         firstAttackRange = rogueFirstAttackRange;
+        firstAttackEnergyRequired = rogueFirstAttackEnergyRequired;
         secondAttackDamage = rogueSecondAttackDamage;
         secondAttackRange = rogueSecondAttackRange;
+        secondAttackEnergyRequired = rogueSecondAttackEnergyRequired;
 
         bleedAttack = false;
     }
@@ -83,6 +88,7 @@ public class UnitRogue : Unit
     public override void SetStats()
     {
         totalHealth = rogueTotalHealth;
+        totalEnergy = rogueTotalEnergy;
         base.SetStats();
     }
 

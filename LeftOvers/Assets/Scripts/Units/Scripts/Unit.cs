@@ -8,13 +8,20 @@ public class Unit : MonoBehaviour
     public int totalHealth = 100;
     public int currentHealth;
 
+    public int totalEnergy = 100;
+    public int currentEnergy;
+
+    public int energyRequired;
+
     public int attackDamage;
     public float attackRange;
 
     public int firstAttackDamage = 50;
     public float firstAttackRange = 2f;
+    public int firstAttackEnergyRequired = 5;
     public int secondAttackDamage = 25;
     public float secondAttackRange = 4f;
+    public int secondAttackEnergyRequired = 8;
 
     public float bleedLevel;
 
@@ -108,6 +115,9 @@ public class Unit : MonoBehaviour
 
         attackDamage = firstAttackDamage;
         attackRange = firstAttackRange;
+
+        EnergyManagement();
+
         attacking = true;
         OpenPanel();
         CheckIfInRange(attackRange);
@@ -119,9 +129,24 @@ public class Unit : MonoBehaviour
 
         attackDamage = secondAttackDamage;
         attackRange = secondAttackRange;
+
+        EnergyManagement();
+
         attacking = true;
         OpenPanel();
         CheckIfInRange(attackRange);
+    }
+
+    public void EnergyManagement()
+    {
+        if (currentEnergy < energyRequired)
+        {
+            return;
+        }
+        if (currentEnergy >= energyRequired)
+        {
+            currentEnergy -= energyRequired;
+        }
     }
 
     public virtual void CheckIfInRange(float attackRange)
@@ -195,6 +220,7 @@ public class Unit : MonoBehaviour
     public virtual void SetStats()
     {
         currentHealth = totalHealth;
+        currentEnergy = totalEnergy;
     }
 
     public void GetHealed(int healAmount)

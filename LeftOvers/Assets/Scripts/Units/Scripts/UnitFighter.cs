@@ -5,6 +5,7 @@ using UnityEngine;
 public class UnitFighter : Unit
 {
     public int fighterTotalHealth;
+    public int fighterTotalEnergy;
 
     public UnitHealthBar worldHealthBar;
     public UnitHealthBar localHealthBar;
@@ -26,6 +27,7 @@ public class UnitFighter : Unit
     public override void SetStats()
     {
         totalHealth = fighterTotalHealth;
+        totalEnergy = fighterTotalEnergy;
         base.SetStats();
     }
 

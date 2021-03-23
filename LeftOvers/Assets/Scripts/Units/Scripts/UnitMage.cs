@@ -5,11 +5,14 @@ using UnityEngine;
 public class UnitMage : Unit
 {
     public int mageTotalHealth = 80;
+    public int mageTotalEnergy;
 
     public int mageFirstAttackDamage = 80;
     public float mageFirstAttackRange = 6;
+    public int mageFirstAttackEnergyRequired;
     public int mageSecondAttackDamage = 80;
     public float mageSecondAttackRange = 6;
+    public int mageSecondAttackEnergyRequired;
 
     public bool normalBlast;
     public bool explosiveBlast;
@@ -30,8 +33,10 @@ public class UnitMage : Unit
 
         firstAttackDamage = mageFirstAttackDamage;
         firstAttackRange = mageFirstAttackRange;
+        firstAttackEnergyRequired = mageFirstAttackEnergyRequired;
         secondAttackDamage = mageSecondAttackDamage;
         secondAttackRange = mageSecondAttackRange;
+        secondAttackEnergyRequired = mageSecondAttackEnergyRequired;
 
         normalBlast = false;
         explosiveBlast = false;
@@ -84,6 +89,7 @@ public class UnitMage : Unit
     public override void SetStats()
     {
         totalHealth = mageTotalHealth;
+        totalEnergy = mageTotalEnergy;
         base.SetStats();
     }
 

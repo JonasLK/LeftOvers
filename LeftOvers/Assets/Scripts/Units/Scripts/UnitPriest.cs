@@ -5,11 +5,14 @@ using UnityEngine;
 public class UnitPriest : Unit
 {
     public int priestTotalHealth;
+    public int priestTotalEnergy;
 
     public int priestFirstHealAmount = 50;
     public float priestFirstHealRange = 2f;
+    public int priestFirstHealEnergyRequired;
     public int priestSecondHealAmount = 20;
     public float priestSecondHealRange = 6f;
+    public int priestSecondHealEnergyRequired;
 
     public UnitHealthBar worldHealthBar;
     public UnitHealthBar localHealthBar;
@@ -24,6 +27,8 @@ public class UnitPriest : Unit
         secondAttackDamage = priestSecondHealAmount;
         firstAttackRange = priestFirstHealRange;
         secondAttackRange = priestSecondHealRange;
+        firstAttackEnergyRequired = priestFirstHealEnergyRequired;
+        secondAttackEnergyRequired = priestSecondHealEnergyRequired;
     }
 
     public override void TakeDamage(int enemyAttackDamage)
@@ -83,6 +88,7 @@ public class UnitPriest : Unit
     public override void SetStats()
     {
         totalHealth = priestTotalHealth;
+        totalEnergy = priestTotalEnergy;
         base.SetStats();
     }
 

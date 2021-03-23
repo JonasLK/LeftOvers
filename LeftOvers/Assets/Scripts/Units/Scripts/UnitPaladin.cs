@@ -5,13 +5,16 @@ using UnityEngine;
 public class UnitPaladin : Unit
 {
     public int paladinTotalHealth = 250;
+    public int paladinTotalEnergy;
 
     public int paladinFirstAttackDamage;
     public float paladinFirstAttackRange;
+    public int paladinFirstAttackEnergyRequired;
 
     public int paladinHolyHealAmount = 40;
     public int paladinHolyDamageBuffAmount = 20;
     public bool paladinHolyDamageBuff;
+    public int paladinHolyLightEnergyRequired;
 
     public UnitHealthBar worldHealthBar;
     public UnitHealthBar localHealthBar;
@@ -24,6 +27,8 @@ public class UnitPaladin : Unit
 
         firstAttackDamage = paladinFirstAttackDamage;
         firstAttackRange = paladinFirstAttackRange;
+        firstAttackEnergyRequired = paladinFirstAttackEnergyRequired;
+        secondAttackEnergyRequired = paladinHolyLightEnergyRequired;
 
         paladinHolyDamageBuff = false;
     }
@@ -38,6 +43,8 @@ public class UnitPaladin : Unit
     public override void SecondAttackSelect()
     {
         print("SecondAttackSelect");
+
+        EnergyManagement();
 
         HolyLightAbility();
     }
@@ -88,6 +95,7 @@ public class UnitPaladin : Unit
     public override void SetStats()
     {
         totalHealth = paladinTotalHealth;
+        totalEnergy = paladinTotalEnergy;
         base.SetStats();
     }
 

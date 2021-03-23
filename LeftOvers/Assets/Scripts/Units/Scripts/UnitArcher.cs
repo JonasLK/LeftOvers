@@ -5,11 +5,14 @@ using UnityEngine;
 public class UnitArcher : Unit
 {
     public int archerTotalHealth;
+    public int archerTotalEnergy;
 
     public int archerFirstAttackDamage = 40;
     public float archerFirstAttackRange = 8;
+    public int archerFirstAttackEnergyRequired;
     public int archerSecondAttackDamage = 30;
     public float archerSecondAttackRange = 6;
+    public int archerSecondAttackEnergyRequired;
 
     public bool arrowUp;
     public bool arrowForward;
@@ -33,22 +36,24 @@ public class UnitArcher : Unit
 
         firstAttackDamage = archerFirstAttackDamage;
         firstAttackRange = archerFirstAttackRange;
+        firstAttackEnergyRequired = archerFirstAttackEnergyRequired;
         secondAttackDamage = archerSecondAttackDamage;
         secondAttackRange = archerSecondAttackRange;
+        secondAttackEnergyRequired = archerSecondAttackEnergyRequired;
     }
 
     public override void FirstAttackSelect()
     {
-        arrowForward = true;
-
         base.FirstAttackSelect();
+
+        arrowForward = true;
     }
 
     public override void SecondAttackSelect()
     {
-        arrowUp = true;
-
         base.SecondAttackSelect();
+
+        arrowUp = true;
     }
 
     public override void TakeDamage(int enemyAttackDamage)
@@ -86,6 +91,7 @@ public class UnitArcher : Unit
     public override void SetStats()
     {
         totalHealth = archerTotalHealth;
+        totalEnergy = archerTotalEnergy;
         base.SetStats();
     }
 
