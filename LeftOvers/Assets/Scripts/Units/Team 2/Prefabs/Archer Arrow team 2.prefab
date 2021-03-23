@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5151729743610950695
+--- !u!1 &5192286894031020569
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5917631033363886759}
-  - component: {fileID: 8918065004561683539}
-  - component: {fileID: 2936265322876569700}
-  - component: {fileID: 6799800731830516278}
-  - component: {fileID: 4787242619659100329}
+  - component: {fileID: 9039700733974203993}
+  - component: {fileID: 7585904916610369807}
+  - component: {fileID: 637715896564429950}
+  - component: {fileID: 8624016482547903879}
+  - component: {fileID: 5153756925990955604}
   m_Layer: 0
-  m_Name: Mage Blast
+  m_Name: Archer Arrow team 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5917631033363886759
+--- !u!4 &9039700733974203993
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5151729743610950695}
+  m_GameObject: {fileID: 5192286894031020569}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.0407565, y: 2.034511, z: 1.224124}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
@@ -34,21 +34,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8918065004561683539
+--- !u!33 &7585904916610369807
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5151729743610950695}
+  m_GameObject: {fileID: 5192286894031020569}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &2936265322876569700
+--- !u!23 &637715896564429950
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5151729743610950695}
+  m_GameObject: {fileID: 5192286894031020569}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b7114f8663f92d44d99e9d955efb7805, type: 2}
+  - {fileID: 2100000, guid: 3eeb3493c0ac8914b97c9a16702b54f1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,84 +81,31 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6799800731830516278
+--- !u!65 &8624016482547903879
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5151729743610950695}
+  m_GameObject: {fileID: 5192286894031020569}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4787242619659100329
+--- !u!114 &5153756925990955604
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5151729743610950695}
+  m_GameObject: {fileID: 5192286894031020569}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 815ee676cc6979b4b80e19a80fe583e8, type: 3}
+  m_Script: {fileID: 11500000, guid: 5933e69f9a16a6a44a0f934bafa001f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalHealth: 100
-  currentHealth: 0
-  totalEnergy: 100
-  currentEnergy: 0
-  energyRequired: 0
-  attackDamage: 0
-  attackRange: 0
-  firstAttackDamage: 50
-  firstAttackRange: 2
-  firstAttackEnergyRequired: 5
-  secondAttackDamage: 25
-  secondAttackRange: 4
-  secondAttackEnergyRequired: 8
-  bleedLevel: 0
-  isBleeding: 0
-  bleedDamage: 0
-  attacking: 0
-  movementRange: 2
-  unitTeamColor: 0
-  unitSelected: 0
-  firstAttackButton: {fileID: 0}
-  secondAttackButton: {fileID: 0}
-  damageTextStaysUpForSeconds: 0
-  lastDamageAmount: 0
-  damageText: {fileID: 0}
-  damagePanel: {fileID: 0}
-  panel: {fileID: 0}
-  attackRangeDisplay: {fileID: 0}
-  targets: []
-  unitLocation: {x: 0, y: 0, z: 0}
-  ownTestPlayerMovement: {fileID: 0}
-  testTileCalculator: {fileID: 0}
-  turnTracker: {fileID: 0}
-  mageTotalHealth: 80
-  mageTotalEnergy: 0
-  mageFirstAttackDamage: 80
-  mageFirstAttackRange: 6
-  mageFirstAttackEnergyRequired: 0
-  mageSecondAttackDamage: 80
-  mageSecondAttackRange: 6
-  mageSecondAttackEnergyRequired: 0
-  normalBlast: 0
-  explosiveBlast: 0
-  blast: {fileID: 0}
-  blastStartLocation: {fileID: 0}
-  currentEnemy: {fileID: 0}
-  worldHealthBar: {fileID: 0}
-  localHealthBar: {fileID: 0}
-  blastSpeed: 0
-  blastRange: 0
-  friendlyFire: 0
-  friendlyFireDamageReduction: 40
-  blastLocation: {x: 0, y: 0, z: 0}
-  explodeTargets: {fileID: 0}
-  enemyTargets: []
-  friendlyTargets: []
+  arrowSpeed: 2
+  arrowGoDown: 0
+  archer: {fileID: 6999773337269664831, guid: 2db08bf22a1c5a140a8d113b58c0ca51, type: 3}

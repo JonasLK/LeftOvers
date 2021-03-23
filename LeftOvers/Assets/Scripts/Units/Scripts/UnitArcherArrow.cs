@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitArcherArrow : UnitArcher
+public class UnitArcherArrow : MonoBehaviour
 {
     public float arrowSpeed;
 
     public bool arrowGoDown;
 
-    new void Start()
+    public UnitArcher archer;
+
+    void Start()
     {
         arrowGoDown = false;
     }
@@ -20,14 +22,14 @@ public class UnitArcherArrow : UnitArcher
 
     public void ArrowMovement()
     {
-        if (arrowForward == true)
+        if (archer.arrowForward == true)
         {
             ArrowMove();
 
             LookAt();
         }
 
-        if (arrowUp == true)
+        if (archer.arrowUp == true)
         {
             ArrowMove();
 
@@ -61,7 +63,7 @@ public class UnitArcherArrow : UnitArcher
 
     public void LookAt()
     {
-        transform.LookAt(transform.position + currentEnemy.transform.forward);
+        transform.LookAt(transform.position + archer.currentEnemy.transform.forward);
     }
 
     private void OnCollisionEnter(Collision col)
@@ -73,12 +75,12 @@ public class UnitArcherArrow : UnitArcher
 
         if (col.gameObject.tag == "Unit")
         {
-            currentEnemy.GetComponent<Unit>().TakeDamage(attackDamage);
+            archer.currentEnemy.GetComponent<Unit>().TakeDamage(archer.attackDamage);
 
             Destroy(gameObject);
         }
 
-        arrowForward = false;
-        arrowUp = false;
+        archer.arrowForward = false;
+        archer.arrowUp = false;
     }
 }
