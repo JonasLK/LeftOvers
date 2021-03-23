@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6655881519782731437}
   - component: {fileID: 7778186525005811976}
   - component: {fileID: 5482389443860194754}
+  - component: {fileID: 5106407610744409564}
+  - component: {fileID: 4447751589898278824}
   m_Layer: 0
   m_Name: Dirt Tile 1
   m_TagString: Untagged
@@ -79,3 +81,37 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &5106407610744409564
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6275097950512006167}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3131328, y: 0.25, z: 1.2259891}
+  m_Center: {x: -0.0016686916, y: -0.125, z: 0.038998723}
+--- !u!114 &4447751589898278824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6275097950512006167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa6d7f2099452594d9d23496e1f0124f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstTile: 0
+  untraversable: 0
+  occupied: 0
+  resetValue: 1000
+  movementDistance: 0
+  teamStartTile: 0
+  surroundingTiles: []
+  rangeDisplay: {fileID: 0}
+  testTileCalculator: {fileID: 0}
