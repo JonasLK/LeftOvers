@@ -6,7 +6,6 @@ public class SellButton : MonoBehaviour
 {
 
     public GameObject gameObjectToRemove;
-    public PlayerUnitSlots playerUnitSlots;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +21,7 @@ public class SellButton : MonoBehaviour
 
     public void SellUnit()
     {
-
+        GameManager.playerUnitSlots.SellUnit(gameObjectToRemove);
+        Destroy(gameObject);
     }
 }

@@ -34,10 +34,15 @@ public class PlayerUnitSlots : MonoBehaviour
 
     public void BuyUnit(GameObject boughtUnit)
     {
-        if(currentPlayerSelect == 1)
+        justSpawnedButton = Instantiate(buttonToInstanciate, new Vector3(0f, 0f, 0f), Quaternion.identity, GameObject.FindGameObjectWithTag("UnitSell").transform);
+        justSpawnedButton.GetComponent<TextMeshProUGUI>().text = "Sell " + boughtUnit.GetComponent<UnitTransferToScene>().className;
+        justSpawnedButton.GetComponent<SellButton>().gameObjectToRemove = boughtUnit;
+
+        if (currentPlayerSelect == 1)
         {
             unitsPlayer1.Add(boughtUnit);
-        }else if (currentPlayerSelect == 2)
+        }
+        else if (currentPlayerSelect == 2)
         {
             unitsPlayer2.Add(boughtUnit);
         }else if (currentPlayerSelect == 3)
@@ -48,14 +53,29 @@ public class PlayerUnitSlots : MonoBehaviour
             unitsPlayer4.Add(boughtUnit);
         }
 
-        justSpawnedButton = Instantiate(buttonToInstanciate, new Vector3(0f, 0f, 0f), Quaternion.identity, GameObject.FindGameObjectWithTag("UnitSell").transform);
-
         playerCurrentUnits[currentPlayerSelect - 1] -= 1;
         UpdateUnitSlotText();
     }
 
-    public void SellUnit()
+    public void SellUnit(GameObject boughtUnit)
     {
+        if (currentPlayerSelect == 1)
+        {
+            unitsPlayer1.Remove(boughtUnit);
+        }
+        else if (currentPlayerSelect == 2)
+        {
+            unitsPlayer2.Remove(boughtUnit);
+        }
+        else if (currentPlayerSelect == 3)
+        {
+            unitsPlayer3.Remove(boughtUnit);
+        }
+        else if (currentPlayerSelect == 4)
+        {
+            unitsPlayer4.Remove(boughtUnit);
+        }
+
         playerCurrentUnits[currentPlayerSelect - 1] += 1;
         UpdateUnitSlotText();
     }
