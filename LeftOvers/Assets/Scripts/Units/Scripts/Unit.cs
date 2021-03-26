@@ -5,36 +5,37 @@ using UnityEngine.UI;
 
 public class Unit : MonoBehaviour
 {
-    public int totalHealth = 100;
+    public int totalHealth;
     public int currentHealth;
 
-    public int totalEnergy = 100;
+    public int totalEnergy;
     public int currentEnergy;
-
     public int energyRequired;
-
     public int lastEnergyTaken;
-
     public int energyPerTurn;
 
     public int attackDamage;
     public float attackRange;
 
-    public int firstAttackDamage = 50;
-    public float firstAttackRange = 2f;
-    public int firstAttackEnergyRequired = 5;
-    public int secondAttackDamage = 25;
-    public float secondAttackRange = 4f;
-    public int secondAttackEnergyRequired = 8;
+    public int firstAttackDamage;
+    public float firstAttackRange;
+    public int firstAttackEnergyRequired;
+    public int secondAttackDamage;
+    public float secondAttackRange;
+    public int secondAttackEnergyRequired;
 
     public float bleedLevel;
-
     public bool isBleeding;
-
     public int bleedDamage;
 
-    [HideInInspector] public bool attacking;
+    public float stunLevel;
+    public bool isStunned;
+    public bool recentlyStunned;
+    public bool alreadyStunned;
+    public float stunImmunity;
+    public float stunImmunityLength;
 
+    [HideInInspector] public bool attacking;
     [HideInInspector] public bool canAttack;
 
     public float movementRange = 2f;
@@ -47,11 +48,8 @@ public class Unit : MonoBehaviour
     public Button secondAttackButton;
 
     public float damageTextStaysUpForSeconds;
-
     public int lastDamageAmount;
-
     public Text damageText;
-
     public GameObject damagePanel;
 
     public GameObject panel;
@@ -60,21 +58,20 @@ public class Unit : MonoBehaviour
 
     private GameObject clickedUnit;
 
-    public List<GameObject> targets = new List<GameObject>();
+    [HideInInspector] public List<GameObject> targets = new List<GameObject>();
 
-    public Vector3 unitLocation;
+    [HideInInspector] public Vector3 unitLocation;
 
     [HideInInspector] public TestPlayerMovement ownTestPlayerMovement;
 
     [HideInInspector] public TestTileCalculator testTileCalculator;
 
+    //General Section - Mostly used for setting stats.
+
     public void UnitStart()
     {
         unitSelected = false;
         ownTestPlayerMovement = GetComponent<TestPlayerMovement>();
-
-        //firstAttackButton.onClick.AddListener(FirstAttackSelect);
-        //secondAttackButton.onClick.AddListener(SecondAttackSelect);
 
         attacking = false;
 
@@ -82,17 +79,22 @@ public class Unit : MonoBehaviour
 
         isBleeding = false;
 
+        isStunned = false;
+
         canAttack = true;
     }
 
+    public virtual void SetStats()
+    {
+        currentHealth = totalHealth;
+        currentEnergy = totalEnergy;
+    }
+
+    //Attack Section - Everything to do with Attacking enemy Units
+
     void Update()
     {
-        if (attacking == true && Input.GetMouseButtonDown(1))
-        {
-            print("CancelAttack");
-
-            CancelAttack();
-        }
+        CancelAttack();
     }
 
     public void CanAttack()
@@ -128,6 +130,8 @@ public class Unit : MonoBehaviour
 
         EnergyManagement();
 
+        IsStunned();
+
         attacking = true;
         OpenPanel();
         CheckIfInRange(attackRange);
@@ -141,6 +145,8 @@ public class Unit : MonoBehaviour
         attackRange = secondAttackRange;
 
         EnergyManagement();
+
+        IsStunned();
 
         attacking = true;
         OpenPanel();
@@ -236,23 +242,24 @@ public class Unit : MonoBehaviour
 
     public virtual void CancelAttack()
     {
-        GetComponent<TestTileCalculator>().ShowMovementRange();
-
-        lastEnergyTaken += currentEnergy;
-
-        if(currentEnergy > totalEnergy)
+        if (attacking == true && Input.GetMouseButtonDown(1))
         {
-            currentEnergy = totalEnergy;
+            print("CancelAttack");
+
+            GetComponent<TestTileCalculator>().ShowMovementRange();
+
+            lastEnergyTaken += currentEnergy;
+
+            if (currentEnergy > totalEnergy)
+            {
+                currentEnergy = totalEnergy;
+            }
+
+            attacking = false;
         }
-
-        attacking = false;
     }
 
-    public virtual void SetStats()
-    {
-        currentHealth = totalHealth;
-        currentEnergy = totalEnergy;
-    }
+    //Health Section - Everything to do with taking damage, getting healed and dying.
 
     public void GetHealed(int healAmount)
     {
@@ -266,15 +273,7 @@ public class Unit : MonoBehaviour
 
     public void ApplyBleeding(float bleedLvl)
     {
-        if (bleedLevel > 0)
-        {
-            bleedLevel += bleedLvl;
-        }
-
-        if (bleedLevel == 0)
-        {
-            bleedLevel = bleedLvl;
-        }
+        bleedLevel = bleedLvl;
 
         isBleeding = true;
     }
@@ -285,9 +284,54 @@ public class Unit : MonoBehaviour
 
         bleedLevel -= 1;
 
-        if(bleedLevel == 0)
+        if (bleedLevel == 0)
         {
             isBleeding = false;
+        }
+    }
+
+    public void ApplyStun(float stunLvl)
+    {
+        if (alreadyStunned == true)
+        {
+            if (stunImmunity == 0)
+            {
+                alreadyStunned = false;
+            }
+            if(stunImmunity > 0)
+            {
+                stunImmunity -= 1;
+            }
+        }
+
+        if (alreadyStunned == false)
+        {
+            stunLevel = stunLvl;
+
+            alreadyStunned = true;
+            stunImmunity = stunImmunityLength;
+            isStunned = true;
+        }
+    }
+
+    public void IsStunned()
+    {
+        if (isStunned == true)
+        {
+            return;
+        }
+    }
+
+    public void StunCounter()
+    {
+        if(stunLevel > 0)
+        {
+            stunLevel -= 1;
+
+            if (stunLevel == 0)
+            {
+                isStunned = false;
+            }
         }
     }
 

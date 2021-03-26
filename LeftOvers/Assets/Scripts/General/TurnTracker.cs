@@ -116,6 +116,11 @@ public class TurnTracker : MonoBehaviour
                 playerUnit.GetComponent<Unit>().BleedDamageDeal();
             }
 
+            if (playerUnit.GetComponent<Unit>().isStunned == true)
+            {
+                playerUnit.GetComponent<Unit>().StunCounter();
+            }
+
             playerUnit.GetComponent<Unit>().EnergyPerTurn();
 
             playerUnit.GetComponent<Unit>().CanAttack();

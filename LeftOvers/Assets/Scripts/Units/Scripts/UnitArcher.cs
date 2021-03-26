@@ -7,6 +7,10 @@ public class UnitArcher : Unit
     public int archerTotalHealth;
     public int archerTotalEnergy;
 
+    public UnitHealthBar worldHealthBar;
+    public UnitHealthBar localHealthBar;
+    public UnitEnergyBar energyBar;
+
     public int archerFirstAttackDamage = 40;
     public float archerFirstAttackRange = 8;
     public int archerFirstAttackEnergyRequired;
@@ -16,16 +20,11 @@ public class UnitArcher : Unit
 
     public bool arrowUp;
     public bool arrowForward;
-
     public GameObject arrow;
     public Transform arrowStartLocation;
 
     public GameObject currentEnemy;
 
-    public UnitHealthBar worldHealthBar;
-    public UnitHealthBar localHealthBar;
-
-    public UnitEnergyBar energyBar;
     public void Start()
     {
         arrowForward = false;

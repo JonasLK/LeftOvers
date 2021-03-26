@@ -9,8 +9,17 @@ public class UnitFighter : Unit
 
     public UnitHealthBar worldHealthBar;
     public UnitHealthBar localHealthBar;
-
     public UnitEnergyBar energyBar;
+
+    public int fighterFirstAttackDamage = 40;
+    public float fighterFirstAttackRange = 8;
+    public int fighterFirstAttackEnergyRequired;
+    public int fighterSecondAttackDamage = 30;
+    public float fighterSecondAttackRange = 6;
+    public int fighterSecondAttackEnergyRequired;
+
+    public float stunLength;
+    public bool stunAttack;
     public void Start()
     {
         SetStats();
@@ -18,13 +27,22 @@ public class UnitFighter : Unit
         worldHealthBar.SetMaxHealth(fighterTotalHealth);
         localHealthBar.SetMaxHealth(fighterTotalHealth);
         energyBar.SetMaxEnergy(fighterTotalEnergy);
+
+        firstAttackDamage = fighterFirstAttackDamage;
+        firstAttackRange = fighterFirstAttackRange;
+        firstAttackEnergyRequired = fighterFirstAttackEnergyRequired;
+        secondAttackDamage = fighterSecondAttackDamage;
+        secondAttackRange = fighterSecondAttackRange;
+        secondAttackEnergyRequired = fighterSecondAttackEnergyRequired;
+
+        stunAttack = false;
     }
 
-    public override void TakeDamage(int enemyAttackDamage)
+    public override void SetStats()
     {
-        base.TakeDamage(enemyAttackDamage);
-        worldHealthBar.SetHealth(currentHealth);
-        localHealthBar.SetHealth(currentHealth);
+        totalHealth = fighterTotalHealth;
+        totalEnergy = fighterTotalEnergy;
+        base.SetStats();
     }
 
     public override void FirstAttackSelect()
@@ -38,20 +56,35 @@ public class UnitFighter : Unit
     {
         base.SecondAttackSelect();
 
+        stunAttack = true;
+
         energyBar.SetEnergy(currentEnergy);
     }
-
-    public override void SetStats()
+    public override void Attacking(GameObject enemyTarget)
     {
-        totalHealth = fighterTotalHealth;
-        totalEnergy = fighterTotalEnergy;
-        base.SetStats();
-    }
+        base.Attacking(enemyTarget);
 
+        if(stunAttack == true)
+        {
+            enemyTarget.GetComponent<Unit>().ApplyStun(stunLength);
+
+            stunAttack = false;
+        }
+    }
     public override void CancelAttack()
     {
         base.CancelAttack();
+
+        stunAttack = false;
+
         energyBar.SetEnergy(currentEnergy);
+    }
+
+    public override void TakeDamage(int enemyAttackDamage)
+    {
+        base.TakeDamage(enemyAttackDamage);
+        worldHealthBar.SetHealth(currentHealth);
+        localHealthBar.SetHealth(currentHealth);
     }
 
     public override void Death()
