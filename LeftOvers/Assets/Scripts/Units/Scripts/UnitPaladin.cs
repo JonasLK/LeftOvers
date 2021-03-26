@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class UnitPaladin : Unit
 {
-    public int paladinTotalHealth = 250;
-    public int paladinTotalEnergy;
-
-    public int paladinFirstAttackDamage;
-    public float paladinFirstAttackRange;
-    public int paladinFirstAttackEnergyRequired;
-
-    public int paladinHolyHealAmount = 40;
-    public int paladinHolyDamageBuffAmount = 20;
-    public bool paladinHolyDamageBuff;
-    public int paladinHolyLightEnergyRequired;
+    public int paladinTotalHealth = 200;
+    public int paladinTotalEnergy = 100;
 
     public UnitHealthBar worldHealthBar;
     public UnitHealthBar localHealthBar;
-
     public UnitEnergyBar energyBar;
+
+    public int paladinFirstAttackDamage = 40;
+    public float paladinFirstAttackRange = 2;
+    public int paladinFirstAttackEnergyRequired = 40;
+
+    public int paladinHealAmount = 40;
+    public int paladinDamageBuff = 20;
+    public int paladinDamageBuffDefault = 20;
+    public bool paladinBuff;
+    public int paladinHolyLightEnergyRequired = 50;
+
+    //General Section - Mostly used for setting stats.
+
     public void Start()
     {
         SetStats();
@@ -32,15 +35,17 @@ public class UnitPaladin : Unit
         firstAttackEnergyRequired = paladinFirstAttackEnergyRequired;
         secondAttackEnergyRequired = paladinHolyLightEnergyRequired;
 
-        paladinHolyDamageBuff = false;
+        paladinBuff = false;
+    }
+    
+    public override void SetStats()
+    {
+        totalHealth = paladinTotalHealth;
+        totalEnergy = paladinTotalEnergy;
+        base.SetStats();
     }
 
-    public override void TakeDamage(int enemyAttackDamage)
-    {
-        base.TakeDamage(enemyAttackDamage);
-        worldHealthBar.SetHealth(currentHealth);
-        localHealthBar.SetHealth(currentHealth);
-    }
+    //Attack Section - Everything to do with Attacking enemy Units.
 
     public override void FirstAttackSelect()
     {
@@ -72,9 +77,9 @@ public class UnitPaladin : Unit
             {
                 print("Attacking - 3");
 
-                if (paladinHolyDamageBuff == true)
+                if (paladinBuff == true)
                 {
-                    attackDamage += paladinHolyDamageBuffAmount;
+                    attackDamage += paladinDamageBuff;
 
                     enemyTarget.GetComponent<Unit>().TakeDamage(attackDamage);
                 }
@@ -85,7 +90,8 @@ public class UnitPaladin : Unit
 
                 GetComponent<TestTileCalculator>().ShowMovementRange();
 
-                paladinHolyDamageBuff = false;
+                paladinDamageBuff = paladinDamageBuffDefault;
+                paladinBuff = false;
                 attacking = false;
 
                 energyBar.SetEnergy(currentEnergy);
@@ -95,21 +101,19 @@ public class UnitPaladin : Unit
 
     public void HolyLightAbility()
     {
-        currentHealth += paladinHolyHealAmount;
+        currentHealth += paladinHealAmount;
 
         if (currentHealth > totalHealth)
         {
             currentHealth = totalHealth;
         }
 
-        paladinHolyDamageBuff = true;
-    }
+        if (paladinBuff == true)
+        {
+            paladinDamageBuff += paladinDamageBuffDefault;
+        }
 
-    public override void SetStats()
-    {
-        totalHealth = paladinTotalHealth;
-        totalEnergy = paladinTotalEnergy;
-        base.SetStats();
+        paladinBuff = true;
     }
 
     public override void CancelAttack()
@@ -118,6 +122,14 @@ public class UnitPaladin : Unit
         energyBar.SetEnergy(currentEnergy);
     }
 
+    //Health Section - Everything to do with taking damage, getting healed and dying.
+
+    public override void TakeDamage(int enemyAttackDamage)
+    {
+        base.TakeDamage(enemyAttackDamage);
+        worldHealthBar.SetHealth(currentHealth);
+        localHealthBar.SetHealth(currentHealth);
+    }
 
     public override void Death()
     {

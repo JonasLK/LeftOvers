@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UnitArcher : Unit
 {
-    public int archerTotalHealth;
-    public int archerTotalEnergy;
+    public int archerTotalHealth = 120;
+    public int archerTotalEnergy = 120;
 
     public UnitHealthBar worldHealthBar;
     public UnitHealthBar localHealthBar;
@@ -13,10 +13,10 @@ public class UnitArcher : Unit
 
     public int archerFirstAttackDamage = 40;
     public float archerFirstAttackRange = 8;
-    public int archerFirstAttackEnergyRequired;
-    public int archerSecondAttackDamage = 30;
+    public int archerFirstAttackEnergyRequired = 30;
+    public int archerSecondAttackDamage = 40;
     public float archerSecondAttackRange = 6;
-    public int archerSecondAttackEnergyRequired;
+    public int archerSecondAttackEnergyRequired = 50;
 
     public bool arrowUp;
     public bool arrowForward;
@@ -24,6 +24,8 @@ public class UnitArcher : Unit
     public Transform arrowStartLocation;
 
     public GameObject currentEnemy;
+
+    //General Section - Mostly used for setting stats.
 
     public void Start()
     {
@@ -44,6 +46,15 @@ public class UnitArcher : Unit
         secondAttackEnergyRequired = archerSecondAttackEnergyRequired;
     }
 
+    public override void SetStats()
+    {
+        totalHealth = archerTotalHealth;
+        totalEnergy = archerTotalEnergy;
+        base.SetStats();
+    }
+
+    //Attack Section - Everything to do with Attacking enemy Units.
+
     public override void FirstAttackSelect()
     {
         base.FirstAttackSelect();
@@ -62,13 +73,6 @@ public class UnitArcher : Unit
         energyBar.SetEnergy(currentEnergy);
     }
 
-    public override void TakeDamage(int enemyAttackDamage)
-    {
-        base.TakeDamage(enemyAttackDamage);
-        worldHealthBar.SetHealth(currentHealth);
-        localHealthBar.SetHealth(currentHealth);
-    }
-
     public override void Attacking(GameObject enemyTarget)
     {
         print("Attacking - 1");
@@ -85,20 +89,11 @@ public class UnitArcher : Unit
 
                 currentEnemy = enemyTarget;
 
-                //enemyTarget.GetComponent<Unit>().TakeDamage(attackDamage);
-
                 GetComponent<TestTileCalculator>().ShowMovementRange();
 
                 attacking = false;
             }
         }
-    }
-
-    public override void SetStats()
-    {
-        totalHealth = archerTotalHealth;
-        totalEnergy = archerTotalEnergy;
-        base.SetStats();
     }
 
     public override void CancelAttack()
@@ -107,6 +102,14 @@ public class UnitArcher : Unit
         energyBar.SetEnergy(currentEnergy);
     }
 
+    //Health Section - Everything to do with taking damage, getting healed and dying.
+
+    public override void TakeDamage(int enemyAttackDamage)
+    {
+        base.TakeDamage(enemyAttackDamage);
+        worldHealthBar.SetHealth(currentHealth);
+        localHealthBar.SetHealth(currentHealth);
+    }
 
     public override void Death()
     {

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UnitMageBlast : MonoBehaviour
 {
-    public float blastSpeed;
-    public float blastRange;
+    public float blastSpeed = 2;
+    public float blastRange = 6;
 
     public bool friendlyFire;
 
@@ -140,13 +140,16 @@ public class UnitMageBlast : MonoBehaviour
             target.GetComponent<Unit>().TakeDamage(mage.attackDamage);
         }
 
-        foreach(GameObject fUnit in friendlyTargets)
+        foreach (GameObject fUnit in friendlyTargets)
         {
             if (friendlyFire == true)
             {
                 target = fUnit;
 
-                mage.attackDamage -= friendlyFireDamageReduction;
+                if (target != mage)
+                {
+                    mage.attackDamage -= friendlyFireDamageReduction;
+                }
 
                 target.GetComponent<Unit>().TakeDamage(mage.attackDamage);
             }

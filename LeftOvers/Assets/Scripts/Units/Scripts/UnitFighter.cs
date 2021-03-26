@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class UnitFighter : Unit
 {
-    public int fighterTotalHealth;
-    public int fighterTotalEnergy;
+    public int fighterTotalHealth = 160;
+    public int fighterTotalEnergy = 100;
 
     public UnitHealthBar worldHealthBar;
     public UnitHealthBar localHealthBar;
     public UnitEnergyBar energyBar;
 
-    public int fighterFirstAttackDamage = 60;
+    public int fighterFirstAttackDamage = 50;
     public float fighterFirstAttackRange = 2;
-    public int fighterFirstAttackEnergyRequired;
+    public int fighterFirstAttackEnergyRequired = 40;
     public int fighterSecondAttackDamage = 20;
     public float fighterSecondAttackRange = 4;
-    public int fighterSecondAttackEnergyRequired;
+    public int fighterSecondAttackEnergyRequired = 40;
 
-    public float stunLength;
+    public float stunLength = 2;
     public bool stunAttack;
 
     //General Section - Mostly used for setting stats.
@@ -48,7 +48,7 @@ public class UnitFighter : Unit
         base.SetStats();
     }
 
-    //Attack Section - Everything to do with Attacking enemy Units
+    //Attack Section - Everything to do with Attacking enemy Units.
 
     public override void FirstAttackSelect()
     {

@@ -12,7 +12,7 @@ public class Unit : MonoBehaviour
     public int currentEnergy;
     public int energyRequired;
     public int lastEnergyTaken;
-    public int energyPerTurn;
+    public int energyPerTurn = 20;
 
     public int attackDamage;
     public float attackRange;
@@ -90,7 +90,7 @@ public class Unit : MonoBehaviour
         currentEnergy = totalEnergy;
     }
 
-    //Attack Section - Everything to do with Attacking enemy Units
+    //Attack Section - Everything to do with Attacking enemy Units.
 
     void Update()
     {
@@ -104,9 +104,11 @@ public class Unit : MonoBehaviour
 
     public void ClickOnUnit()
     {
+        print("ClickOnUnit - 1");
+
         if (canAttack == true)
         {
-            print("ClickOnUnit - 1");
+            print("ClickOnUnit - 2");
 
             OpenPanel();
         }

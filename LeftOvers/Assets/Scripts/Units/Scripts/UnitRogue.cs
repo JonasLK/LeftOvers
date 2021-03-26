@@ -4,23 +4,26 @@ using UnityEngine;
 
 public class UnitRogue : Unit
 {
-    public int rogueTotalHealth;
-    public int rogueTotalEnergy;
-
-    public int rogueFirstAttackDamage;
-    public float rogueFirstAttackRange;
-    public int rogueFirstAttackEnergyRequired;
-    public int rogueSecondAttackDamage;
-    public float rogueSecondAttackRange;
-    public int rogueSecondAttackEnergyRequired;
-
-    public bool bleedAttack;
-    public float giveBleedLevel;
+    public int rogueTotalHealth = 120;
+    public int rogueTotalEnergy = 160;
 
     public UnitHealthBar worldHealthBar;
     public UnitHealthBar localHealthBar;
-
     public UnitEnergyBar energyBar;
+
+    public int rogueFirstAttackDamage = 70;
+    public float rogueFirstAttackRange = 2;
+    public int rogueFirstAttackEnergyRequired = 40;
+    public int rogueSecondAttackDamage = 20;
+    public float rogueSecondAttackRange = 2;
+    public int rogueSecondAttackEnergyRequired = 60;
+
+    public bool bleedAttack;
+    public float giveBleedLevel = 2;
+    public int bleedDmg = 25;
+
+    //General Section - Mostly used for setting stats.
+
     public void Start()
     {
         SetStats();
@@ -35,15 +38,18 @@ public class UnitRogue : Unit
         secondAttackRange = rogueSecondAttackRange;
         secondAttackEnergyRequired = rogueSecondAttackEnergyRequired;
 
+        bleedDamage = bleedDmg;
         bleedAttack = false;
     }
 
-    public override void TakeDamage(int enemyAttackDamage)
+    public override void SetStats()
     {
-        base.TakeDamage(enemyAttackDamage);
-        worldHealthBar.SetHealth(currentHealth);
-        localHealthBar.SetHealth(currentHealth);
+        totalHealth = rogueTotalHealth;
+        totalEnergy = rogueTotalEnergy;
+        base.SetStats();
     }
+
+    //Attack Section - Everything to do with Attacking enemy Units.
 
     public override void FirstAttackSelect()
     {
@@ -98,11 +104,13 @@ public class UnitRogue : Unit
         energyBar.SetEnergy(currentEnergy);
     }
 
-    public override void SetStats()
+    //Health Section - Everything to do with taking damage, getting healed and dying.
+
+    public override void TakeDamage(int enemyAttackDamage)
     {
-        totalHealth = rogueTotalHealth;
-        totalEnergy = rogueTotalEnergy;
-        base.SetStats();
+        base.TakeDamage(enemyAttackDamage);
+        worldHealthBar.SetHealth(currentHealth);
+        localHealthBar.SetHealth(currentHealth);
     }
 
     public override void Death()

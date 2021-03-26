@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class UnitMage : Unit
 {
-    public int mageTotalHealth = 80;
-    public int mageTotalEnergy;
+    public int mageTotalHealth = 100;
+    public int mageTotalEnergy = 120;
+
+    public UnitHealthBar worldHealthBar;
+    public UnitHealthBar localHealthBar;
+    public UnitEnergyBar energyBar;
 
     public int mageFirstAttackDamage = 80;
     public float mageFirstAttackRange = 6;
-    public int mageFirstAttackEnergyRequired;
-    public int mageSecondAttackDamage = 80;
-    public float mageSecondAttackRange = 6;
-    public int mageSecondAttackEnergyRequired;
+    public int mageFirstAttackEnergyRequired = 50;
+    public int mageSecondAttackDamage = 100;
+    public float mageSecondAttackRange = 8;
+    public int mageSecondAttackEnergyRequired = 100;
 
     public bool normalBlast;
     public bool explosiveBlast;
@@ -22,10 +26,8 @@ public class UnitMage : Unit
 
     public GameObject currentEnemy;
 
-    public UnitHealthBar worldHealthBar;
-    public UnitHealthBar localHealthBar;
+    //General Section - Mostly used for setting stats.
 
-    public UnitEnergyBar energyBar;
     public void Start()
     {
         SetStats();
@@ -44,6 +46,15 @@ public class UnitMage : Unit
         explosiveBlast = false;
     }
 
+    public override void SetStats()
+    {
+        totalHealth = mageTotalHealth;
+        totalEnergy = mageTotalEnergy;
+        base.SetStats();
+    }
+
+    //Attack Section - Everything to do with Attacking enemy Units.
+
     public override void FirstAttackSelect()
     {
         normalBlast = true;
@@ -60,13 +71,6 @@ public class UnitMage : Unit
         base.SecondAttackSelect();
 
         energyBar.SetEnergy(currentEnergy);
-    }
-
-    public override void TakeDamage(int enemyAttackDamage)
-    {
-        base.TakeDamage(enemyAttackDamage);
-        worldHealthBar.SetHealth(currentHealth);
-        localHealthBar.SetHealth(currentHealth);
     }
 
     public override void Attacking(GameObject enemyTarget)
@@ -92,19 +96,20 @@ public class UnitMage : Unit
         }
     }
 
-    public override void SetStats()
-    {
-        totalHealth = mageTotalHealth;
-        totalEnergy = mageTotalEnergy;
-        base.SetStats();
-    }
-
     public override void CancelAttack()
     {
         base.CancelAttack();
         energyBar.SetEnergy(currentEnergy);
     }
 
+    //Health Section - Everything to do with taking damage, getting healed and dying.
+
+    public override void TakeDamage(int enemyAttackDamage)
+    {
+        base.TakeDamage(enemyAttackDamage);
+        worldHealthBar.SetHealth(currentHealth);
+        localHealthBar.SetHealth(currentHealth);
+    }
 
     public override void Death()
     {

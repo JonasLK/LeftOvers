@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class UnitPriest : Unit
 {
-    public int priestTotalHealth;
-    public int priestTotalEnergy;
-
-    public int priestFirstHealAmount = 50;
-    public float priestFirstHealRange = 2f;
-    public int priestFirstHealEnergyRequired;
-    public int priestSecondHealAmount = 20;
-    public float priestSecondHealRange = 6f;
-    public int priestSecondHealEnergyRequired;
+    public int priestTotalHealth = 100;
+    public int priestTotalEnergy = 100;
 
     public UnitHealthBar worldHealthBar;
     public UnitHealthBar localHealthBar;
-
     public UnitEnergyBar energyBar;
+
+    public int priestFirstHealAmount = 50;
+    public float priestFirstHealRange = 2f;
+    public int priestFirstHealEnergyRequired = 40;
+    public int priestSecondHealAmount = 80;
+    public float priestSecondHealRange = 6f;
+    public int priestSecondHealEnergyRequired = 100;
+
+    //General Section - Mostly used for setting stats.
+
     public void Start()
     {
         SetStats();
@@ -33,12 +35,14 @@ public class UnitPriest : Unit
         secondAttackEnergyRequired = priestSecondHealEnergyRequired;
     }
 
-    public override void TakeDamage(int enemyAttackDamage)
+    public override void SetStats()
     {
-        base.TakeDamage(enemyAttackDamage);
-        worldHealthBar.SetHealth(currentHealth);
-        localHealthBar.SetHealth(currentHealth);
+        totalHealth = priestTotalHealth;
+        totalEnergy = priestTotalEnergy;
+        base.SetStats();
     }
+
+    //Attack Section - Everything to do with Attacking enemy Units.
 
     public override void FirstAttackSelect()
     {
@@ -101,19 +105,20 @@ public class UnitPriest : Unit
         }
     }
 
-    public override void SetStats()
-    {
-        totalHealth = priestTotalHealth;
-        totalEnergy = priestTotalEnergy;
-        base.SetStats();
-    }
-
     public override void CancelAttack()
     {
         base.CancelAttack();
         energyBar.SetEnergy(currentEnergy);
     }
 
+    //Health Section - Everything to do with taking damage, getting healed and dying.
+
+    public override void TakeDamage(int enemyAttackDamage)
+    {
+        base.TakeDamage(enemyAttackDamage);
+        worldHealthBar.SetHealth(currentHealth);
+        localHealthBar.SetHealth(currentHealth);
+    }
 
     public override void Death()
     {
