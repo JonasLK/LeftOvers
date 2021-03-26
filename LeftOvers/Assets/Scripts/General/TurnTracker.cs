@@ -117,6 +117,8 @@ public class TurnTracker : MonoBehaviour
             }
 
             playerUnit.GetComponent<Unit>().EnergyPerTurn();
+
+            playerUnit.GetComponent<Unit>().CanAttack();
         }
     }
 

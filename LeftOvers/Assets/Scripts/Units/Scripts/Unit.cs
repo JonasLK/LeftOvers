@@ -35,6 +35,8 @@ public class Unit : MonoBehaviour
 
     [HideInInspector] public bool attacking;
 
+    [HideInInspector] public bool canAttack;
+
     public float movementRange = 2f;
 
     public int unitTeamColor;
@@ -79,6 +81,8 @@ public class Unit : MonoBehaviour
         bleedLevel = 0;
 
         isBleeding = false;
+
+        canAttack = true;
     }
 
     void Update()
@@ -89,6 +93,11 @@ public class Unit : MonoBehaviour
 
             CancelAttack();
         }
+    }
+
+    public void CanAttack()
+    {
+        canAttack = true;
     }
 
     public void ClickOnUnit()
@@ -217,6 +226,8 @@ public class Unit : MonoBehaviour
                 enemyTarget.GetComponent<Unit>().TakeDamage(attackDamage);
 
                 GetComponent<TestTileCalculator>().ShowMovementRange();
+
+                canAttack = false;
 
                 attacking = false;
             }
