@@ -11,15 +11,18 @@ public class UnitFighter : Unit
     public UnitHealthBar localHealthBar;
     public UnitEnergyBar energyBar;
 
-    public int fighterFirstAttackDamage = 40;
-    public float fighterFirstAttackRange = 8;
+    public int fighterFirstAttackDamage = 60;
+    public float fighterFirstAttackRange = 2;
     public int fighterFirstAttackEnergyRequired;
-    public int fighterSecondAttackDamage = 30;
-    public float fighterSecondAttackRange = 6;
+    public int fighterSecondAttackDamage = 20;
+    public float fighterSecondAttackRange = 4;
     public int fighterSecondAttackEnergyRequired;
 
     public float stunLength;
     public bool stunAttack;
+
+    //General Section - Mostly used for setting stats.
+
     public void Start()
     {
         SetStats();
@@ -44,6 +47,8 @@ public class UnitFighter : Unit
         totalEnergy = fighterTotalEnergy;
         base.SetStats();
     }
+
+    //Attack Section - Everything to do with Attacking enemy Units
 
     public override void FirstAttackSelect()
     {
@@ -79,6 +84,8 @@ public class UnitFighter : Unit
 
         energyBar.SetEnergy(currentEnergy);
     }
+
+    //Health Section - Everything to do with taking damage, getting healed and dying.
 
     public override void TakeDamage(int enemyAttackDamage)
     {

@@ -104,9 +104,12 @@ public class Unit : MonoBehaviour
 
     public void ClickOnUnit()
     {
-        print("ClickOnUnit - 1");
+        if (canAttack == true)
+        {
+            print("ClickOnUnit - 1");
 
-        OpenPanel();
+            OpenPanel();
+        }
     }
 
     public void OpenPanel()
