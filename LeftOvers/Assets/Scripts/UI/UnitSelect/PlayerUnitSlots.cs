@@ -40,16 +40,20 @@ public class PlayerUnitSlots : MonoBehaviour
 
         if (currentPlayerSelect == 1)
         {
+            boughtUnit.GetComponent<UnitTransferToScene>().teamNumber = currentPlayerSelect;
             unitsPlayer1.Add(boughtUnit);
         }
         else if (currentPlayerSelect == 2)
         {
+            boughtUnit.GetComponent<UnitTransferToScene>().teamNumber = currentPlayerSelect;
             unitsPlayer2.Add(boughtUnit);
         }else if (currentPlayerSelect == 3)
         {
+            boughtUnit.GetComponent<UnitTransferToScene>().teamNumber = currentPlayerSelect;
             unitsPlayer3.Add(boughtUnit);
         }else if (currentPlayerSelect == 4)
         {
+            boughtUnit.GetComponent<UnitTransferToScene>().teamNumber = currentPlayerSelect;
             unitsPlayer4.Add(boughtUnit);
         }
 
