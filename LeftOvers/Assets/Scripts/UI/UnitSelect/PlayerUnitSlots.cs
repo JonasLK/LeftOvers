@@ -35,7 +35,7 @@ public class PlayerUnitSlots : MonoBehaviour
     public void BuyUnit(GameObject boughtUnit)
     {
         justSpawnedButton = Instantiate(buttonToInstanciate, new Vector3(0f, 0f, 0f), Quaternion.identity, GameObject.FindGameObjectWithTag("UnitSell").transform);
-        justSpawnedButton.GetComponent<TextMeshProUGUI>().text = "Sell " + boughtUnit.GetComponent<UnitTransferToScene>().className;
+        justSpawnedButton.GetComponentInChildren<TextMeshProUGUI>().text = "Sell " + boughtUnit.GetComponent<UnitTransferToScene>().className;
         justSpawnedButton.GetComponent<SellButton>().gameObjectToRemove = boughtUnit;
 
         if (currentPlayerSelect == 1)
@@ -86,11 +86,12 @@ public class PlayerUnitSlots : MonoBehaviour
 
     public void UpdateUnitSlotText()
     {
-        unitSlotsText.text = "Unit Slots Lefts: " + playerCurrentUnits[currentPlayerSelect - 1].ToString() + "/" + playerMaxUnits.ToString();
+        unitSlotsText.text = "Unit Slots Left: " + playerCurrentUnits[currentPlayerSelect - 1].ToString() + "/" + playerMaxUnits.ToString();
     }
 
     public void SetCurrentPlayer(int playerNumber)
     {
         currentPlayerSelect = playerNumber;
+        UpdateUnitSlotText();
     }
 }

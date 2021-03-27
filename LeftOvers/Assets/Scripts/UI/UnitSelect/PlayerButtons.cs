@@ -52,7 +52,7 @@ public class PlayerButtons : MonoBehaviour
             }
             else
             {
-                playerCanvas.SetActive(true);
+                playerCanvas.SetActive(false);
             }
 
             Counter += 1;
