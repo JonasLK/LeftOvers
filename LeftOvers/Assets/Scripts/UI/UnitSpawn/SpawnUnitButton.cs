@@ -5,7 +5,6 @@ using TMPro;
 
 public class SpawnUnitButton : MonoBehaviour
 {
-    public string unitName;
     public GameObject unitToSpawn;
 
     void Start()
@@ -17,5 +16,15 @@ public class SpawnUnitButton : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void FakeStart(string unitName)
+    {
+        GetComponentInChildren<TextMeshProUGUI>().text = unitName;
+    }
+
+    public void OnClick()
+    {
+
     }
 }
