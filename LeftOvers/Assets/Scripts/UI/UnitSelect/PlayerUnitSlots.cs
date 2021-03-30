@@ -19,11 +19,19 @@ public class PlayerUnitSlots : MonoBehaviour
 
     private GameObject justSpawnedButton;
 
+    private int forEachCounter;
+    private GameObject buttonToEdit;
+
     void Start()
     {
         if(unitSlotsText != null)
         {
             UpdateUnitSlotText();
+        }
+
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            PrepareButtonsToSpawn();
         }
     }
 
@@ -93,5 +101,54 @@ public class PlayerUnitSlots : MonoBehaviour
     {
         currentPlayerSelect = playerNumber;
         UpdateUnitSlotText();
+    }
+
+    public void PrepareButtonsToSpawn()
+    {
+        foreach(GameObject transfer in unitsPlayer1)
+        {
+            buttonToEdit = GameManager.unitSpawnList.unitSpawnUis[0].GetComponent<UnitSpawnList>().unitSpawnUis[forEachCounter];
+            buttonToEdit.GetComponentInChildren<TextMeshProUGUI>().text = "Place " + transfer.GetComponent<UnitTransferToScene>().className;
+            buttonToEdit.GetComponent<SpawnUnitButton>().unitToSpawn = transfer.GetComponent<UnitTransferToScene>().gameObjectToSpawn;
+
+            forEachCounter += 1;
+        }
+        forEachCounter = 0;
+
+        foreach (GameObject transfer in unitsPlayer2)
+        {
+            buttonToEdit = GameManager.unitSpawnList.unitSpawnUis[0].GetComponent<UnitSpawnList>().unitSpawnUis[forEachCounter];
+            buttonToEdit.GetComponentInChildren<TextMeshProUGUI>().text = "Place " + transfer.GetComponent<UnitTransferToScene>().className;
+            buttonToEdit.GetComponent<SpawnUnitButton>().unitToSpawn = transfer.GetComponent<UnitTransferToScene>().gameObjectToSpawn;
+
+            forEachCounter += 1;
+        }
+        forEachCounter = 0;
+
+        if(GameManager.turnTracker.playerAmount > 2)
+        {
+            foreach (GameObject transfer in unitsPlayer3)
+            {
+                buttonToEdit = GameManager.unitSpawnList.unitSpawnUis[0].GetComponent<UnitSpawnList>().unitSpawnUis[forEachCounter];
+                buttonToEdit.GetComponentInChildren<TextMeshProUGUI>().text = "Place " + transfer.GetComponent<UnitTransferToScene>().className;
+                buttonToEdit.GetComponent<SpawnUnitButton>().unitToSpawn = transfer.GetComponent<UnitTransferToScene>().gameObjectToSpawn;
+
+                forEachCounter += 1;
+            }
+            forEachCounter = 0;
+
+            if (GameManager.turnTracker.playerAmount > 3)
+            {
+                foreach (GameObject transfer in unitsPlayer4)
+                {
+                    buttonToEdit = GameManager.unitSpawnList.unitSpawnUis[0].GetComponent<UnitSpawnList>().unitSpawnUis[forEachCounter];
+                    buttonToEdit.GetComponentInChildren<TextMeshProUGUI>().text = "Place " + transfer.GetComponent<UnitTransferToScene>().className;
+                    buttonToEdit.GetComponent<SpawnUnitButton>().unitToSpawn = transfer.GetComponent<UnitTransferToScene>().gameObjectToSpawn;
+
+                    forEachCounter += 1;
+                }
+                forEachCounter = 0;
+            }
+        }
     }
 }

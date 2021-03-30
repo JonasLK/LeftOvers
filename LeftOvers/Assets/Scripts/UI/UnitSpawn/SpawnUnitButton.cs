@@ -6,6 +6,7 @@ using TMPro;
 public class SpawnUnitButton : MonoBehaviour
 {
     public GameObject unitToSpawn;
+    public bool Spawned;
 
     void Start()
     {

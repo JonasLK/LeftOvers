@@ -5,7 +5,7 @@ using UnityEngine;
 public class TestSpawnUnit : MonoBehaviour
 {
     public bool placingUnit;
-    public GameObject toSpawnUnit;
+    public GameObject unitToSpawn;
     public GameObject justSpawnedUnit;
     public GameObject button;
 
@@ -24,16 +24,13 @@ public class TestSpawnUnit : MonoBehaviour
     public void SpawnUnit(Transform tileLocation)
     {
         print("spawn");
-        GameManager.turnTracker.AddToList(Instantiate(toSpawnUnit, tileLocation.position, Quaternion.identity));
+        GameManager.turnTracker.AddToList(Instantiate(unitToSpawn, tileLocation.position, Quaternion.identity));
         placingUnit = false;
         DestroyButton();
     }
 
-    public void PlacingUnits(GameObject unitToSpawn)
+    public void PlacingUnits()
     {
-        print("place");
-        //show placeable tiles
-        toSpawnUnit = unitToSpawn;
         placingUnit = true;
     }
 
