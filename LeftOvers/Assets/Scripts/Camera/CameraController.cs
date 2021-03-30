@@ -25,8 +25,12 @@ public class CameraController : MonoBehaviour
     public Vector3 rotateStartPosition;
     public Vector3 rotateCurrentPosition;
 
-    public Vector3 topRightLimit;
-    public Vector3 bottomLeftLimit;
+    public Vector3 xMinLimit;
+    public Vector3 xMaxLimit;
+    public Vector3 yMinLimit;
+    public Vector3 yMaxLimit;
+    public Vector3 zMinLimit;
+    public Vector3 zMaxLimit;
     void Start()
     {
         newPosition = transform.position;
@@ -36,11 +40,11 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        Limiter();
-
         HandleMovementInput();
 
         HandleMouseInput();
+
+        Limiter();
     }
 
     void Limiter()
@@ -49,9 +53,10 @@ public class CameraController : MonoBehaviour
         //cam.fieldOfView = Mathf.Clamp(cam.fieldOfView, zoomMin, zoomMax);
 
         //limits how far the camera can go.
-        //transform.position = new Vector3(
-        //Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x),
-        //Mathf.Clamp(transform.position.z, bottomLeftLimit.z, topRightLimit.z));
+        transform.position = new Vector3(
+        Mathf.Clamp(transform.position.x, xMinLimit.x, xMaxLimit.x),
+        Mathf.Clamp(transform.position.y, yMinLimit.y, yMaxLimit.y),
+        Mathf.Clamp(transform.position.z, zMinLimit.z, zMaxLimit.z));
     }
 
     void HandleMouseInput()

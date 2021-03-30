@@ -4353,8 +4353,12 @@ MonoBehaviour:
   dragCurrentPosition: {x: 0, y: 0, z: 0}
   rotateStartPosition: {x: 0, y: 0, z: 0}
   rotateCurrentPosition: {x: 0, y: 0, z: 0}
-  topRightLimit: {x: 300, y: 0, z: 300}
-  bottomLeftLimit: {x: -300, y: 0, z: -300}
+  xMinLimit: {x: -300, y: 0, z: 0}
+  xMaxLimit: {x: 300, y: 0, z: 0}
+  yMinLimit: {x: 0, y: -300, z: 0}
+  yMaxLimit: {x: 0, y: 300, z: 0}
+  zMinLimit: {x: 0, y: 0, z: -300}
+  zMaxLimit: {x: 0, y: 0, z: 300}
 --- !u!4 &1189383391
 Transform:
   m_ObjectHideFlags: 0
