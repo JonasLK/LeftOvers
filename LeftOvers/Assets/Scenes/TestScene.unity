@@ -4336,16 +4336,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9eda9582b48c6e4b91a8211feecf084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 1369417313}
   cameraTransform: {fileID: 1369417311}
   normalSpeed: 0.5
   fastSpeed: 3
   movementSpeed: 1
   movementTime: 5
+  horizontal: 0
+  vertical: 0
+  shift: 0
+  rotate: 0
+  zoom: 0
   rotationAmount: 1
-  zoomMin: 0
-  zoomMax: 0
-  zoomAmount: {x: 0, y: -2, z: 10}
+  xMinZoom: {x: -350, y: 0, z: 0}
+  yMinZoom: {x: 0, y: -350, z: 0}
+  zMinZoom: {x: 0, y: 0, z: -350}
+  xMaxZoom: {x: 350, y: 0, z: 0}
+  yMaxZoom: {x: 0, y: 350, z: 0}
+  zMaxZoom: {x: 0, y: 0, z: 350}
+  zoomAmount: {x: 0, y: -1, z: 5}
   newPosition: {x: 0, y: 0, z: 0}
   newRotation: {x: 0, y: 0, z: 0, w: 0}
   newZoom: {x: 0, y: 0, z: 0}
