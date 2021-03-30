@@ -11,9 +11,18 @@ public class CameraController : MonoBehaviour
     public float fastSpeed;
     public float movementSpeed;
     public float movementTime;
+    public float horizontal;
+    public float vertical;
+    public float shift;
+    public float rotate;
+    public float zoom;
     public float rotationAmount;
-    public float zoomMin;
-    public float zoomMax;
+    public Vector3 xMinZoom;
+    public Vector3 yMinZoom;
+    public Vector3 zMinZoom;
+    public Vector3 xMaxZoom;
+    public Vector3 yMaxZoom;
+    public Vector3 zMaxZoom;
     public Vector3 zoomAmount;
 
     public Vector3 newPosition;
@@ -50,7 +59,10 @@ public class CameraController : MonoBehaviour
     void Limiter()
     {
         //limits how far you can zoom in and out.
-        //cam.fieldOfView = Mathf.Clamp(cam.fieldOfView, zoomMin, zoomMax);
+        cameraTransform.position = new Vector3(
+        Mathf.Clamp(cameraTransform.position.x, xMinZoom.x, xMaxZoom.x),
+        Mathf.Clamp(cameraTransform.position.y, yMinZoom.y, yMaxZoom.y),
+        Mathf.Clamp(cameraTransform.position.z, zMinZoom.z, zMaxZoom.z));
 
         //limits how far the camera can go.
         transform.position = new Vector3(
@@ -117,7 +129,9 @@ public class CameraController : MonoBehaviour
     void HandleMovementInput()
     {
         //Allows the player to increase the movement speed of the camera for as long as they hold down left shift.
-        if (Input.GetKey(KeyCode.LeftShift))
+        shift = Input.GetAxis("Shift");
+
+        if (shift == 1)
         {
             movementSpeed = fastSpeed;
         }
@@ -126,40 +140,49 @@ public class CameraController : MonoBehaviour
             movementSpeed = normalSpeed;
         }
 
-            //Allows the player to move around with either the wasd keys or the arrow keys.
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-            {
-                newPosition += (transform.forward * movementSpeed);
-            }
-            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-            {
-                newPosition += (transform.forward * -movementSpeed);
-            }
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-            {
-                newPosition += (transform.right * movementSpeed);
-            }
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-            {
-                newPosition += (transform.right * -movementSpeed);
-            }
+        //Allows the player to move around with either the wasd keys or the arrow keys.
+
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
+
+        if (vertical > 0)
+        {
+            newPosition += (transform.forward * movementSpeed);
+        }
+        if (vertical < 0)
+        {
+            newPosition += (transform.forward * -movementSpeed);
+        }
+        if (horizontal > 0)
+        {
+            newPosition += (transform.right * movementSpeed);
+        }
+        if (horizontal < 0)
+        {
+            newPosition += (transform.right * -movementSpeed);
+        }
+
 
         //Allows the player to rotate using the Q and E keys.
-        if (Input.GetKey(KeyCode.Q))
+        rotate = Input.GetAxis("Rotation");
+
+        if (rotate > 0)
         {
             newRotation *= Quaternion.Euler(Vector3.up * rotationAmount);
         }
-        if (Input.GetKey(KeyCode.E))
+        if (rotate < 0)
         {
             newRotation *= Quaternion.Euler(Vector3.up * -rotationAmount);
         }
 
         //Allows the player to zoom in and out with the R and F keys.
-        if (Input.GetKey(KeyCode.R))
+        zoom = Input.GetAxis("Zoom");
+
+        if (zoom > 0)
         {
             newZoom += zoomAmount;
         }
-        if (Input.GetKey(KeyCode.F))
+        if (zoom < 0)
         {
             newZoom -= zoomAmount;
         }
