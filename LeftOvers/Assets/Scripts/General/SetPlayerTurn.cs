@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class SetPlayerTurn : MonoBehaviour
 {
-    public TurnTracker turnTracker;
-
     void Start()
     {
-        turnTracker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnTracker>();
+
     }
 
     // Update is called once per frame
@@ -19,7 +17,7 @@ public class SetPlayerTurn : MonoBehaviour
 
     public void SetPlayerTurnVoid(int teamTurnToSet)
     {
-        turnTracker.playerTurn = teamTurnToSet;
-        turnTracker.UpdateTurnDisplay();
+        GameManager.turnTracker.playerTurn = teamTurnToSet;
+        GameManager.turnTracker.UpdateTurnDisplay();
     }
 }

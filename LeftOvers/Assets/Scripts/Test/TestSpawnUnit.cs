@@ -9,18 +9,6 @@ public class TestSpawnUnit : MonoBehaviour
     public GameObject justSpawnedUnit;
     public GameObject button;
 
-    public RaycastClick raycastClick;
-
-    void Start()
-    {
-        raycastClick = GetComponent<RaycastClick>();
-    }
-
-    void Update()
-    {
-        
-    }
-
     public void SpawnUnit(Transform tileLocation)
     {
         print("spawn");

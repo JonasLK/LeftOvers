@@ -19,21 +19,22 @@ public class TurnTracker : MonoBehaviour
 
     [HideInInspector] public int mapToLoad;
 
+    private bool fakeStart;
+
     public void Start()
     {
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public void Update()
+    {
+        if (SceneManager.GetActiveScene().buildIndex != 0 && fakeStart == false)
         {
             turnDisplay = GameObject.FindGameObjectWithTag("PlayerTurnDisplay").GetComponent<TextMeshProUGUI>();
             winScreen = GameObject.FindGameObjectWithTag("WinMenu");
-        }
-
-
-        if (turnDisplay != null)
-        {
             UpdateTurnDisplay();
+            fakeStart = true;
         }
-
-        DontDestroyOnLoad(gameObject);
     }
 
     public void CheckForWin()

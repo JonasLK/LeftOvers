@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public static RaycastClick raycastClick;
     public static UnitSpawnList unitSpawnList;
 
+    private bool fakeStart;
+
     void Start()
     {
         gameManager = this;
@@ -19,9 +21,14 @@ public class GameManager : MonoBehaviour
         testSpawnUnit = GetComponent<TestSpawnUnit>();
         playerUnitSlots = GetComponent<PlayerUnitSlots>();
         raycastClick = GetComponent<RaycastClick>();
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+    }
+
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().buildIndex != 0 && fakeStart == false)
         {
             unitSpawnList = GameObject.FindGameObjectWithTag("UnitSpawn").GetComponent<UnitSpawnList>();
+            fakeStart = true;
         }
     }
 }

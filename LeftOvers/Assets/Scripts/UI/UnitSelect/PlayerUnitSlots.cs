@@ -22,6 +22,8 @@ public class PlayerUnitSlots : MonoBehaviour
     private int forEachCounter;
     private GameObject buttonToEdit;
 
+    private bool fakeStart;
+
     void Start()
     {
         if(unitSlotsText != null)
@@ -29,15 +31,18 @@ public class PlayerUnitSlots : MonoBehaviour
             UpdateUnitSlotText();
         }
 
-        if (SceneManager.GetActiveScene().buildIndex != 0)
-        {
-            PrepareButtonsToSpawn();
-        }
+        print("Start");
+        
     }
 
     void Update()
     {
-        
+        if (SceneManager.GetActiveScene().buildIndex != 0 && fakeStart == false)
+        {
+            print("Start not scene 0");
+            PrepareButtonsToSpawn();
+            fakeStart = true;
+        }
     }
 
     public void BuyUnit(GameObject boughtUnit)
