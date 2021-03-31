@@ -5,14 +5,14 @@ using UnityEngine;
 public class TestSpawnUnit : MonoBehaviour
 {
     public bool placingUnit;
-    public GameObject unitToSpawn;
+    public GameObject unitToInstanciate;
     public GameObject justSpawnedUnit;
     public GameObject button;
 
     public void SpawnUnit(Transform tileLocation)
     {
         print("spawn");
-        GameManager.turnTracker.AddToList(Instantiate(unitToSpawn, tileLocation.position, Quaternion.identity));
+        GameManager.turnTracker.AddToList(Instantiate(unitToInstanciate, tileLocation.position, Quaternion.identity));
         placingUnit = false;
         DestroyButton();
     }
