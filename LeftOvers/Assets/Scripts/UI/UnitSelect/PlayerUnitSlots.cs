@@ -47,31 +47,36 @@ public class PlayerUnitSlots : MonoBehaviour
 
     public void BuyUnit(GameObject boughtUnit)
     {
-        justSpawnedButton = Instantiate(buttonToInstanciate, new Vector3(0f, 0f, 0f), Quaternion.identity, GameObject.FindGameObjectWithTag("UnitSell").transform);
-        justSpawnedButton.GetComponentInChildren<TextMeshProUGUI>().text = "Sell " + boughtUnit.GetComponent<UnitTransferToScene>().className;
-        justSpawnedButton.GetComponent<SellButton>().gameObjectToRemove = boughtUnit;
+        if(playerCurrentUnits[currentPlayerSelect - 1] > 0)
+        {
+            justSpawnedButton = Instantiate(buttonToInstanciate, new Vector3(0f, 0f, 0f), Quaternion.identity, GameObject.FindGameObjectWithTag("UnitSell").transform);
+            justSpawnedButton.GetComponentInChildren<TextMeshProUGUI>().text = "Sell " + boughtUnit.GetComponent<UnitTransferToScene>().className;
+            justSpawnedButton.GetComponent<SellButton>().gameObjectToRemove = boughtUnit;
 
-        if (currentPlayerSelect == 1)
-        {
-            boughtUnit.GetComponent<UnitTransferToScene>().teamNumber = currentPlayerSelect;
-            unitsPlayer1.Add(boughtUnit);
-        }
-        else if (currentPlayerSelect == 2)
-        {
-            boughtUnit.GetComponent<UnitTransferToScene>().teamNumber = currentPlayerSelect;
-            unitsPlayer2.Add(boughtUnit);
-        }else if (currentPlayerSelect == 3)
-        {
-            boughtUnit.GetComponent<UnitTransferToScene>().teamNumber = currentPlayerSelect;
-            unitsPlayer3.Add(boughtUnit);
-        }else if (currentPlayerSelect == 4)
-        {
-            boughtUnit.GetComponent<UnitTransferToScene>().teamNumber = currentPlayerSelect;
-            unitsPlayer4.Add(boughtUnit);
-        }
+            if (currentPlayerSelect == 1)
+            {
+                boughtUnit.GetComponent<UnitTransferToScene>().teamNumber = currentPlayerSelect;
+                unitsPlayer1.Add(boughtUnit);
+            }
+            else if (currentPlayerSelect == 2)
+            {
+                boughtUnit.GetComponent<UnitTransferToScene>().teamNumber = currentPlayerSelect;
+                unitsPlayer2.Add(boughtUnit);
+            }
+            else if (currentPlayerSelect == 3)
+            {
+                boughtUnit.GetComponent<UnitTransferToScene>().teamNumber = currentPlayerSelect;
+                unitsPlayer3.Add(boughtUnit);
+            }
+            else if (currentPlayerSelect == 4)
+            {
+                boughtUnit.GetComponent<UnitTransferToScene>().teamNumber = currentPlayerSelect;
+                unitsPlayer4.Add(boughtUnit);
+            }
 
-        playerCurrentUnits[currentPlayerSelect - 1] -= 1;
-        UpdateUnitSlotText();
+            playerCurrentUnits[currentPlayerSelect - 1] -= 1;
+            UpdateUnitSlotText();
+        }
     }
 
     public void SellUnit(GameObject boughtUnit)
