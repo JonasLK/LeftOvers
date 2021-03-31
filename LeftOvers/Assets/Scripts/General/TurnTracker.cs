@@ -34,6 +34,7 @@ public class TurnTracker : MonoBehaviour
             winScreen = GameObject.FindGameObjectWithTag("WinMenu");
             UpdateTurnDisplay();
             fakeStart = true;
+            print("FakeStart");
         }
     }
 
