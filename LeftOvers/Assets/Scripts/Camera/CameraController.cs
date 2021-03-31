@@ -11,12 +11,14 @@ public class CameraController : MonoBehaviour
     public float fastSpeed;
     public float movementSpeed;
     public float movementTime;
-    public float horizontal;
-    public float vertical;
-    public float shift;
-    public float rotate;
-    public float zoom;
     public float rotationAmount;
+
+    [HideInInspector] public float horizontal;
+    [HideInInspector] public float vertical;
+    [HideInInspector] public float shift;
+    [HideInInspector] public float rotate;
+    [HideInInspector] public float zoom;
+
     public Vector3 xMinZoom;
     public Vector3 yMinZoom;
     public Vector3 zMinZoom;
@@ -25,14 +27,14 @@ public class CameraController : MonoBehaviour
     public Vector3 zMaxZoom;
     public Vector3 zoomAmount;
 
-    public Vector3 newPosition;
-    public Quaternion newRotation;
-    public Vector3 newZoom;
+    [HideInInspector] public Vector3 newPosition;
+    [HideInInspector] public Quaternion newRotation;
+    [HideInInspector] public Vector3 newZoom;
 
-    public Vector3 dragStartPosition;
-    public Vector3 dragCurrentPosition;
-    public Vector3 rotateStartPosition;
-    public Vector3 rotateCurrentPosition;
+    [HideInInspector] public Vector3 dragStartPosition;
+    [HideInInspector] public Vector3 dragCurrentPosition;
+    [HideInInspector] public Vector3 rotateStartPosition;
+    [HideInInspector] public Vector3 rotateCurrentPosition;
 
     public Vector3 xMinLimit;
     public Vector3 xMaxLimit;
