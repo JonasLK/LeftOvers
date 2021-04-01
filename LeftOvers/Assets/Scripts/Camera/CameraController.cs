@@ -19,12 +19,10 @@ public class CameraController : MonoBehaviour
     [HideInInspector] public float rotate;
     [HideInInspector] public float zoom;
 
-    public Vector3 xMinZoom;
-    public Vector3 yMinZoom;
-    public Vector3 zMinZoom;
-    public Vector3 xMaxZoom;
-    public Vector3 yMaxZoom;
-    public Vector3 zMaxZoom;
+    public float zoomLimit;
+    public float zoomLimitPlus;
+    public float zoomLimitMinus;
+    public float zoomLimitAdd;
     public Vector3 zoomAmount;
 
     [HideInInspector] public Vector3 newPosition;
@@ -51,21 +49,15 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        HandleMovementInput();
-
         HandleMouseInput();
+
+        HandleMovementInput();
 
         Limiter();
     }
 
     void Limiter()
     {
-        //limits how far you can zoom in and out.
-        cameraTransform.position = new Vector3(
-        Mathf.Clamp(cameraTransform.position.x, xMinZoom.x, xMaxZoom.x),
-        Mathf.Clamp(cameraTransform.position.y, yMinZoom.y, yMaxZoom.y),
-        Mathf.Clamp(cameraTransform.position.z, zMinZoom.z, zMaxZoom.z));
-
         //limits how far the camera can go.
         transform.position = new Vector3(
         Mathf.Clamp(transform.position.x, xMinLimit.x, xMaxLimit.x),
@@ -78,7 +70,24 @@ public class CameraController : MonoBehaviour
         //Allows the player to zoom in and out with the mouse wheel.
         if (Input.mouseScrollDelta.y != 0)
         {
-            newZoom += Input.mouseScrollDelta.y * zoomAmount;
+            if (Input.mouseScrollDelta.y > 0)
+            {
+                if (zoomLimitPlus > zoomLimit)
+                {
+                    zoomLimit += zoomLimitAdd;
+
+                    newZoom += Input.mouseScrollDelta.y * zoomAmount;
+                }
+            }
+            if (Input.mouseScrollDelta.y < 0)
+            {
+                if (zoomLimitMinus < zoomLimit)
+                {
+                    zoomLimit -= zoomLimitAdd;
+
+                    newZoom += Input.mouseScrollDelta.y * zoomAmount;
+                }
+            }
         }
 
         //Allows for moving the camera around by dragging with the mouse.
@@ -164,7 +173,6 @@ public class CameraController : MonoBehaviour
             newPosition += (transform.right * -movementSpeed);
         }
 
-
         //Allows the player to rotate using the Q and E keys.
         rotate = Input.GetAxis("Rotation");
 
@@ -180,13 +188,21 @@ public class CameraController : MonoBehaviour
         //Allows the player to zoom in and out with the R and F keys.
         zoom = Input.GetAxis("Zoom");
 
-        if (zoom > 0)
+        if (zoomLimitPlus > zoomLimit)
         {
-            newZoom += zoomAmount;
+            if (zoom > 0)
+            {
+                newZoom += zoomAmount;
+                zoomLimit += zoomLimitAdd;
+            }
         }
-        if (zoom < 0)
+        if (zoomLimitMinus < zoomLimit)
         {
-            newZoom -= zoomAmount;
+            if (zoom < 0)
+            {
+                newZoom -= zoomAmount;
+                zoomLimit -= zoomLimitAdd;
+            }
         }
 
         transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementTime);
