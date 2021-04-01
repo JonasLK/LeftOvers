@@ -30,8 +30,7 @@ public class GameManager : MonoBehaviour
         {
             print("assigning unitSpawnList");
             unitSpawnList = GameObject.FindGameObjectWithTag("UnitSpawn").GetComponent<UnitSpawnList>();
-            print(unitSpawnList);
-            print("unitSpawnList assigned");
+            playerUnitSlots.PrepareButtonsToSpawn();
             fakeStart = true;
         }
     }

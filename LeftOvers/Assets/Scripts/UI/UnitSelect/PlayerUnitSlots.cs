@@ -19,29 +19,14 @@ public class PlayerUnitSlots : MonoBehaviour
 
     private GameObject justSpawnedButton;
 
-    private int forEachCounter;
-    private GameObject buttonToEdit;
-
-    private bool fakeStart;
+    public int forEachCounter;
+    public GameObject buttonToEdit;
 
     void Start()
     {
         if(unitSlotsText != null)
         {
             UpdateUnitSlotText();
-        }
-
-        print("Start");
-        
-    }
-
-    void Update()
-    {
-        if (SceneManager.GetActiveScene().buildIndex != 0 && fakeStart == false)
-        {
-            print("Start not scene 0");
-            PrepareButtonsToSpawn();
-            fakeStart = true;
         }
     }
 
@@ -117,13 +102,9 @@ public class PlayerUnitSlots : MonoBehaviour
     {
         foreach(GameObject transfer in unitsPlayer1)
         {
-            print(1);
             buttonToEdit = GameManager.unitSpawnList.unitSpawnUis[0].GetComponent<UnitSpawnList>().unitSpawnUis[forEachCounter];
-            print(buttonToEdit);
             buttonToEdit.GetComponentInChildren<TextMeshProUGUI>().text = "Place " + transfer.GetComponent<UnitTransferToScene>().className;
-            print(2);
             buttonToEdit.GetComponent<TestSpawnUnit>().unitToInstanciate = transfer.GetComponent<UnitTransferToScene>().gameObjectToSpawn;
-            print(3);
 
             forEachCounter += 1;
         }
