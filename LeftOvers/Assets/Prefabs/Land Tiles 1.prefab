@@ -433,6 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa6d7f2099452594d9d23496e1f0124f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showSpawnTiles: 0
   spawnTile: 0
   spawnIndicator: {fileID: 6493907153433067144}
   firstTile: 0
@@ -468,14 +469,13 @@ GameObject:
   - component: {fileID: 4990695153198790742}
   - component: {fileID: 7056929697930590240}
   - component: {fileID: 1948676892857181104}
-  - component: {fileID: 2825536094693892453}
   m_Layer: 0
   m_Name: Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4990695153198790742
 Transform:
   m_ObjectHideFlags: 0
@@ -537,20 +537,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &2825536094693892453
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6493907153433067144}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &6657262075853220935
 GameObject:
   m_ObjectHideFlags: 0
