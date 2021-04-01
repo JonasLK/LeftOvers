@@ -104,7 +104,7 @@ public class PlayerUnitSlots : MonoBehaviour
         {
             buttonToEdit = GameManager.unitSpawnList.unitSpawnUis[0].GetComponent<UnitSpawnList>().unitSpawnUis[forEachCounter];
             buttonToEdit.GetComponentInChildren<TextMeshProUGUI>().text = "Place " + transfer.GetComponent<UnitTransferToScene>().className;
-            buttonToEdit.GetComponent<TestSpawnUnit>().unitToInstanciate = transfer.GetComponent<UnitTransferToScene>().gameObjectToSpawn;
+            buttonToEdit.GetComponent<TestToSpawnUnit>().unitToSpawn = transfer.GetComponent<UnitTransferToScene>().gameObjectToSpawn;
 
             forEachCounter += 1;
         }
@@ -114,7 +114,7 @@ public class PlayerUnitSlots : MonoBehaviour
         {
             buttonToEdit = GameManager.unitSpawnList.unitSpawnUis[1].GetComponent<UnitSpawnList>().unitSpawnUis[forEachCounter];
             buttonToEdit.GetComponentInChildren<TextMeshProUGUI>().text = "Place " + transfer.GetComponent<UnitTransferToScene>().className;
-            buttonToEdit.GetComponent<TestSpawnUnit>().unitToInstanciate = transfer.GetComponent<UnitTransferToScene>().gameObjectToSpawn;
+            buttonToEdit.GetComponent<TestToSpawnUnit>().unitToSpawn = transfer.GetComponent<UnitTransferToScene>().gameObjectToSpawn;
 
             forEachCounter += 1;
         }
@@ -126,7 +126,7 @@ public class PlayerUnitSlots : MonoBehaviour
             {
                 buttonToEdit = GameManager.unitSpawnList.unitSpawnUis[2].GetComponent<UnitSpawnList>().unitSpawnUis[forEachCounter];
                 buttonToEdit.GetComponentInChildren<TextMeshProUGUI>().text = "Place " + transfer.GetComponent<UnitTransferToScene>().className;
-                buttonToEdit.GetComponent<TestSpawnUnit>().unitToInstanciate = transfer.GetComponent<UnitTransferToScene>().gameObjectToSpawn;
+                buttonToEdit.GetComponent<TestToSpawnUnit>().unitToSpawn = transfer.GetComponent<UnitTransferToScene>().gameObjectToSpawn;
 
                 forEachCounter += 1;
             }
@@ -138,7 +138,7 @@ public class PlayerUnitSlots : MonoBehaviour
                 {
                     buttonToEdit = GameManager.unitSpawnList.unitSpawnUis[3].GetComponent<UnitSpawnList>().unitSpawnUis[forEachCounter];
                     buttonToEdit.GetComponentInChildren<TextMeshProUGUI>().text = "Place " + transfer.GetComponent<UnitTransferToScene>().className;
-                    buttonToEdit.GetComponent<TestSpawnUnit>().unitToInstanciate = transfer.GetComponent<UnitTransferToScene>().gameObjectToSpawn;
+                    buttonToEdit.GetComponent<TestToSpawnUnit>().unitToSpawn = transfer.GetComponent<UnitTransferToScene>().gameObjectToSpawn;
 
                     forEachCounter += 1;
                 }

@@ -25,4 +25,14 @@ public class TestUseGameManager : MonoBehaviour
     {
         GameManager.turnTracker.EndTurn();
     }
+
+    public void UseTestSpawnUnitPlacingUnit()
+    {
+        GameManager.testSpawnUnit.PlacingUnits();
+    }
+
+    public void UseTestSpawnUnitSelectButtonToDestroy(GameObject buttonToDestroy)
+    {
+        GameManager.testSpawnUnit.SelectButtonToDestroy(buttonToDestroy);
+    }
 }
