@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WinTracker : MonoBehaviour
 {
@@ -8,6 +9,15 @@ public class WinTracker : MonoBehaviour
     public float player2Units;
     public float player3Units;
     public float player4Units;
+
+    public bool twoPlayers;
+    public bool threePlayers;
+    public bool fourPlayers;
+
+    public TMP_Text playerOneWon;
+    public TMP_Text playerTwoWon;
+    public TMP_Text playerThreeWon;
+    public TMP_Text playerFourWon;
 
     private void Start()
     {
@@ -35,6 +45,70 @@ public class WinTracker : MonoBehaviour
 
     void Update()
     {
+        if(twoPlayers == true)
+        {
+            if(player1Units <= 0)
+            {
+                //player2won
+                playerTwoWon.enabled = true;
+            }
+            if (player2Units <= 0)
+            {
+                //player1won
+                playerOneWon.enabled = true;
+            }
+        }
+        if(threePlayers == true)
+        {
+            if(player1Units <= 0 && player2Units <= 0)
+            {
+                //player3won
+                playerThreeWon.enabled = true;
+            }
+            if(player1Units <= 0 && player3Units <= 0)
+            {
+                //player2won
+                playerTwoWon.enabled = true;
+            }
+            if(player2Units <= 0 && player3Units <= 0)
+            {
+                //player1won
+                playerOneWon.enabled = true;
+            }
+        }
+        if(fourPlayers == true)
+        {
+            if(player1Units <= 0 && player2Units <= 0 && player3Units <= 0)
+            {
+                //player4won
+                playerFourWon.enabled = true;
+            }
+            if (player1Units <= 0 && player2Units <= 0 && player4Units <= 0)
+            {
+                //player3won
+                playerThreeWon.enabled = true;
+            }
+            if (player1Units <= 0 && player3Units <= 0 && player4Units <= 0)
+            {
+                //player2won
+
+                playerTwoWon.enabled = true;
+            }
+            if (player2Units <= 0 && player3Units <= 0 && player4Units <= 0)
+            {
+                //player1won
+                playerOneWon.enabled = true;
+            }
+        }
+
+
+
+        if(fourPlayers == true)
+        {
+
+        }
+
+
         if(player1Units <= 0)
         {
             //player1won
