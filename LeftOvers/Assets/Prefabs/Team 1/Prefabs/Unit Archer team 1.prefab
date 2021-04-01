@@ -989,7 +989,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3316896665657874592}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5442705, y: 0, z: -0.00000047683716}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3316896667043155929}
@@ -1227,6 +1227,7 @@ MonoBehaviour:
   currentEnergy: 0
   energyRequired: 0
   lastEnergyTaken: 0
+  energyPerTurn: 20
   attackDamage: 0
   attackRange: 0
   firstAttackDamage: 50
@@ -1238,7 +1239,14 @@ MonoBehaviour:
   bleedLevel: 0
   isBleeding: 0
   bleedDamage: 0
+  stunLevel: 0
+  isStunned: 0
+  recentlyStunned: 0
+  alreadyStunned: 0
+  stunImmunity: 0
+  stunImmunityLength: 0
   attacking: 0
+  canAttack: 0
   movementRange: 2
   unitTeamColor: 0
   unitSelected: 0
@@ -1254,9 +1262,11 @@ MonoBehaviour:
   unitLocation: {x: 0, y: 0, z: 0}
   ownTestPlayerMovement: {fileID: 0}
   testTileCalculator: {fileID: 0}
-  turnTracker: {fileID: 0}
   archerTotalHealth: 0
   archerTotalEnergy: 0
+  worldHealthBar: {fileID: 3316896665599949540}
+  localHealthBar: {fileID: 1632529457155629371}
+  energyBar: {fileID: 2885144935224882604}
   archerFirstAttackDamage: 40
   archerFirstAttackRange: 8
   archerFirstAttackEnergyRequired: 0
@@ -1265,12 +1275,9 @@ MonoBehaviour:
   archerSecondAttackEnergyRequired: 0
   arrowUp: 0
   arrowForward: 0
-  arrow: {fileID: 6668617782772191088, guid: a0998fcdba8c76541abc63d9f3a2354f, type: 3}
+  arrow: {fileID: 8073186333724001842, guid: ce12dceeb9f65fe4b9da5a4e2796331e, type: 3}
   arrowStartLocation: {fileID: 8078924351146427801}
   currentEnemy: {fileID: 0}
-  worldHealthBar: {fileID: 3316896665599949540}
-  localHealthBar: {fileID: 1632529457155629371}
-  energyBar: {fileID: 2885144935224882604}
 --- !u!1 &3316896665768351651
 GameObject:
   m_ObjectHideFlags: 0
