@@ -23,11 +23,15 @@ public class GameManager : MonoBehaviour
         raycastClick = GetComponent<RaycastClick>();
     }
 
-    private void Update()
+    public void Update()
     {
+        print("Update");
         if (SceneManager.GetActiveScene().buildIndex != 0 && fakeStart == false)
         {
+            print("assigning unitSpawnList");
             unitSpawnList = GameObject.FindGameObjectWithTag("UnitSpawn").GetComponent<UnitSpawnList>();
+            print(unitSpawnList);
+            print("unitSpawnList assigned");
             fakeStart = true;
         }
     }

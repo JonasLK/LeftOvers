@@ -30,11 +30,11 @@ public class TurnTracker : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex != 0 && fakeStart == false)
         {
-            turnDisplay = GameObject.FindGameObjectWithTag("PlayerTurnDisplay").GetComponent<TextMeshProUGUI>();
+            print("FakeStart");
+            turnDisplay = GameObject.FindGameObjectWithTag("PlayerTurnDisplay").GetComponentInChildren<TextMeshProUGUI>();
             winScreen = GameObject.FindGameObjectWithTag("WinMenu");
             UpdateTurnDisplay();
             fakeStart = true;
-            print("FakeStart");
         }
     }
 
