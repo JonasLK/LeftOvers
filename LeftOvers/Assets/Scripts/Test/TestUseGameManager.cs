@@ -18,6 +18,11 @@ public class TestUseGameManager : MonoBehaviour
 
     public void StartGame()
     {
+        GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
+        foreach(GameObject tile in tiles)
+        {
+            tile.GetComponent<TestTileCalculator>().showSpawnTiles = false;
+        }
         GameManager.turnTracker.gameStarted = true;
     }
 

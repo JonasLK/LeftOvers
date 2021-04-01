@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class TestTileCalculator : MonoBehaviour
 {
+    public bool showSpawnTiles;
+    public bool spawnTile;
+    public GameObject spawnIndicator;
+
     public bool firstTile;
     public bool untraversable;
     public bool occupied;
@@ -73,5 +77,17 @@ public class TestTileCalculator : MonoBehaviour
     public void ShowMovementRange()
     {
         rangeDisplay.SetActive(!rangeDisplay.activeSelf);
+    }
+
+    private void Update()
+    {
+        if (spawnTile == true && showSpawnTiles == true)
+        {
+            spawnIndicator.SetActive(true);
+        }
+        else
+        {
+            spawnIndicator.SetActive(false);
+        }
     }
 }
