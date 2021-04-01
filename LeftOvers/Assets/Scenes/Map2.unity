@@ -21906,7 +21906,7 @@ RectTransform:
   - {fileID: 610056947}
   - {fileID: 96823102}
   m_Father: {fileID: 2067986629}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -23725,6 +23725,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2067986629}
   - component: {fileID: 2067986628}
+  - component: {fileID: 2067986630}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -23774,11 +23775,35 @@ Transform:
   m_LocalPosition: {x: 1397.8198, y: 879.1506, z: -232.63338}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 312983591}
   - {fileID: 1909522411}
+  - {fileID: 312983591}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2067986630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067986627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa400f1e66b478e44aa9d19f5ecbc484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1Units: 0
+  player2Units: 0
+  player3Units: 0
+  player4Units: 0
+  twoPlayers: 0
+  threePlayers: 1
+  fourPlayers: 0
+  winMenu: {fileID: 1909522410}
+  playerOneWon: {fileID: 864871606}
+  playerTwoWon: {fileID: 337086801}
+  playerThreeWon: {fileID: 855649416}
+  playerFourWon: {fileID: 867618479}
 --- !u!1001 &2078781240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24458,18 +24483,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3cb39bccc74db84fb51447359e27de1, type: 3}
---- !u!1 &2142838572 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1715650022586998009, guid: d3cb39bccc74db84fb51447359e27de1,
-    type: 3}
-  m_PrefabInstance: {fileID: 2142838571}
-  m_PrefabAsset: {fileID: 0}
---- !u!45 &2142838573
-Skybox:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142838572}
-  m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 2039a0ad0a9d05549928b70362f54902, type: 2}

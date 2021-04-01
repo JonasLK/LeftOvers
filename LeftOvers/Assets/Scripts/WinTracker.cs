@@ -14,6 +14,7 @@ public class WinTracker : MonoBehaviour
     public bool threePlayers;
     public bool fourPlayers;
 
+    public GameObject winMenu;
     public TMP_Text playerOneWon;
     public TMP_Text playerTwoWon;
     public TMP_Text playerThreeWon;
@@ -50,11 +51,13 @@ public class WinTracker : MonoBehaviour
             if(player1Units <= 0)
             {
                 //player2won
+                winMenu.SetActive(true);
                 playerTwoWon.enabled = true;
             }
             if (player2Units <= 0)
             {
                 //player1won
+                winMenu.SetActive(true);
                 playerOneWon.enabled = true;
             }
         }
@@ -63,16 +66,19 @@ public class WinTracker : MonoBehaviour
             if(player1Units <= 0 && player2Units <= 0)
             {
                 //player3won
+                winMenu.SetActive(true);
                 playerThreeWon.enabled = true;
             }
             if(player1Units <= 0 && player3Units <= 0)
             {
                 //player2won
+                winMenu.SetActive(true);
                 playerTwoWon.enabled = true;
             }
             if(player2Units <= 0 && player3Units <= 0)
             {
                 //player1won
+                winMenu.SetActive(true);
                 playerOneWon.enabled = true;
             }
         }
@@ -81,49 +87,27 @@ public class WinTracker : MonoBehaviour
             if(player1Units <= 0 && player2Units <= 0 && player3Units <= 0)
             {
                 //player4won
+                winMenu.SetActive(true);
                 playerFourWon.enabled = true;
             }
             if (player1Units <= 0 && player2Units <= 0 && player4Units <= 0)
             {
                 //player3won
+                winMenu.SetActive(true);
                 playerThreeWon.enabled = true;
             }
             if (player1Units <= 0 && player3Units <= 0 && player4Units <= 0)
             {
                 //player2won
-
+                winMenu.SetActive(true);
                 playerTwoWon.enabled = true;
             }
             if (player2Units <= 0 && player3Units <= 0 && player4Units <= 0)
             {
                 //player1won
+                winMenu.SetActive(true);
                 playerOneWon.enabled = true;
             }
-        }
-
-
-
-        if(fourPlayers == true)
-        {
-
-        }
-
-
-        if(player1Units <= 0)
-        {
-            //player1won
-        }
-        if (player2Units <= 0)
-        {
-
-        }
-        if (player3Units <= 0)
-        {
-
-        }
-        if (player4Units <= 0)
-        {
-
         }
     }
 }
