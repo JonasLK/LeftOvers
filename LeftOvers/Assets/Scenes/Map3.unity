@@ -1651,6 +1651,61 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 194768918}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &195479163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 195479165}
+  - component: {fileID: 195479164}
+  m_Layer: 0
+  m_Name: WinTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &195479164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195479163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa400f1e66b478e44aa9d19f5ecbc484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1Units: 0
+  player2Units: 0
+  player3Units: 0
+  player4Units: 0
+  twoPlayers: 0
+  threePlayers: 0
+  fourPlayers: 1
+  winMenu: {fileID: 1755837346}
+  playerOneWon: {fileID: 1370625092}
+  playerTwoWon: {fileID: 1849339022}
+  playerThreeWon: {fileID: 1677648259}
+  playerFourWon: {fileID: 1989243666}
+--- !u!4 &195479165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195479163}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 225946956}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &198332014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1829,7 +1884,6 @@ GameObject:
   m_Component:
   - component: {fileID: 225946956}
   - component: {fileID: 225946955}
-  - component: {fileID: 225946957}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -1849,6 +1903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f18d09586b8c2488df8ab7f4846b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winTrackerObject: {fileID: 195479163}
   player3Enabled: 0
   fighters: 0
   archers: 0
@@ -1881,33 +1936,10 @@ Transform:
   m_Children:
   - {fileID: 1755837347}
   - {fileID: 1126337298}
+  - {fileID: 195479165}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &225946957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 225946954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa400f1e66b478e44aa9d19f5ecbc484, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player1Units: 0
-  player2Units: 0
-  player3Units: 0
-  player4Units: 0
-  twoPlayers: 0
-  threePlayers: 0
-  fourPlayers: 1
-  winMenu: {fileID: 1755837346}
-  playerOneWon: {fileID: 1370625092}
-  playerTwoWon: {fileID: 1849339022}
-  playerThreeWon: {fileID: 1677648259}
-  playerFourWon: {fileID: 1989243666}
 --- !u!1001 &226196389
 PrefabInstance:
   m_ObjectHideFlags: 0

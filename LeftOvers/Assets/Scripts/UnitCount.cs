@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UnitCount : MonoBehaviour
 {
+    public GameObject winTrackerObject;
+
     public static bool player3;
     public bool player3Enabled;
 
@@ -107,6 +109,10 @@ public class UnitCount : MonoBehaviour
     public void ResetUnits() 
     { 
 
+    }
+    public void ActivateWinTracker()
+    {
+        winTrackerObject.SetActive(true);
     }
 
     public void EnablePlayer3()
